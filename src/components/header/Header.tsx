@@ -3,12 +3,22 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { AlignJustify } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
 
-const Header = () => {
+interface HeaderProps {
+  user: boolean;
+}
+
+const Header = ({ user }: HeaderProps) => {
+  console.log(typeof user);
   const menuItems = [
     { label: "Home", path: "/", show: true },
-    { label: "Login", path: "/sign-in", show: true },
-    { label: "Register", path: "/sign-up", show: true },
+    { label: "Login", path: "/sign-in", show: !user },
+    { label: "Register", path: "/sign-up", show: !user },
+    { label: "Jobs", path: "/jobs", show: user },
+    { label: "Activity", path: "/activity", show: user },
+    { label: "Menbership", path: "/membership", show: user },
+    { label: "Account", path: "/account", show: user },
   ];
   return (
     <div>
@@ -36,6 +46,7 @@ const Header = () => {
                   </Link>
                 ) : null;
               })}
+              <UserButton afterSignOutUrl="/" />
             </div>
           </SheetContent>
         </Sheet>
@@ -48,12 +59,13 @@ const Header = () => {
               <Link
                 key={menuItem.label}
                 href={menuItem.path}
-                className="hidden md:flex items-center py-2 px-4 text-lg font-semibold"
+                className="group inline-flex h-9 w-max items-center rounded-md bg-white px-4 py-2 text-sm font-medium "
               >
                 {menuItem.label}
               </Link>
             ) : null
           )}
+          <UserButton afterSignOutUrl="/" />
         </nav>
       </header>
     </div>
