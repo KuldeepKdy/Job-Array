@@ -11,6 +11,12 @@ function CommonForm({ action, buttonText, isBtnDisabled,formControls,buttonText,
           {buttonText}
         </button>
       </div>
+      {isBtn && (
+        <button
+          type="button"
+          className="text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ml-3"
+        ></button>
+      }
     </form>
   );
 }
