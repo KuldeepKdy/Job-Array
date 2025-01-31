@@ -3,8 +3,6 @@ import { Label } from "../ui/label";
 
 function CommonForm({
   action,
-  buttonText,
-  isBtnDisabled,
   formControls,
   buttonText,
   isBtnDisabled,
@@ -12,8 +10,32 @@ function CommonForm({
   formData,
   setFormData,
   handleFileChange,
+}: {
+  action: string;
+  buttonText: string;
+  isBtnDisabled: boolean;
+  formControls: Array<{
+    componentType: string;
+    disabled?: boolean;
+    placeholder?: string;
+    name: string;
+    label?: string;
+  }>;
+  btnType?: "button" | "submit" | "reset";
+  formData: { [key: string]: string | number | boolean | File };
+  setFormData: (data: {
+    [key: string]: string | number | boolean | File;
+  }) => void;
+  handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
-  function renderInputByComponentType(getCurrentControl) {
+  
+  function renderInputByComponentType(getCurrentControl: {
+    componentType: string;
+    disabled?: boolean;
+    placeholder?: string;
+    name: string;
+    label?: string;
+  }) {
     let content = null;
 
     switch (getCurrentControl.componentType) {
@@ -26,7 +48,7 @@ function CommonForm({
               placeholder={getCurrentControl.placeholder}
               name={getCurrentControl.name}
               id={getCurrentControl.name}
-              value={formData[getCurrentControl.name]}
+              value={String(formData[getCurrentControl.name])}
               onChange={(event) =>
                 setFormData({
                   ...formData,
@@ -64,7 +86,7 @@ function CommonForm({
               placeholder={getCurrentControl.placeholder}
               name={getCurrentControl.name}
               id={getCurrentControl.name}
-              value={formData[getCurrentControl.name]}
+              value={String(formData[getCurrentControl.name])}
               onChange={(event) =>
                 setFormData({
                   ...formData,
@@ -81,8 +103,14 @@ function CommonForm({
   }
   return (
     <form action={action}>
-      {formControls.map((control: { componentType: string; disabled?: boolean; placeholder?: string; name: string; label?: string; }) =>
-        renderInputByComponentType(control)
+      {formControls.map(
+        (control: {
+          componentType: string;
+          disabled?: boolean;
+          placeholder?: string;
+          name: string;
+          label?: string;
+        }) => renderInputByComponentType(control)
       )}
       <div className="mt-6 w-full">
         <button
