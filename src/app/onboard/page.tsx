@@ -1,14 +1,13 @@
-import React from "react";
 
-function OnBoard() {
-    
 
+import OnBoard from "@/components/on-board/page";
+
+function OnBoardPage() {
   return (
-    <div>
-      <h1>Welcome to Job Array</h1>
-      <p>A platform to find, apply, and manage job opportunities</p>
-    </div>
+    <>
+      <OnBoard />
+    </>
   );
 }
 
-export default OnBoard;
+export default OnBoardPage;

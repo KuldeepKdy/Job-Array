@@ -1,3 +1,4 @@
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
@@ -23,12 +24,9 @@ function CommonForm({
   }>;
   btnType?: "button" | "submit" | "reset";
   formData: { [key: string]: string | number | boolean | File };
-  setFormData: (data: {
-    [key: string]: string | number | boolean | File;
-  }) => void;
+  setFormData: React.Dispatch<React.SetStateAction<object>>;
   handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
-  
   function renderInputByComponentType(getCurrentControl: {
     componentType: string;
     disabled?: boolean;
@@ -55,7 +53,7 @@ function CommonForm({
                   [event.target.name]: event.target.value,
                 })
               }
-              className="w-full rounded-md h-[60px] px-4 border border-gray-100 text-lg outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:drop-shadow-lg focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="w-full rounded-md h-[60px] bg-white px-4 border border-gray-200 text-lg outline-none shadow-sm transition-all duration-200 ease-in-out focus:shadow-lg focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
             />
           </div>
         );
@@ -112,14 +110,14 @@ function CommonForm({
           label?: string;
         }) => renderInputByComponentType(control)
       )}
-      <div className="mt-6 w-full">
-        <button
+      <div key={btnType} className="mt-6 w-full">
+        <Button
           type={btnType || "submit"}
           disabled={isBtnDisabled}
           className="disabled:opacity-60 flex h-11 items-center justify-center px-5"
         >
           {buttonText}
-        </button>
+        </Button>
       </div>
     </form>
   );
