@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CommonForm from "../common-form/page";
 import {
+  candidateOnBoardFormControls,
+  initialCandidateFormData,
   intitalRecruiterFormData,
   recruiterOnBoardFormControls,
 } from "@/utils/index";
@@ -11,6 +13,9 @@ function OnBoard() {
   const [currentTab, setCurrentTab] = useState("candidate");
   const [recruiterformData, setRecruiterFormData] = useState(
     intitalRecruiterFormData
+  );
+  const [candidateformData, setCandidateFormData] = useState(
+    initialCandidateFormData
   );
 
   const handleTabChange = (value: string) => {
@@ -30,7 +35,14 @@ function OnBoard() {
             </TabsList>
           </div>
         </div>
-        <TabsContent value="candidate">candidate</TabsContent>
+        <TabsContent value="candidate">
+          <CommonForm
+            formControls={candidateOnBoardFormControls}
+            buttonText={"OnBoard as candidate"}
+            formData={candidateformData}
+            setFormData={setCandidateFormData}
+          />
+        </TabsContent>
         <TabsContent value="recruiter">
           <CommonForm
             formControls={recruiterOnBoardFormControls}
