@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CommonForm from "../common-form/page";
+import { createProfileAction } from "@/actions/index";
 import {
   candidateOnBoardFormControls,
   initialCandidateFormData,
@@ -12,10 +13,10 @@ import { useUser } from "@clerk/nextjs";
 
 function OnBoard() {
   const [currentTab, setCurrentTab] = useState("candidate");
-  const [recruiterformData, setRecruiterFormData] = useState(
+  const [recruiterformData, setRecruiterFormData] = useState<{ [key: string]: string | File }>(
     intitalRecruiterFormData
   );
-  const [candidateformData, setCandidateFormData] = useState(
+  const [candidateformData, setCandidateFormData] = useState<{ [key: string]: string | File }>(
     initialCandidateFormData
   );
 
@@ -36,7 +37,7 @@ function OnBoard() {
     );
   }
 
-  async function createProfileAction() {
+  async function createProfile() {
     const data = {
       recruiterInfo: recruiterformData,
       role: "recruiter",
@@ -44,6 +45,7 @@ function OnBoard() {
       userId: user?.id,
       email: user?.primaryEmailAddress?.emailAddress,
     };
+    await createProfileAction(data, "/onboard");
   }
   return (
     <div className="bg-white">
@@ -65,6 +67,7 @@ function OnBoard() {
             buttonText={"OnBoard as candidate"}
             formData={candidateformData}
             setFormData={setCandidateFormData}
+            handleFileChange={() => {}}
           />
         </TabsContent>
         <TabsContent value="recruiter">
@@ -74,7 +77,7 @@ function OnBoard() {
             formData={recruiterformData}
             setFormData={setRecruiterFormData}
             isBtnDisabled={!handleRecruiterFormValid()}
-            action={createProfileAction}
+            action={createProfile}
           />
         </TabsContent>
       </Tabs>

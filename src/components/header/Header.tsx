@@ -7,17 +7,28 @@ import { UserButton } from "@clerk/nextjs";
 
 interface HeaderProps {
   user: boolean;
+  profileInfo: {
+    _id: string;
+    name: string;
+    email: string;
+    picture: string;
+    role: string;
+  };
 }
 
-const Header = ({ user }: HeaderProps) => {
+const Header = ({ user, profileInfo }: HeaderProps) => {
   console.log(typeof user);
   const menuItems = [
     { label: "Home", path: "/", show: true },
     { label: "Login", path: "/sign-in", show: !user },
     { label: "Register", path: "/sign-up", show: !user },
+    {
+      label: "Activity",
+      path: "/activity",
+      show: profileInfo?.role === "candidate",
+    },
     { label: "Jobs", path: "/jobs", show: user },
-    { label: "Activity", path: "/activity", show: user },
-    { label: "Menbership", path: "/membership", show: user },
+    { label: "Membership", path: "/membership", show: user },
     { label: "Account", path: "/account", show: user },
   ];
   return (

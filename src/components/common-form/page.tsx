@@ -12,10 +12,11 @@ function CommonForm({
   setFormData,
   handleFileChange,
 }: {
-  action: string;
-  buttonText: string;
-  isBtnDisabled: boolean;
-  formControls: Array<{
+  buttonText?: string;
+  isBtnDisabled?: boolean;
+  action?: string | (() => Promise<void>);
+
+  formControls?: Array<{
     componentType: string;
     disabled?: boolean;
     placeholder?: string;
@@ -23,9 +24,9 @@ function CommonForm({
     label?: string;
   }>;
   btnType?: "button" | "submit" | "reset";
-  formData: { [key: string]: string | number | boolean | File };
-  setFormData: React.Dispatch<React.SetStateAction<object>>;
-  handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  formData?: { [key: string]: string | File };
+  setFormData?: React.Dispatch<React.SetStateAction<{ [key: string]: string | File }>>;
+  handleFileChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   function renderInputByComponentType(getCurrentControl: {
     componentType: string;
