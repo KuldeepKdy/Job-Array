@@ -4,7 +4,7 @@ import { Label } from "../ui/label";
 
 function CommonForm({
   action,
-  formControls,
+  formControls = [],
   buttonText,
   isBtnDisabled,
   btnType,
