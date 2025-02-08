@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import CommonForm from "../common-form/page";
 import { initialPostNewJobFormData, PostNewJobFormControls } from "@/utils";
-import { postNewJobAction } from "@/actions";
+import { postNewJobAction } from "@/actions/index";
 
 interface Profileinterface {
   recruiterInfo: { companyName: string };
@@ -12,10 +12,11 @@ interface Profileinterface {
   name: string;
 }
 interface PostNewJobProps {
+  user: { id: string; name: string; email: string };
   profileInfo: Profileinterface;
 }
 
-const PostNewJob = ({ profileInfo }: PostNewJobProps) => {
+const PostNewJob: React.FC<PostNewJobProps> = ({ user, profileInfo }) => {
   console.log(profileInfo);
   const [showJobDialog, setShowJobDialog] = useState(false);
   const [jobFormData, setJobFormData] = useState<{
@@ -38,12 +39,18 @@ const PostNewJob = ({ profileInfo }: PostNewJobProps) => {
     await postNewJobAction(
       {
         ...jobFormData,
-        recruiterId,
+        recruiterId: user?.id,
         applicants: [],
       },
       "/jobs"
     );
+    setShowJobDialog(false);
+    setJobFormData({
+      ...initialPostNewJobFormData,
+      companyName: profileInfo?.recruiterInfo?.companyName,
+    });
   }
+
   return (
     <div>
       <Button

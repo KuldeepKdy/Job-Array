@@ -8,6 +8,7 @@ function CommonForm({
   buttonText,
   isBtnDisabled,
   btnType,
+
   formData,
   setFormData,
   handleFileChange,
@@ -25,7 +26,9 @@ function CommonForm({
   }>;
   btnType?: "button" | "submit" | "reset";
   formData?: { [key: string]: string | File };
-  setFormData?: React.Dispatch<React.SetStateAction<{ [key: string]: string | File }>>;
+  setFormData?: React.Dispatch<
+    React.SetStateAction<{ [key: string]: string | File }>
+  >;
   handleFileChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   function renderInputByComponentType(getCurrentControl: {
