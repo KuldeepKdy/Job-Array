@@ -140,6 +140,7 @@ export const PostNewJobFormControls = [
     name: "companyName",
     placeholder: "Enter your company name",
     componentType: "input",
+    disabled: true,
   },
   {
     label: "Title",
@@ -149,8 +150,8 @@ export const PostNewJobFormControls = [
   },
   {
     label: "Type",
-    name: "title",
-    placeholder: "Job Title",
+    name: "type",
+    placeholder: "Job Type",
     componentType: "input",
   },
   {
@@ -159,17 +160,32 @@ export const PostNewJobFormControls = [
     placeholder: "Job Location",
     componentType: "input",
   },
-];
-
-export const postNewJobFormData = [
   {
-    companyName: "",
-    title: "",
-    type: "",
-    location: "",
-    jobTitle: "",
-    experience: "",
-    description: "",
-    skills: "",
+    label: "Experience",
+    name: "experience",
+    placeholder: "Experience",
+    componentType: "input",
+  },
+  {
+    label: "Description",
+    name: "description",
+    placeholder: "Description",
+    componentType: "input",
+  },
+  {
+    label: "Skills",
+    name: "skills",
+    placeholder: "Skills",
+    componentType: "input",
   },
 ];
+
+export const initialPostNewJobFormData = {
+  companyName: "",
+  title: "",
+  type: "",
+  location: "",
+  experience: "",
+  description: "",
+  skills: "",
+};

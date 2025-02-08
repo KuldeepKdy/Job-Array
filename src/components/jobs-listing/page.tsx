@@ -2,7 +2,16 @@
 
 import PostNewJob from "../post-new-job/page";
 
-const JobListing = ({ user, profileInfo }: any) => {
+interface ProfileInfo {
+  role: string;
+}
+
+interface JobListingProps {
+  user: { id: string; name: string; email: string }; // Replace with the appropriate type for user
+  profileInfo: ProfileInfo;
+}
+
+const JobListing = ({ user, profileInfo }: JobListingProps) => {
   return (
     <div>
       <div className="mx-auto max-w-7xl">
@@ -13,7 +22,11 @@ const JobListing = ({ user, profileInfo }: any) => {
               : "Jobs Dashboard"}
           </h1>
           <div className="flex items-center ">
-            {profileInfo?.role === "candidate" ? <p>Filter</p> : <PostNewJob />}
+            {profileInfo?.role === "candidate" ? (
+              <p>Filter</p>
+            ) : (
+              <PostNewJob profileInfo={profileInfo} />
+            )}
           </div>
         </div>
         <div>Job Listing</div>
