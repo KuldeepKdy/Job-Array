@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CommonForm from "../common-form/page";
 import { createProfileAction } from "@/actions/index";
@@ -10,23 +10,58 @@ import {
   recruiterOnBoardFormControls,
 } from "@/utils/index";
 import { useUser } from "@clerk/nextjs";
+import { createClient } from "@supabase/supabase-js";
+
+// Supabase connection
+const supabaseUrl = "https://wzapditlogmdsweecqnx.supabase.co";
+const supabaseKey =
+  process.env.SUPABASE_KEY ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6YXBkaXRsb2dtZHN3ZWVjcW54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzkwMjI2MjgsImV4cCI6MjA1NDU5ODYyOH0.aA3AXtW_b6DwmK4UJE8OdVWGRfRx3liUYxYmgbLzpPI";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 function OnBoard() {
   const [currentTab, setCurrentTab] = useState("candidate");
-  const [recruiterformData, setRecruiterFormData] = useState<{ [key: string]: string | File }>(
-    intitalRecruiterFormData
-  );
-  const [candidateformData, setCandidateFormData] = useState<{ [key: string]: string | File }>(
-    initialCandidateFormData
-  );
+  const [recruiterformData, setRecruiterFormData] = useState<{
+    [key: string]: string | File;
+  }>(intitalRecruiterFormData);
+  const [candidateformData, setCandidateFormData] = useState<{
+    [key: string]: string | File;
+  }>(initialCandidateFormData);
+
+  const [file, setFile] = useState<File | null>(null);
 
   const currentAuthUser = useUser();
   const { user } = currentAuthUser;
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    if (event.target.files && event.target.files.length > 0) {
+      setFile(event.target.files[0]);
+    }
+  };
 
+  const handleUploadPdfToSupabase = async () => {
+    if (file) {
+      const { data, error } = await supabase.storage
+        .from("job-board")
+        .upload(`/public/${file.name}`, file, {
+          cacheControl: "3600",
+          upsert: false,
+        });
+        console.log(data,error)
+        if(data){
+
+        }
+    }
+    
+  };
+
+  useEffect(() => {
+    if (file) handleUploadPdfToSupabase();
+  }, [file]);
   const handleTabChange = (value: string) => {
     setCurrentTab(value);
   };
-  console.log(recruiterformData, "recruiter form data");
+  // console.log(recruiterformData, "recruiter form data");
 
   function handleRecruiterFormValid() {
     return (
@@ -67,7 +102,7 @@ function OnBoard() {
             buttonText={"OnBoard as candidate"}
             formData={candidateformData}
             setFormData={setCandidateFormData}
-            handleFileChange={() => {}}
+            handleFileChange={handleFileChange}
           />
         </TabsContent>
         <TabsContent value="recruiter">
