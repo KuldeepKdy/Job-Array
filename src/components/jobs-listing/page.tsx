@@ -1,6 +1,7 @@
 "use client";
 
 import PostNewJob from "../post-new-job/page";
+import CandidateJobCard from "./CandidateJobCard";
 import RecruiterJobCard from "./RecruiterJobCard";
 
 interface ProfileInfo {
@@ -42,7 +43,10 @@ const JobListing = ({ user, profileInfo, jobList }: JobListingProps) => {
                   {jobList && jobList.length > 0
                     ? jobList.map((jobItem) =>
                         profileInfo?.role === "candidate" ? (
-                          <p key={jobItem?.id}></p>
+                          <CandidateJobCard
+                            key={jobItem?.id}
+                            jobItem={jobItem}
+                          />
                         ) : (
                           <RecruiterJobCard
                             key={jobItem?.id}
