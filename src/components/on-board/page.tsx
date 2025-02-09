@@ -47,12 +47,11 @@ function OnBoard() {
           cacheControl: "3600",
           upsert: false,
         });
-        console.log(data,error)
-        if(data){
-
-        }
+      console.log(data, error);
+      if (data) {
+        setCandidateFormData({ ...candidateformData, resume: data.path });
+      }
     }
-    
   };
 
   useEffect(() => {
@@ -66,22 +65,43 @@ function OnBoard() {
   function handleRecruiterFormValid() {
     return (
       recruiterformData &&
+      typeof recruiterformData.name === "string" &&
       recruiterformData.name.trim() !== "" &&
+      typeof recruiterformData.companyName === "string" &&
       recruiterformData.companyName.trim() !== "" &&
+      typeof recruiterformData.companyRole === "string" &&
       recruiterformData.companyRole.trim() !== ""
     );
   }
 
+  function handleCandidateFormValid() {
+    return Object.keys(candidateformData).every(
+      (key) =>
+        typeof candidateformData[key] === "string" &&
+        candidateformData[key].trim() !== ""
+    );
+  }
+
   async function createProfile() {
-    const data = {
-      recruiterInfo: recruiterformData,
-      role: "recruiter",
-      isPremiumUser: false,
-      userId: user?.id,
-      email: user?.primaryEmailAddress?.emailAddress,
-    };
+    const data =
+      currentTab === "candidate"
+        ? {
+            candidateInfo: candidateformData,
+            role: "candidate",
+            isPremiumUser: false,
+            userId: user?.id,
+            email: user?.primaryEmailAddress?.emailAddress,
+          }
+        : {
+            recruiterInfo: recruiterformData,
+            role: "recruiter",
+            isPremiumUser: false,
+            userId: user?.id,
+            email: user?.primaryEmailAddress?.emailAddress,
+          };
     await createProfileAction(data, "/onboard");
   }
+  console.log(candidateformData, "candidate form data");
   return (
     <div className="bg-white">
       <Tabs value={currentTab} onValueChange={handleTabChange}>
@@ -103,6 +123,8 @@ function OnBoard() {
             formData={candidateformData}
             setFormData={setCandidateFormData}
             handleFileChange={handleFileChange}
+            isBtnDisabled={!handleCandidateFormValid()}
+            action={createProfile}
           />
         </TabsContent>
         <TabsContent value="recruiter">
