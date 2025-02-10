@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import connectToDB from "../dabtabase/connectDb";
 import Profile from "../models/profile";
 import Job from "../models/Job";
+import Application from "../models/application";
 
 //create profile action
 export async function createProfileAction(formData, pathToRevalidate) {
@@ -39,3 +40,33 @@ export async function fetchJobsForCandidateAction() {
   const result = await Job.find({});
   return JSON.parse(JSON.stringify(result));
 }
+
+// create job application
+
+export async function createJobApplicationAction(data, pathToRevalidate) {
+  await connectToDB();
+  await Application.create(data);
+  revalidatePath(pathToRevalidate);
+}
+
+// fetch job application - candidate
+
+export async function fetchJobApplicationForCandidateAction(candidateID) {
+  await connectToDB();
+  const result = await Application.find({
+    candidateUserID: candidateID,
+  });
+  return JSON.parse(JSON.stringify(result));
+}
+
+// fetch job application - recruiter
+
+export async function fetchJobApplicationsForRecruiterAction(recruiterID) {
+  await connectToDB();
+  const result = await Application.find({
+    recruiterUserID: recruiterID,
+  });
+  return JSON.parse(JSON.stringify(result));
+}
+
+// update job application

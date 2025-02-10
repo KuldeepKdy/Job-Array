@@ -6,31 +6,69 @@ import JobIcon from "../JobIcon";
 import { Button } from "../ui/button";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
 } from "@/components/ui/drawer";
-import { X } from "lucide-react";
+import { createJobApplicationAction } from "@/actions";
 
 interface CandidateJobCardProps {
   jobItem: {
+    _id: string;
+    recruiterId: string;
     title: string;
     companyName: string;
     description: string;
     location: string;
     experience: string;
     skills: string;
-    applicationStatus: string;
+
     type: string;
   };
+  profileInfo: {
+    name: string;
+    email: string;
+    userId: string;
+    candidateInfo: { name: string; email: string; userId: string };
+  };
+  jobApplications: [
+    {
+      recruiterUserID: string;
+      name: string;
+      email: string;
+      candidateUserID: string;
+      status: [];
+      jobID: string;
+      JobAppliedDate: string;
+    }
+  ];
 }
 
-const CandidateJobCard = ({ jobItem }: CandidateJobCardProps) => {
+const CandidateJobCard = ({
+  jobItem,
+  profileInfo,
+  jobApplications,
+}: CandidateJobCardProps) => {
   const [showJobDetailsDrawer, setShowJobDetailsDrawer] = useState(false);
+  console.log(jobApplications, "jobApplications");
+  console.log(jobItem?.recruiterId, "job aaja Item");
+
+  const handleJobApply = async () => {
+    await createJobApplicationAction(
+      {
+        recruiterUserID: jobItem?.recruiterId,
+        name: profileInfo?.candidateInfo?.name,
+        email: profileInfo?.email,
+        candidateUserID: profileInfo?.userId,
+        status: ["Applied"],
+        jobID: jobItem?._id,
+        JobAppliedDate: new Date().toLocaleDateString(),
+      },
+      "/jobs"
+    );
+    setShowJobDetailsDrawer(false);
+  };
   return (
     <>
       <Drawer
@@ -57,8 +95,22 @@ const CandidateJobCard = ({ jobItem }: CandidateJobCardProps) => {
                 {jobItem?.title}
               </DrawerTitle>
               <div className="flex gap-3">
-                <Button className="flex h-11 items-center justify-center px-5">
-                  Apply
+                <Button
+                  onClick={handleJobApply}
+                  disabled={
+                    jobApplications.findIndex(
+                      (item) => item.jobID === jobItem?._id
+                    ) > -1
+                      ? true
+                      : false
+                  }
+                  className=" disabled:opacity-65 flex h-11 items-center justify-center px-5"
+                >
+                  {jobApplications.findIndex(
+                    (item) => item.jobID == jobItem?._id
+                  ) > -1
+                    ? "Applied"
+                    : "Apply"}
                 </Button>
                 <Button
                   onClick={() => setShowJobDetailsDrawer(false)}

@@ -9,15 +9,59 @@ interface ProfileInfo {
   recruiterInfo: { companyName: string };
   _id: string;
   name: string;
+  email: string;
+  userId: string;
+  candidateInfo: {
+    name: string;
+    email: string;
+    userId: string;
+  };
+  jobApplications: { jobId: string; status: string }[]; // Replace with the appropriate type for jobApplications
 }
 
 interface JobListingProps {
   user: { id: string; name: string; email: string }; // Replace with the appropriate type for user
   profileInfo: ProfileInfo;
-  jobList: { id: string; title: string; description: string }[]; // Replace with the appropriate type for jobList
+  jobList: {
+    _id: string;
+    companyName: string;
+    title: string;
+    location: string;
+    type: string;
+    experience: string;
+    description: string;
+    skills: string;
+    recruiterId: string;
+    applicants: [
+      {
+        name: string;
+        email: string;
+        userId: string;
+        status: string;
+      }
+    ];
+  }[]; // Replace with the appropriate type for jobList
+  jobApplications: [
+    {
+      recruiterUserID: string;
+      name: string;
+      email: string;
+      candidateUserID: string;
+      status: [];
+      jobID: string;
+      JobAppliedDate: string;
+    }
+  ];
 }
 
-const JobListing = ({ user, profileInfo, jobList }: JobListingProps) => {
+const JobListing = ({
+  user,
+  profileInfo,
+  jobList,
+  jobApplications,
+}: JobListingProps) => {
+  // console.log(jobApplications, "job Applications job listing");
+
   return (
     <div>
       <div className="mx-auto max-w-7xl">
@@ -44,13 +88,17 @@ const JobListing = ({ user, profileInfo, jobList }: JobListingProps) => {
                     ? jobList.map((jobItem) =>
                         profileInfo?.role === "candidate" ? (
                           <CandidateJobCard
-                            key={jobItem?.id}
+                            key={jobItem?._id}
+                            profileInfo={profileInfo}
                             jobItem={jobItem}
+                            jobApplications={jobApplications}
                           />
                         ) : (
                           <RecruiterJobCard
-                            key={jobItem?.id}
+                            key={jobItem?._id}
                             jobItem={jobItem}
+                            profileInfo={profileInfo}
+                            jobApplications={jobApplications}
                           />
                         )
                       )

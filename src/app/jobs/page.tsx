@@ -1,4 +1,6 @@
 import {
+  fetchJobApplicationForCandidateAction,
+  fetchJobApplicationsForRecruiterAction,
   fetchJobsForCandidateAction,
   fetchJobsForRecruiterAction,
   fetchProfileAction,
@@ -14,12 +16,19 @@ const JobsPage = async () => {
       ? await fetchJobsForCandidateAction()
       : await fetchJobsForRecruiterAction(user?.id);
 
+  const getJobApplicationList =
+    profileInfo?.role === "candidate"
+      ? await fetchJobApplicationForCandidateAction(user?.id)
+      : await fetchJobApplicationsForRecruiterAction(user?.id);
+
   console.log(jobList, "Job List");
+  console.log(getJobApplicationList, "Job Applications list");
   return (
     <JobListing
       user={JSON.parse(JSON.stringify(user))}
       profileInfo={profileInfo}
       jobList={jobList}
+      jobApplications={getJobApplicationList}
     />
   );
 };
