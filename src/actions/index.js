@@ -72,3 +72,12 @@ export async function fetchJobApplicationsForRecruiterAction(recruiterID) {
 }
 
 // update job application
+
+
+//get candidiate details by candidate id
+
+export async function fetchCandidateDetailsByIDAction(currentCandidateID) {
+  await connectToDB();
+  const result = await Profile.findOne({ userId: currentCandidateID });
+  return JSON.parse(JSON.stringify(result));
+}

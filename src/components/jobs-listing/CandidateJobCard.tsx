@@ -32,17 +32,15 @@ interface CandidateJobCardProps {
     userId: string;
     candidateInfo: { name: string; email: string; userId: string };
   };
-  jobApplications: [
-    {
-      recruiterUserID: string;
-      name: string;
-      email: string;
-      candidateUserID: string;
-      status: [];
-      jobID: string;
-      JobAppliedDate: string;
-    }
-  ];
+  jobApplications: {
+    recruiterUserID: string;
+    name: string;
+    email: string;
+    candidateUserID: string;
+    status: [];
+    jobID: string;
+    JobAppliedDate: string;
+  }[];
 }
 
 const CandidateJobCard = ({
