@@ -45,6 +45,8 @@ export async function fetchJobsForCandidateAction() {
 
 export async function createJobApplicationAction(data, pathToRevalidate) {
   await connectToDB();
+
+  console.log(data, "Action data");
   await Application.create(data);
   revalidatePath(pathToRevalidate);
 }
