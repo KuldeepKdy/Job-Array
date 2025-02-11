@@ -30,7 +30,11 @@ const CandidateList: React.FC<CandidateListProps> = ({
 }) => {
   async function handleFetchCandidateDetails(getCurrentCandidateId: string) {
     const data = await fetchCandidateDetailsByIDAction(getCurrentCandidateId);
-    console.log(data, "data aaja idhr");
+    // console.log(data, "data aaja idhr");
+    if (data) {
+      setCurrentCandidateDetails(data);
+      setShowCurrentCandidateDetailsModel(true);
+    }
   }
   return (
     <>
@@ -62,9 +66,32 @@ const CandidateList: React.FC<CandidateListProps> = ({
       </div>
       <Dialog
         open={showCurrentCandidateDetailsModel}
-        onOpenChange={setShowCurrentCandidateDetailsModel}
+        onOpenChange={() => {
+          setCurrentCandidateDetails(null);
+          setShowCurrentCandidateDetailsModel(false);
+        }}
       >
-        <DialogContent>Candidate</DialogContent>
+        <DialogContent>
+          <div>
+            <h1>
+              {currentCandidateDetails?.candidateInfo?.name},{" "}
+              {currentCandidateDetails?.email}
+            </h1>
+            <p>{currentCandidateDetails?.candidateInfo?.currentCompany}</p>
+            <p>{currentCandidateDetails?.candidateInfo?.currentJobLocation}</p>
+            <p>
+              Total Experience:{" "}
+              {currentCandidateDetails?.candidateInfo?.totalExperience}
+            </p>
+            <p>
+              Salary: {currentCandidateDetails?.candidateInfo?.currentSalary}
+            </p>
+            <p>
+              Notice Period:{" "}
+              {currentCandidateDetails?.candidateInfo?.noticePeriod}
+            </p>
+          </div>
+        </DialogContent>
       </Dialog>
     </>
   );

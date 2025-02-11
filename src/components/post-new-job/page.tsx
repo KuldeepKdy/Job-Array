@@ -17,7 +17,7 @@ interface PostNewJobProps {
 }
 
 const PostNewJob: React.FC<PostNewJobProps> = ({ user, profileInfo }) => {
-  console.log(profileInfo);
+  // console.log(profileInfo);
   const [showJobDialog, setShowJobDialog] = useState(false);
   const [jobFormData, setJobFormData] = useState<{
     [key: string]: string | File;

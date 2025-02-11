@@ -17,7 +17,7 @@ interface HeaderProps {
 }
 
 const Header = ({ user, profileInfo }: HeaderProps) => {
-  console.log(typeof user);
+  // console.log(typeof user);
   const menuItems = [
     { label: "Home", path: "/", show: true },
     { label: "Login", path: "/sign-in", show: !user },

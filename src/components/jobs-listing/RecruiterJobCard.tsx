@@ -42,12 +42,12 @@ const RecruiterJobCard = ({
   profileInfo,
   jobApplications,
 }: RecruiterJobCardProps) => {
-  console.log(
-    jobApplications.filter(
-      (jobApplicantItem) => jobApplicantItem.jobID == jobItem?._id
-    ),
-    "Recruiter card job applications"
-  );
+  // console.log(
+  //   jobApplications.filter(
+  //     (jobApplicantItem) => jobApplicantItem.jobID == jobItem?._id
+  //   ),
+  //   "Recruiter card job applications"
+  // );
 
   const [showApplicantsDrawer, setShowApplicantsDrawer] = useState(false);
   const [currentCandidateDetails, setCurrentCandidateDetails] = useState<{

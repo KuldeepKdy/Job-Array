@@ -49,8 +49,8 @@ const CandidateJobCard = ({
   jobApplications,
 }: CandidateJobCardProps) => {
   const [showJobDetailsDrawer, setShowJobDetailsDrawer] = useState(false);
-  console.log(jobApplications, "jobApplications");
-  console.log(jobItem?.recruiterId, "job aaja Item");
+  // console.log(jobApplications, "jobApplications");
+  // console.log(jobItem?.recruiterId, "job aaja Item");
 
   const handleJobApply = async () => {
     await createJobApplicationAction(

@@ -101,7 +101,7 @@ function OnBoard() {
           };
     await createProfileAction(data, "/onboard");
   }
-  console.log(candidateformData, "candidate form data");
+  // console.log(candidateformData, "candidate form data");
   return (
     <div className="bg-white">
       <Tabs value={currentTab} onValueChange={handleTabChange}>

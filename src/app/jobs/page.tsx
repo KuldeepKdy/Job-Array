@@ -21,8 +21,8 @@ const JobsPage = async () => {
       ? await fetchJobApplicationForCandidateAction(user?.id)
       : await fetchJobApplicationsForRecruiterAction(user?.id);
 
-  console.log(jobList, "Job List");
-  console.log(getJobApplicationList, "Job Applications list");
+  // console.log(jobList, "Job List");
+  // console.log(getJobApplicationList, "Job Applications list");
   return (
     <JobListing
       user={JSON.parse(JSON.stringify(user))}

@@ -41,7 +41,7 @@ const JobApplicants = ({
   jobItem,
   jobApplications,
 }: JobApplicationsProps) => {
-  console.log(jobApplications, "Job application are here");
+//   console.log(jobApplications, "Job application are here");
   return (
     <Drawer open={showApplicantsDrawer} onOpenChange={setShowApplicantsDrawer}>
       <DrawerContent className="max-h-[50vh]">
