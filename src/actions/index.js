@@ -73,6 +73,33 @@ export async function fetchJobApplicationsForRecruiterAction(recruiterID) {
 
 // update job application
 
+export async function updateJobApplicationAction(data, pathToRevalidate) {
+  await connectToDB();
+  const {
+    recruiterUserID,
+    name,
+    email,
+    candidateUserID,
+    status,
+    jobID,
+    _id,
+    JobAppliedDate,
+  } = data;
+  await Application.findOneAndUpdate(
+    { _id: _id },
+    {
+      recruiterUserID,
+      name,
+      email,
+      candidateUserID,
+      status,
+      jobID,
+      JobAppliedDate,
+    },
+    { new: true }
+  );
+  revalidatePath(pathToRevalidate);
+}
 
 //get candidiate details by candidate id
 

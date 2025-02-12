@@ -1,8 +1,12 @@
 "use client";
 
-import { fetchCandidateDetailsByIDAction } from "@/actions";
+import {
+  fetchCandidateDetailsByIDAction,
+  updateJobApplicationAction,
+} from "@/actions";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogFooter } from "../ui/dialog";
+import { createClient } from "@supabase/supabase-js";
 
 interface CandidateListProps {
   currentCandidateDetails: any;
@@ -14,7 +18,7 @@ interface CandidateListProps {
     jobID: string;
     name: string;
     recruiterUserID: string;
-    status: [];
+    status: string[];
     _id: string;
   }>;
   showCurrentCandidateDetailsModel: boolean;
@@ -28,6 +32,13 @@ const CandidateList: React.FC<CandidateListProps> = ({
   showCurrentCandidateDetailsModel,
   setShowCurrentCandidateDetailsModel,
 }) => {
+  // Supabase connection
+  const supabaseUrl = "https://wzapditlogmdsweecqnx.supabase.co";
+  const supabaseKey =
+    process.env.SUPABASE_KEY ||
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6YXBkaXRsb2dtZHN3ZWVjcW54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzkwMjI2MjgsImV4cCI6MjA1NDU5ODYyOH0.aA3AXtW_b6DwmK4UJE8OdVWGRfRx3liUYxYmgbLzpPI";
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
   async function handleFetchCandidateDetails(getCurrentCandidateId: string) {
     const data = await fetchCandidateDetailsByIDAction(getCurrentCandidateId);
     console.log(data, "data aaja idhr");
@@ -35,6 +46,48 @@ const CandidateList: React.FC<CandidateListProps> = ({
       setCurrentCandidateDetails(data);
       setShowCurrentCandidateDetailsModel(true);
     }
+  }
+
+  function handlePreviewResume() {
+    const { data } = supabase.storage
+      .from("job-board-public")
+      .getPublicUrl(currentCandidateDetails?.candidateInfo?.resume);
+    // console.log(data);
+    const a = document.createElement("a");
+    a.href = data?.publicUrl;
+    a.setAttribute("download", "Resume.pdf");
+    a.setAttribute("target", "_blank");
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  interface JobApplication {
+    JobAppliedDate: string;
+    candidateUserID: string;
+    email: string;
+    jobID: string;
+    name: string;
+    recruiterUserID: string;
+    status: string[];
+    _id: string;
+  }
+
+  async function handleUpadateJobStatus(getCurrentStatus: string) {
+    const copyJobApplicants: JobApplication[] = [...jobApplications];
+    const indexOfCurrentJobApplicant = copyJobApplicants.findIndex(
+      (item) => item.candidateUserID === currentCandidateDetails?.userId
+    );
+    // console.log(indexOfCurrentJobApplicant);
+    const jobApplicantsToUpdate: JobApplication = {
+      ...copyJobApplicants[indexOfCurrentJobApplicant],
+      status:
+        copyJobApplicants[indexOfCurrentJobApplicant].status.concat(
+          getCurrentStatus
+        ),
+    };
+    console.log(jobApplicantsToUpdate);
+    await updateJobApplicationAction(jobApplicantsToUpdate, "/jobs");
   }
   return (
     <>
@@ -122,14 +175,69 @@ const CandidateList: React.FC<CandidateListProps> = ({
           </div>
           <DialogFooter>
             <div className="flex gap-3 mt-2">
-              <Button className="flex h-11 items-center justify-center px-5">
+              <Button
+                onClick={handlePreviewResume}
+                className="flex h-11 items-center justify-center px-5"
+              >
                 Resume
               </Button>
-              <Button className="flex h-11 items-center justify-center px-5">
-                Select
+              <Button
+                onClick={() => handleUpadateJobStatus("selected")}
+                className="flex h-11 disabled:opacity-60 items-center justify-center px-5"
+                disabled={
+                  jobApplications
+                    .find(
+                      (item) =>
+                        item.candidateUserID === currentCandidateDetails?.userId
+                    )
+                    ?.status.includes("selected")
+                    ? true
+                    : false
+                }
+              >
+                {jobApplications
+                  .find(
+                    (item) =>
+                      item.candidateUserID === currentCandidateDetails?.userId
+                  )
+                  ?.status.includes("selected") ||
+                jobApplications
+                  .find(
+                    (item) =>
+                      item.candidateUserID === currentCandidateDetails?.userId
+                  )
+                  ?.status.includes("rejected")
+                  ? "Selected"
+                  : "Select"}
               </Button>
-              <Button className="flex h-11 items-center justify-center px-5">
-                Reject
+              <Button
+                onClick={() => handleUpadateJobStatus("rejected")}
+                disabled={
+                  jobApplications
+                    .find(
+                      (item) =>
+                        item.candidateUserID === currentCandidateDetails?.userId
+                    )
+                    ?.status.includes("rejected") ||
+                  jobApplications
+                    .find(
+                      (item) =>
+                        item.candidateUserID === currentCandidateDetails?.userId
+                    )
+                    ?.status.includes("selected")
+                    ? true
+                    : false
+                }
+                className="flex h-11 disabled:opacity-60 items-center justify-center px-5"
+              >
+                {jobApplications
+                  .find(
+                    (item) =>
+                      item.candidateUserID === currentCandidateDetails?.userId
+                  )
+                  ?.status.includes("rejected")
+                  ? "Rejected"
+                  : "Reject"}
               </Button>
             </div>
           </DialogFooter>
