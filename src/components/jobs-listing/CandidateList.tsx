@@ -190,7 +190,13 @@ const CandidateList: React.FC<CandidateListProps> = ({
                       (item) =>
                         item.candidateUserID === currentCandidateDetails?.userId
                     )
-                    ?.status.includes("selected")
+                    ?.status.includes("selected") ||
+                  jobApplications
+                    .find(
+                      (item) =>
+                        item.candidateUserID === currentCandidateDetails?.userId
+                    )
+                    ?.status.includes("rejected")
                     ? true
                     : false
                 }
@@ -200,13 +206,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
                     (item) =>
                       item.candidateUserID === currentCandidateDetails?.userId
                   )
-                  ?.status.includes("selected") ||
-                jobApplications
-                  .find(
-                    (item) =>
-                      item.candidateUserID === currentCandidateDetails?.userId
-                  )
-                  ?.status.includes("rejected")
+                  ?.status.includes("selected")
                   ? "Selected"
                   : "Select"}
               </Button>
