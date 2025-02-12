@@ -2,7 +2,7 @@
 
 import { fetchCandidateDetailsByIDAction } from "@/actions";
 import { Button } from "../ui/button";
-import { Dialog, DialogContent } from "../ui/dialog";
+import { Dialog, DialogContent, DialogFooter } from "../ui/dialog";
 
 interface CandidateListProps {
   currentCandidateDetails: any;
@@ -30,7 +30,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
 }) => {
   async function handleFetchCandidateDetails(getCurrentCandidateId: string) {
     const data = await fetchCandidateDetailsByIDAction(getCurrentCandidateId);
-    // console.log(data, "data aaja idhr");
+    console.log(data, "data aaja idhr");
     if (data) {
       setCurrentCandidateDetails(data);
       setShowCurrentCandidateDetailsModel(true);
@@ -73,12 +73,16 @@ const CandidateList: React.FC<CandidateListProps> = ({
       >
         <DialogContent>
           <div>
-            <h1>
+            <h1 className="text-xl font-bold text-black">
               {currentCandidateDetails?.candidateInfo?.name},{" "}
               {currentCandidateDetails?.email}
             </h1>
-            <p>{currentCandidateDetails?.candidateInfo?.currentCompany}</p>
-            <p>{currentCandidateDetails?.candidateInfo?.currentJobLocation}</p>
+            <p className="text-lg font-medium text-black">
+              {currentCandidateDetails?.candidateInfo?.currentCompany}
+            </p>
+            <p className="text-sm mt-2 ">
+              {currentCandidateDetails?.candidateInfo?.currentJobLocation}
+            </p>
             <p>
               Total Experience:{" "}
               {currentCandidateDetails?.candidateInfo?.totalExperience}
@@ -90,7 +94,45 @@ const CandidateList: React.FC<CandidateListProps> = ({
               Notice Period:{" "}
               {currentCandidateDetails?.candidateInfo?.noticePeriod}
             </p>
+            <div className="flex flex-wrap items-center gap-4 mt-6">
+              <h2>Previous Companies</h2>
+              {currentCandidateDetails?.candidateInfo?.previousCompanies
+                ?.split(",")
+                .map((skill: string, index: number) => (
+                  <span
+                    key={index}
+                    className="text-sm px-4 py-2 rounded-md font-medium bg-black text-white"
+                  >
+                    {skill}
+                  </span>
+                ))}
+            </div>
+            <div className="flex flex-wrap gap-4 mt-6">
+              {currentCandidateDetails?.candidateInfo?.skills
+                ?.split(",")
+                .map((skill: string, index: number) => (
+                  <span
+                    key={index}
+                    className="text-sm px-4 py-2 rounded-md font-medium bg-black text-white"
+                  >
+                    {skill}
+                  </span>
+                ))}
+            </div>
           </div>
+          <DialogFooter>
+            <div className="flex gap-3 mt-2">
+              <Button className="flex h-11 items-center justify-center px-5">
+                Resume
+              </Button>
+              <Button className="flex h-11 items-center justify-center px-5">
+                Select
+              </Button>
+              <Button className="flex h-11 items-center justify-center px-5">
+                Reject
+              </Button>
+            </div>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </>
