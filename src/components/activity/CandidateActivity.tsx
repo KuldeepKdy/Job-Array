@@ -57,7 +57,35 @@ const CandidateActivity = ({ jobList, jobApplicants }: candidateActivity) => {
         <div className="pb-24 pt-6">
           <div className="container mx-auto p-0  w-full h-full space-y-8">
             <div className=" flex flex-col gap-4">
-              
+              {uniqueStatusArray.map((status, index) => (
+                <TabsContent
+                  value={status}
+                  key={index}
+                  className="flex flex-col gap-4 md:gap-6"
+                >
+                  {jobList
+                    .filter(
+                      (jobItem) =>
+                        jobApplicants
+                          .filter(
+                            (jobApplicantion) =>
+                              jobApplicantion.status.indexOf(status) > -1
+                          )
+                          .findIndex(
+                            (filteredItemByStatus) =>
+                              jobItem._id === filteredItemByStatus.jobID
+                          ) > -1
+                    )
+                    .map((finalFilteredData, index) => (
+                      <CommonCard
+                        key={index}
+                        icon={<Laptop />}
+                        title={finalFilteredData?.title}
+                        description={finalFilteredData?.companyName}
+                      />
+                    ))}
+                </TabsContent>
+              ))}
             </div>
           </div>
         </div>
