@@ -20,6 +20,8 @@ const supabaseKey =
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 function OnBoard() {
+  const currentAuthUser = useUser();
+  const { user } = currentAuthUser;
   const [currentTab, setCurrentTab] = useState("candidate");
   const [recruiterformData, setRecruiterFormData] = useState<{
     [key: string]: string | File;
@@ -30,8 +32,6 @@ function OnBoard() {
 
   const [file, setFile] = useState<File | null>(null);
 
-  const currentAuthUser = useUser();
-  const { user } = currentAuthUser;
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     if (event.target.files && event.target.files.length > 0) {
