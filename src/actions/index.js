@@ -108,3 +108,10 @@ export async function fetchCandidateDetailsByIDAction(currentCandidateID) {
   const result = await Profile.findOne({ userId: currentCandidateID });
   return JSON.parse(JSON.stringify(result));
 }
+
+// create filter categories action
+export async function createFilterCategoriesAction() {
+  await connectToDB();
+  const result = await Job.find({});
+  return JSON.parse(JSON.stringify(result));
+}

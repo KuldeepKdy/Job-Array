@@ -1,4 +1,5 @@
 import {
+  createFilterCategoriesAction,
   fetchJobApplicationForCandidateAction,
   fetchJobApplicationsForRecruiterAction,
   fetchJobsForCandidateAction,
@@ -21,7 +22,9 @@ const JobsPage = async () => {
       ? await fetchJobApplicationForCandidateAction(user?.id)
       : await fetchJobApplicationsForRecruiterAction(user?.id);
 
-  // console.log(jobList, "Job List");
+  const fetchFilterCategories = await createFilterCategoriesAction();
+
+  // console.log(fetchFilterCategories, "fetch Categories");
   // console.log(getJobApplicationList, "Job Applications list");
   return (
     <JobListing
@@ -29,6 +32,7 @@ const JobsPage = async () => {
       profileInfo={profileInfo}
       jobList={jobList}
       jobApplications={getJobApplicationList}
+      filterCategories={fetchFilterCategories}
     />
   );
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import { filterMenuDataArray } from "@/utils";
 import PostNewJob from "../post-new-job/page";
 import CandidateJobCard from "./CandidateJobCard";
 import RecruiterJobCard from "./RecruiterJobCard";
@@ -51,6 +52,19 @@ interface JobListingProps {
     status: [];
     _id: string;
   }[];
+  filterCategories: {
+    applicants: string[];
+    companyName: string;
+    description: string;
+    experience: string;
+    location: string;
+    recruiterId: string;
+    skills: string;
+    title: string;
+    type: string;
+    __v: 0;
+    _id: "67a71bce2f4c0c42c0660e71";
+  }[];
 }
 
 const JobListing = ({
@@ -58,9 +72,22 @@ const JobListing = ({
   profileInfo,
   jobList,
   jobApplications,
+  filterCategories,
 }: JobListingProps) => {
+  // console.log(filterCategories, "Filter Categories");
   // console.log(jobApplications, "job Applications job listing");
-
+  const filterMenus = filterMenuDataArray.map((item) => ({
+    id: item.id,
+    name: item.label,
+    options: [
+      ...new Set(
+        filterCategories.map(
+          (listItem) => listItem[item.id as keyof typeof listItem]
+        )
+      ),
+    ],
+  }));
+  console.log(filterMenus, "Filter Menus");
   return (
     <div>
       <div className="mx-auto max-w-7xl">
