@@ -1,3 +1,5 @@
+import qs from "query-string";
+
 export const recruiterOnBoardFormControls = [
   {
     label: "Name",
@@ -208,3 +210,26 @@ export const filterMenuDataArray = [
     label: "Location",
   },
 ];
+
+interface FormUrlQueryParams {
+  [key: string]: string | string[];
+}
+
+export function formUrlQuery({ params, dataToAdd }: { params: string; dataToAdd: FormUrlQueryParams }) {
+  const currentUrl = qs.parse(params);
+  if (Object.keys(dataToAdd).length > 0) {
+    Object.keys(dataToAdd).map((key: string) => {
+      if (dataToAdd[key].length === 0) delete currentUrl[key];
+      else currentUrl[key] = Array.isArray(dataToAdd[key]) ? dataToAdd[key].join(",") : dataToAdd[key];
+    });
+  }
+  return qs.stringifyUrl(
+    {
+      url: window.location.pathname,
+      query: currentUrl,
+    },
+    {
+      skipNull: true,
+    }
+  );
+}

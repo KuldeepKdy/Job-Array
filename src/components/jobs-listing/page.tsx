@@ -1,6 +1,6 @@
 "use client";
 
-import { filterMenuDataArray } from "@/utils";
+import { filterMenuDataArray, formUrlQuery } from "@/utils";
 import PostNewJob from "../post-new-job/page";
 import CandidateJobCard from "./CandidateJobCard";
 import RecruiterJobCard from "./RecruiterJobCard";
@@ -12,7 +12,8 @@ import {
   MenubarTrigger,
 } from "../ui/menubar";
 import { Label } from "../ui/label";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface ProfileInfo {
   role: string;
@@ -86,6 +87,8 @@ const JobListing = ({
   const [filterParams, setFilterParams] = useState<{ [key: string]: string[] }>(
     {}
   );
+  const seachParams = useSearchParams();
+  const router = useRouter();
 
   function handleFilter(getSectionID: string, getCurrentOption: string) {
     let copyFilterParams = { ...filterParams };
@@ -105,13 +108,29 @@ const JobListing = ({
       } else {
         copyFilterParams[getSectionID].splice(indexOfCurrentOption, 1);
       }
-      setFilterParams(copyFilterParams);
-      sessionStorage.setItem("filterParams", JSON.stringify(copyFilterParams));
     }
-    // console.log(filterParams, "work done");
+    setFilterParams(copyFilterParams);
+    sessionStorage.setItem("filterParams", JSON.stringify(copyFilterParams));
+    console.log(filterParams, "work done");
   }
   // console.log(filterCategories, "Filter Categories");
   // console.log(jobApplications, "job Applications job listing");
+  useEffect(() => {
+    const storedFilterParams = sessionStorage.getItem("filterParams");
+    if (storedFilterParams) {
+      setFilterParams(JSON.parse(storedFilterParams));
+    }
+  }, []);
+  useEffect(() => {
+    if (filterParams && Object.keys(filterParams).length > 0) {
+      let url = "";
+      url = formUrlQuery({
+        params: seachParams.toString(),
+        dataToAdd: filterParams,
+      });
+      router.push(url, { scroll: false });
+    }
+  }, [filterParams, seachParams, router]);
   const filterMenus = filterMenuDataArray.map((item) => ({
     id: item.id,
     name: item.label,
@@ -147,7 +166,16 @@ const JobListing = ({
                             className=" flex items-center "
                             onClick={() => handleFilter(filterMenu.id, option)}
                           >
-                            <div className="h-4 w-4 border rounded border-gray-900 text-indigo-600" />
+                            <div
+                              className={` h-4 w-4 border rounded border-gray-900 text-indigo-600 ${
+                                filterParams &&
+                                Object.keys(filterParams).length > 0 &&
+                                filterParams[filterMenu.id] &&
+                                filterParams[filterMenu.id].indexOf(option) > -1
+                                  ? "bg-black"
+                                  : ""
+                              }`}
+                            />
                             <Label className="ml-3 cursor-pointer text-sm text-gray-600">
                               {option}
                             </Label>
