@@ -4,6 +4,15 @@ import { filterMenuDataArray } from "@/utils";
 import PostNewJob from "../post-new-job/page";
 import CandidateJobCard from "./CandidateJobCard";
 import RecruiterJobCard from "./RecruiterJobCard";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarTrigger,
+} from "../ui/menubar";
+import { Label } from "../ui/label";
+import { useState } from "react";
 
 interface ProfileInfo {
   role: string;
@@ -74,6 +83,33 @@ const JobListing = ({
   jobApplications,
   filterCategories,
 }: JobListingProps) => {
+  const [filterParams, setFilterParams] = useState<{ [key: string]: string[] }>(
+    {}
+  );
+
+  function handleFilter(getSectionID: string, getCurrentOption: string) {
+    let copyFilterParams = { ...filterParams };
+    const indexOfCurrentSection =
+      Object.keys(copyFilterParams).indexOf(getSectionID);
+    if (indexOfCurrentSection == -1) {
+      copyFilterParams = {
+        ...copyFilterParams,
+        [getSectionID]: [getCurrentOption],
+      };
+      console.log("workdone");
+    } else {
+      const indexOfCurrentOption =
+        copyFilterParams[getSectionID].indexOf(getCurrentOption);
+      if (indexOfCurrentOption == -1) {
+        copyFilterParams[getSectionID].push(getCurrentOption);
+      } else {
+        copyFilterParams[getSectionID].splice(indexOfCurrentOption, 1);
+      }
+      setFilterParams(copyFilterParams);
+      sessionStorage.setItem("filterParams", JSON.stringify(copyFilterParams));
+    }
+    // console.log(filterParams, "work done");
+  }
   // console.log(filterCategories, "Filter Categories");
   // console.log(jobApplications, "job Applications job listing");
   const filterMenus = filterMenuDataArray.map((item) => ({
@@ -82,12 +118,12 @@ const JobListing = ({
     options: [
       ...new Set(
         filterCategories.map(
-          (listItem) => listItem[item.id as keyof typeof listItem]
+          (listItem) => listItem[item.id as keyof typeof listItem] as string
         )
       ),
-    ],
+    ] as string[],
   }));
-  console.log(filterMenus, "Filter Menus");
+
   return (
     <div>
       <div className="mx-auto max-w-7xl">
@@ -99,7 +135,29 @@ const JobListing = ({
           </h1>
           <div className="flex items-center ">
             {profileInfo?.role === "candidate" ? (
-              <p>Filter</p>
+              <Menubar>
+                {filterMenus.map((filterMenu, index) => (
+                  <MenubarMenu key={index}>
+                    <MenubarTrigger>{filterMenu.name}</MenubarTrigger>
+                    <MenubarContent>
+                      {filterMenu.options.map(
+                        (option: string, optionIndex: number) => (
+                          <MenubarItem
+                            key={optionIndex}
+                            className=" flex items-center "
+                            onClick={() => handleFilter(filterMenu.id, option)}
+                          >
+                            <div className="h-4 w-4 border rounded border-gray-900 text-indigo-600" />
+                            <Label className="ml-3 cursor-pointer text-sm text-gray-600">
+                              {option}
+                            </Label>
+                          </MenubarItem>
+                        )
+                      )}
+                    </MenubarContent>
+                  </MenubarMenu>
+                ))}
+              </Menubar>
             ) : (
               <PostNewJob user={user} profileInfo={profileInfo} />
             )}
