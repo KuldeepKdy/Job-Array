@@ -7,6 +7,7 @@ import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Activity() {
   const user = await currentUser();
+  // console.log(user,"user")
   const jobList = await fetchJobsForCandidateAction();
   const jobApplications = await fetchJobApplicationForCandidateAction(user?.id);
   return (

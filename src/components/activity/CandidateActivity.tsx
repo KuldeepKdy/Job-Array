@@ -23,7 +23,7 @@ interface candidateActivity {
     candidateUserID: string;
     email: string;
     jobID: string;
-    name: "Kuldeep";
+    name: string;
     recruiterUserID: string;
     status: string[];
     __v: number;
