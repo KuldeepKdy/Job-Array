@@ -9,12 +9,19 @@ import {
 import JobListing from "@/components/jobs-listing/page";
 import { currentUser } from "@clerk/nextjs/server";
 
-const JobsPage = async () => {
+const JobsPage = async ({
+  searchParams,
+}: {
+  searchParams: Record<string, string>;
+}) => {
   const user = await currentUser();
+  const params = await JSON.parse(JSON.stringify(searchParams));
+  // console.log(JSON.parse(JSON.stringify(params)),"Params info");
+
   const profileInfo = await fetchProfileAction(user?.id);
   const jobList =
     profileInfo?.role === "candidate"
-      ? await fetchJobsForCandidateAction()
+      ? await fetchJobsForCandidateAction(params)
       : await fetchJobsForRecruiterAction(user?.id);
 
   const getJobApplicationList =
