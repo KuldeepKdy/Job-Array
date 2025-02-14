@@ -62,7 +62,39 @@ const AccountInfo = ({ profileInfo }: accountInterface) => {
   }, [profileInfo]);
 
   console.log(candidateformData, recruiterformData);
- 
+  async function handleUpdateAccount() {
+    await updateProfileAction(
+      profileInfo?.role === "candidate"
+        ? {
+            _id: profileInfo?._id,
+            userId: profileInfo?.userId,
+            role: profileInfo?.role,
+            email: profileInfo?.email,
+            isPreminumUser: profileInfo?.isPreminumUser,
+            memberShipType: profileInfo?.memberShipType,
+            memberShipStartDate: profileInfo?.memberShipStartDate,
+            memberShipEndDate: profileInfo?.memberShipEndDate,
+            candidateInfo: {
+              ...candidateformData,
+              resume: profileInfo?.candidateInfo?.resume,
+            },
+          }
+        : {
+            _id: profileInfo?._id,
+            userId: profileInfo?.userId,
+            role: profileInfo?.role,
+            email: profileInfo?.email,
+            isPreminumUser: profileInfo?.isPreminumUser,
+            memberShipType: profileInfo?.memberShipType,
+            memberShipStartDate: profileInfo?.memberShipStartDate,
+            memberShipEndDate: profileInfo?.memberShipEndDate,
+            recruiterInfo: {
+              ...recruiterformData,
+            },
+          },
+      "/account"
+    );
+  }
 
   return (
     <div className="mx-auto max-w-7xl">
