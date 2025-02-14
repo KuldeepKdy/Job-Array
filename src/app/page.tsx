@@ -9,7 +9,16 @@ async function Home() {
 
   if (user && !profileInfo?._id) redirect("/onboard");
 
-  return <section>Main Content</section>;
+  return (
+    <>
+    <div className="bg-white">
+      <div>
+        
+      </div>
+
+    </div>
+    </>
+  );
 }
 
 export default Home;

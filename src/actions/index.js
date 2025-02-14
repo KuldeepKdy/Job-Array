@@ -127,3 +127,38 @@ export async function createFilterCategoriesAction() {
   const result = await Job.find({});
   return JSON.parse(JSON.stringify(result));
 }
+
+//Update Profile Action
+
+export async function updateProfileAction(data, pathToRevalidate) {
+  await connectToDB();
+  const {
+    userId,
+    role,
+    email,
+    isPreminumUser,
+    memberShipType,
+    memberShipStartDate,
+    memberShipEndDate,
+    recruiterInfo,
+    candidateInfo,
+    _id,
+  } = data;
+  await Profile.findOneAndUpdate(
+    { _id: _id },
+    {
+      userId,
+      role,
+      email,
+      isPreminumUser,
+      memberShipType,
+      memberShipStartDate,
+      memberShipEndDate,
+      recruiterInfo,
+      candidateInfo,
+    },
+    { new: true }
+  );
+
+  revalidatePath(pathToRevalidate);
+}

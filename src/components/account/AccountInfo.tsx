@@ -8,9 +8,11 @@ import {
 } from "@/utils";
 import { useEffect, useState } from "react";
 import CommonForm from "../common-form/page";
+import { updateProfileAction } from "@/actions";
 
 interface accountInterface {
   profileInfo: {
+    _id: string;
     userId: string;
     role: string;
     email: string;
@@ -44,12 +46,12 @@ interface accountInterface {
 }
 const AccountInfo = ({ profileInfo }: accountInterface) => {
   // console.log(profileInfo, "ProfileInfo");
-  const [candidateformData, setCandidateFormData] = useState(
-    initialCandidateFormData
-  );
-  const [recruiterformData, setRecruiterFormData] = useState(
-    intitalRecruiterFormData
-  );
+  const [candidateformData, setCandidateFormData] = useState<{
+    [key: string]: string | File;
+  }>(initialCandidateFormData);
+  const [recruiterformData, setRecruiterFormData] = useState<{
+    [key: string]: string | File;
+  }>(intitalRecruiterFormData);
 
   useEffect(() => {
     if (profileInfo?.role === "recruiter") {
@@ -60,6 +62,7 @@ const AccountInfo = ({ profileInfo }: accountInterface) => {
   }, [profileInfo]);
 
   console.log(candidateformData, recruiterformData);
+ 
 
   return (
     <div className="mx-auto max-w-7xl">
@@ -71,9 +74,12 @@ const AccountInfo = ({ profileInfo }: accountInterface) => {
       <div className="py-20 pb-24 pt-6">
         <div className=" container mx-auto p-0 space-y-8">
           <CommonForm
+            action={handleUpdateAccount}
             formControls={
               profileInfo?.role === "candidate"
-                ? candidateOnBoardFormControls
+                ? candidateOnBoardFormControls.filter(
+                    (formControl) => formControl.name !== "resume"
+                  )
                 : recruiterOnBoardFormControls
             }
             formData={
@@ -81,6 +87,12 @@ const AccountInfo = ({ profileInfo }: accountInterface) => {
                 ? candidateformData
                 : recruiterformData
             }
+            setFormData={
+              profileInfo?.role === "candidate"
+                ? setCandidateFormData
+                : setRecruiterFormData
+            }
+            buttonText="Update Profile"
           />
         </div>
       </div>
