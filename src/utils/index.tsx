@@ -46,7 +46,7 @@ export const candidateOnBoardFormControls = [
   },
   {
     label: "Company Job Location",
-    name: "companyJobLocation",
+    name: "currentJobLocation",
     placeholder: "Enter your current job location",
     componentType: "input",
   },
@@ -121,7 +121,7 @@ export const candidateOnBoardFormControls = [
 export const initialCandidateFormData = {
   resume: "",
   name: "",
-  companyJobLocation: "",
+  currentJobLocation: "",
   preferedJobLocation: "",
   currentSalary: "",
   noticePeriod: "",

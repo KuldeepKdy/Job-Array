@@ -50,8 +50,9 @@ function CommonForm({
               placeholder={getCurrentControl.placeholder}
               name={getCurrentControl.name}
               id={getCurrentControl.name}
-              value={String(formData[getCurrentControl.name])}
+              value={String(formData?.[getCurrentControl.name] ?? "")}
               onChange={(event) =>
+                setFormData &&
                 setFormData({
                   ...formData,
                   [event.target.name]: event.target.value,
@@ -88,8 +89,9 @@ function CommonForm({
               placeholder={getCurrentControl.placeholder}
               name={getCurrentControl.name}
               id={getCurrentControl.name}
-              value={String(formData[getCurrentControl.name])}
+              value={String(formData?.[getCurrentControl.name] ?? "")}
               onChange={(event) =>
+                setFormData &&
                 setFormData({
                   ...formData,
                   [event.target.name]: event.target.value,
@@ -106,13 +108,18 @@ function CommonForm({
   return (
     <form action={action}>
       {formControls.map(
-        (control: {
-          componentType: string;
-          disabled?: boolean;
-          placeholder?: string;
-          name: string;
-          label?: string;
-        }) => renderInputByComponentType(control)
+        (
+          control: {
+            componentType: string;
+            disabled?: boolean;
+            placeholder?: string;
+            name: string;
+            label?: string;
+          },
+          index: number
+        ) => (
+          <div key={index}>{renderInputByComponentType(control)}</div>
+        )
       )}
       <div key={btnType} className="mt-6 w-full">
         <Button
