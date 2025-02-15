@@ -61,8 +61,8 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
             </div>
           </SheetContent>
         </Sheet>
-        <Link href={"/"} className="hidden lg:flex mr-6">
-          JOB ARRAY
+        <Link href="/"  className="hidden font-bold text-3xl lg:flex mr-6">
+          JOB ARRAY 
         </Link>
         <nav className="ml-auto hidden lg:flex gap-6">
           {menuItems.map((menuItem) =>
