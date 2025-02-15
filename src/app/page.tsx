@@ -1,4 +1,5 @@
 import { fetchProfileAction } from "@/actions";
+import HeroSection from "@/components/HeroSection";
 import HomePageButtons from "@/components/HomePageButtons";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@clerk/nextjs/server";
@@ -13,8 +14,10 @@ async function Home() {
 
   return (
     <>
-      <div className="bg-white">
-        <div className=" relative w-full">
+      <div className="bg-white relative">
+        <HeroSection />
+
+        {/* <div className=" relative  w-full">
           <div className="min-h-screen flex ">
             <div className="container m-auto p-0">
               <div className="flex items-center flex-wrap gap-12 lg:gap-0">
@@ -47,7 +50,7 @@ async function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
