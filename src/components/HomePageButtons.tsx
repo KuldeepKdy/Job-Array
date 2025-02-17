@@ -52,7 +52,7 @@ const HomePageButtons = ({ user, profileInfo }: userInterface) => {
     <div className="flex space-x-4">
       <Button
         onClick={() => router.push("/jobs")}
-        className="flex h-11 items-center justify-center px-5"
+        className="flex h-11 items-center z-50 justify-center px-5"
       >
         {user
           ? profileInfo?.role === "candidate"
@@ -70,7 +70,7 @@ const HomePageButtons = ({ user, profileInfo }: userInterface) => {
               : "/jobs"
           )
         }
-        className="flex h-11 items-center justify-center px-5"
+        className="flex h-11 z-50 items-center justify-center px-5"
       >
         {user
           ? profileInfo?.role === "candidate"

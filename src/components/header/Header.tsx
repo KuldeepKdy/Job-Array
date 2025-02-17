@@ -43,7 +43,7 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
           </SheetTrigger>
           <SheetContent side="left">
             <Link className="mr-6 hidden lg:flex" href={"#"}>
-              <h3>JOB ARRAY</h3>
+              <h3 className="z-50">JOB ARRAY</h3>
             </Link>
             <div className="grid gap-2 py-6">
               {menuItems.map((menuItem) => {
@@ -51,7 +51,7 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
                   <Link
                     key={menuItem.label}
                     href={menuItem.path}
-                    className="flex w-full items-center py-2 text-lg font-semibold"
+                    className="flex w-full z-50 items-center py-2 text-lg font-semibold"
                   >
                     {menuItem.label}
                   </Link>
@@ -61,8 +61,8 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
             </div>
           </SheetContent>
         </Sheet>
-        <Link href="/"  className="hidden font-bold text-3xl lg:flex mr-6">
-          JOB ARRAY 
+        <Link href="/" className="hidden z-50 font-bold text-3xl lg:flex mr-6">
+          JOB ARRAY
         </Link>
         <nav className="ml-auto hidden lg:flex gap-6">
           {menuItems.map((menuItem) =>
@@ -71,13 +71,15 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
                 key={menuItem.label}
                 href={menuItem.path}
                 onClick={() => sessionStorage.removeItem("filterParams")}
-                className="group inline-flex h-9 w-max items-center rounded-md bg-white px-4 py-2 text-sm font-medium "
+                className="group inline-flex h-9 z-50 w-max items-center rounded-md  px-4 py-2 text-sm font-medium "
               >
                 {menuItem.label}
               </Link>
             ) : null
           )}
-          <UserButton afterSignOutUrl="/" />
+          <div className="z-50">
+            <UserButton afterSignOutUrl="/" />
+          </div>
         </nav>
       </header>
     </div>

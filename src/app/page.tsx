@@ -14,14 +14,13 @@ async function Home() {
 
   return (
     <>
-      <div className="bg-white relative">
-        <HeroSection />
-
-        {/* <div className=" relative  w-full">
+      <HeroSection />
+      <div className="bg-white relative pl-4">
+        <div className=" relative  w-full">
           <div className="min-h-screen flex ">
-            <div className="container m-auto p-0">
+            <div className="container mx-auto mt-20 p-0">
               <div className="flex items-center flex-wrap gap-12 lg:gap-0">
-                <div className="lg:w-5/12 space-y-8">
+                <div className="lg:w-6/12 space-y-8">
                   <div className="flex space-x-2">
                     <span className="block w-14 mb-2 border-b-2 border-gray-700"></span>
                     <span className="font-medium text-gray-600 ">
@@ -40,17 +39,19 @@ async function Home() {
                     profileInfo={profileInfo}
                   />
                 </div>
-                <div className="hidden relative md:block lg:w-7/12">
-                  <img
-                    src="https://shorturl.at/msw07"
-                    alt="Job Partal"
-                    className="relative ml-auto"
-                  />
+                <div className="hidden relative md:flex  lg:w-6/12 h-fit   overflow-hidden ">
+                  <div className="aspect-[16/10] ml-auto">
+                    <img
+                      src="/images/money.png"
+                      alt="Job Partal"
+                      className="relative  w-full h-full object-contain "
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

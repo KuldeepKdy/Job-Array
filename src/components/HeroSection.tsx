@@ -1,23 +1,25 @@
 "use client";
 import { motion } from "motion/react";
+import emojis from "@/utils";
 
 const HeroSection = () => {
   return (
     <>
-      <div className="grid grid-cols-12 absolute inset-0 z-20   w-full max-h-[80vh] ">
-        {[...Array(40)].map((_, index) => (
-          <div key={index} className="border border-blue-500">
+      <div className="hidden lg:grid grid-cols-[repeat(24,minmax(0,1fr))]  absolute inset-0 z-20  overflow-hidden  w-full max-h-screen ">
+        {emojis.map((emoji, index) => (
+          <div key={index} className=" cursor-pointer ">
             <motion.div
-              animate={{ opacity: 0, scale: 1, transition: { duration: 0.5 } }}
-              whileTap={{ scale: 1.5, rotate: 3 }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 0, scale: 1, transition: { duration: 2 } }}
+              whileTap={{ scale: 1.5, rotate: 10 }}
               whileHover={{
                 scale: 1.5,
                 opacity: 1,
-                transition: { duration: 0.05 },
+                transition: { duration: 0.08 },
               }}
-              className=" h-16 lg:h-20  "
+              className=" h-12  text-4xl"
             >
-              <img src="/images/image1.jpg" alt="" className="w-full h-full " />
+              {emoji}
             </motion.div>
           </div>
         ))}
