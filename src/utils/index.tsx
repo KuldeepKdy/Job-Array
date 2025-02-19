@@ -6,7 +6,8 @@ export const recruiterOnBoardFormControls = [
     name: "name",
     placeholder: "Enter your name",
     componentType: "input",
-  },
+  }, 
+  
   {
     label: "Company Name",
     name: "companyName",
