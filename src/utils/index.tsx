@@ -6,8 +6,8 @@ export const recruiterOnBoardFormControls = [
     name: "name",
     placeholder: "Enter your name",
     componentType: "input",
-  }, 
-  
+  },
+
   {
     label: "Company Name",
     name: "companyName",
@@ -584,3 +584,21 @@ const emojis = [
 ];
 
 export default emojis;
+
+export const membershipPlans = [
+  {
+    heading: "Tier 1",
+    price: 100,
+    type: "basic",
+  },
+  {
+    heading: "Tier 2",
+    price: 1000,
+    type: "teams",
+  },
+  {
+    heading: "Tier 3",
+    price: 5000,
+    type: "enterprise",
+  },
+];
