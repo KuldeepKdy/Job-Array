@@ -2,6 +2,7 @@ import { membershipPlans } from "@/utils";
 import CommonCard from "../CommonCard";
 import JobIcon from "../JobIcon";
 import { Button } from "../ui/button";
+import { createPriceIdAction } from "@/actions";
 
 interface membershipInterface {
   profileInfo: {
@@ -36,7 +37,17 @@ interface membershipInterface {
     };
   };
 }
+
 const MemberShip = ({ profileInfo }: membershipInterface) => {
+  async function handlePayment(getCurrentPlan) {
+    const extractPriceId = await createPriceIdAction({
+      amount: Number(getCurrentPlan?.price),
+    });
+    if (extractPriceId) {
+      sessionStorage.setItem("currentaplan", JSON.stringify(getCurrentPlan));
+      const result = 
+    }
+  }
   return (
     <div className="mx-auto max-w-7xl">
       <div className="flex items-baseline justify-between border border-b pb-6 pt-24">
@@ -51,17 +62,20 @@ const MemberShip = ({ profileInfo }: membershipInterface) => {
               <CommonCard
                 key={index}
                 icon={
-                  <div>
+                  <div className="flex justify-between">
                     <div>
                       <JobIcon />
                     </div>
-                    <h1>{plan?.heading}</h1>
+                    <h1 className="font-bold text-xl">{plan?.heading}</h1>
                   </div>
                 }
                 title={`${plan?.price} /yr`}
                 description={plan?.type}
                 footerContent={
-                  <Button className=" disabled:opacity-65 flex h-11 items-center justify-center px-5">
+                  <Button
+                    onClick={() => handlePayment(plan)}
+                    className=" disabled:opacity-65 flex h-11 items-center justify-center px-5"
+                  >
                     Get Premium
                   </Button>
                 }
