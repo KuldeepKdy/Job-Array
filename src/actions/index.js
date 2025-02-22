@@ -5,6 +5,7 @@ import connectToDB from "../dabtabase/connectDb";
 import Profile from "../models/profile";
 import Job from "../models/Job";
 import Application from "../models/application";
+import Razorpay from "razorpay";
 
 //create profile action
 export async function createProfileAction(formData, pathToRevalidate) {
@@ -163,9 +164,50 @@ export async function updateProfileAction(data, pathToRevalidate) {
   revalidatePath(pathToRevalidate);
 }
 
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
+//create razorpay price id based on tier selection
 
-//create stripe price id based on tier selection 
+export async function createPriceIdAction(Plan) {
+  try {
+    const orderOptions = {
+      amount: Plan * 100, // Amount in paise
+      currency: "INR",
+      payment_capture: 1,
+      // Optionally add a receipt ID if needed
+      // receipt: "receipt#1",
+      notes: {
+        description: "Job Application Fee",
+        planName: "Premium Plan",
+      },
+    };
 
-export async function createPriceIdAction(data) {
-  
+    const session = await razorpay.orders.create(orderOptions);
+    console.log("Order created:", session);
+     const razorpayInstance = new Razorpay(options);
+     razorpayInstance.open();
+    return {
+      success: true,
+      id: session?.id,
+    };
+    // Now session.id will be your payment/order id
+  } catch (error) {
+    console.error("Error creating order:", error);
+    return {
+      success: false,
+    };
+  }
+}
+
+// create payment logic
+
+export async function createPaymentAction(data) {
+  const razorpayInstance = new Razorpay(options);
+  razorpayInstance.open();
+  return {
+    success: true,
+    id: razorpayInstance?.id,
+  };
 }

@@ -1,8 +1,9 @@
+"use client";
 import { membershipPlans } from "@/utils";
 import CommonCard from "../CommonCard";
 import JobIcon from "../JobIcon";
 import { Button } from "../ui/button";
-import { createPriceIdAction } from "@/actions";
+import { createPaymentAction, createPriceIdAction } from "@/actions";
 
 interface membershipInterface {
   profileInfo: {
@@ -36,16 +37,27 @@ interface membershipInterface {
       resume: string;
     };
   };
+  Plan: { heading: string; price: number; type: string };
 }
 
 const MemberShip = ({ profileInfo }: membershipInterface) => {
-  async function handlePayment(getCurrentPlan) {
-    const extractPriceId = await createPriceIdAction({
-      amount: Number(getCurrentPlan?.price),
-    });
+  async function handlePayment(Plan: {
+    heading: string;
+    price: number;
+    type: string;
+  }) {
+    const extractPriceId = await createPriceIdAction(Plan?.price);
+    // console.log(extractPriceId);
     if (extractPriceId) {
-      sessionStorage.setItem("currentaplan", JSON.stringify(getCurrentPlan));
-      const result = 
+      sessionStorage.setItem("currentaplan", JSON.stringify(Plan));
+      const result = await createPaymentAction({
+        lineItems: [
+          {
+            price: extractPriceId?.id,
+            quantity: 1,
+          },
+        ],
+      });
     }
   }
   return (
@@ -73,7 +85,10 @@ const MemberShip = ({ profileInfo }: membershipInterface) => {
                 description={plan?.type}
                 footerContent={
                   <Button
-                    onClick={() => handlePayment(plan)}
+                    onClick={() => {
+                      handlePayment(plan);
+                      // console.log(plan);
+                    }}
                     className=" disabled:opacity-65 flex h-11 items-center justify-center px-5"
                   >
                     Get Premium
