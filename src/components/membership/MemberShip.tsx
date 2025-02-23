@@ -47,17 +47,16 @@ const MemberShip = ({ profileInfo }: membershipInterface) => {
     type: string;
   }) {
     const extractPriceId = await createPriceIdAction(Plan?.price);
-    // console.log(extractPriceId);
+    console.log(extractPriceId);
     if (extractPriceId) {
       sessionStorage.setItem("currentaplan", JSON.stringify(Plan));
-      const result = await createPaymentAction({
-        lineItems: [
-          {
-            price: extractPriceId?.id,
-            quantity: 1,
-          },
-        ],
-      });
+      const result = await createPaymentAction(Plan?.price);
+      console.log(result);
+      if (result) {
+        window.open(result?.shortUrl, "_blank");
+      } else {
+        alert("Payment link generation failed. Please try again.");
+      }
     }
   }
   return (

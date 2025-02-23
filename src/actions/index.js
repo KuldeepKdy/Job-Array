@@ -186,8 +186,7 @@ export async function createPriceIdAction(Plan) {
 
     const session = await razorpay.orders.create(orderOptions);
     console.log("Order created:", session);
-     const razorpayInstance = new Razorpay(options);
-     razorpayInstance.open();
+
     return {
       success: true,
       id: session?.id,
@@ -203,11 +202,32 @@ export async function createPriceIdAction(Plan) {
 
 // create payment logic
 
-export async function createPaymentAction(data) {
-  const razorpayInstance = new Razorpay(options);
-  razorpayInstance.open();
-  return {
-    success: true,
-    id: razorpayInstance?.id,
-  };
+export async function createPaymentAction(price) {
+  try {
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    });
+
+    const paymentLink = await razorpay.paymentLink.create({
+      amount: price * 100, // Amount in paise
+      currency: "INR",
+      description: "Premium Plan Payment",
+      notify: {
+        email: true,
+        sms: true,
+      },
+      callback_url: "https://yourwebsite.com/payment-success",
+      callback_method: "get",
+    });
+
+    return {
+      success: true,
+      paymentLink: paymentLink?.id,
+      shortUrl: paymentLink?.short_url,
+    };
+  } catch (error) {
+    console.error("Payment link generation failed:", error);
+    return { success: false, message: "Failed to generate payment link" };
+  }
 }
