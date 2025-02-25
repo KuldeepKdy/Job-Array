@@ -149,7 +149,10 @@ const MemberShip = ({ profileInfo }: membershipInterface) => {
                       }}
                       className=" disabled:opacity-65 flex h-11 items-center justify-center px-5"
                     >
-                      Get Premium
+                      {profileInfo?.memberShipType === "basic" ||
+                      profileInfo?.memberShipType === "teams"
+                        ? "Update Plan"
+                        : "Get Premium"}
                     </Button>
                   )
                 }
