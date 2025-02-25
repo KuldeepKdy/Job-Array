@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 const MembershipPage = async () => {
   const user = await currentUser();
-  const profileInfo = fetchProfileAction(user?.id);
+  const profileInfo = await fetchProfileAction(user?.id);
   if (!profileInfo) redirect("/onboard");
 
   return <MemberShip profileInfo={profileInfo} />;

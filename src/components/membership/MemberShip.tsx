@@ -3,7 +3,13 @@ import { membershipPlans } from "@/utils";
 import CommonCard from "../CommonCard";
 import JobIcon from "../JobIcon";
 import { Button } from "../ui/button";
-import { createPaymentAction, createPriceIdAction } from "@/actions";
+import {
+  createPaymentAction,
+  createPriceIdAction,
+  updateProfileAction,
+} from "@/actions";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 interface membershipInterface {
   profileInfo: {
@@ -37,10 +43,10 @@ interface membershipInterface {
       resume: string;
     };
   };
-  Plan: { heading: string; price: number; type: string };
 }
 
 const MemberShip = ({ profileInfo }: membershipInterface) => {
+  const pathName = useSearchParams();
   async function handlePayment(Plan: {
     heading: string;
     price: number;
@@ -60,6 +66,40 @@ const MemberShip = ({ profileInfo }: membershipInterface) => {
       sessionStorage.setItem("currentaplan", JSON.stringify(Plan));
     }
   }
+
+  async function updateProfile() {
+    const currentPlan = sessionStorage.getItem("currentaplan");
+    const fetchCurrentPlanFromSessionStorage = currentPlan
+      ? JSON.parse(currentPlan)
+      : null;
+    await updateProfileAction(
+      {
+        ...profileInfo,
+        isPreminumUser: true,
+        memberShipType: fetchCurrentPlanFromSessionStorage?.type,
+        memberShipStartDate: new Date().toString(),
+        memberShipEndDate: new Date(
+          new Date().getFullYear() +
+            fetchCurrentPlanFromSessionStorage?.type ===
+          "basic"
+            ? 1
+            : fetchCurrentPlanFromSessionStorage?.plan === "teams"
+            ? 2
+            : 5,
+          new Date().getMonth(),
+          new Date().getDate()
+        ),
+      },
+      "/membership"
+    );
+  }
+
+  useEffect(() => {
+    if (pathName.get("status") === "success") updateProfile();
+  }, [pathName]);
+
+  console.log(profileInfo, "updated profile info");
+
   return (
     <div className="mx-auto max-w-7xl">
       <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
