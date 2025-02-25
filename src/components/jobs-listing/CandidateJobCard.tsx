@@ -12,6 +12,7 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import { createJobApplicationAction } from "@/actions";
+import { toast } from "sonner";
 
 interface CandidateJobCardProps {
   jobItem: {
@@ -27,10 +28,35 @@ interface CandidateJobCardProps {
     type: string;
   };
   profileInfo: {
-    name: string;
-    email: string;
     userId: string;
-    candidateInfo: { name: string; email: string; userId: string };
+    role: string;
+    email: string;
+    isPreminumUser: boolean;
+    memberShipType: string;
+    memberShipStartDate: string;
+    memberShipEndDate: string;
+    recruiterInfo: {
+      name: string;
+      companyName: string;
+      companyRole: string;
+    };
+    candidateInfo: {
+      name: string;
+      currentJobLocation: string;
+      preferedJobLocation: string;
+      currentSalary: string;
+      noticePeriod: string;
+      skills: string;
+      currentCompany: string;
+      previousCompanies: string;
+      totalExperience: string;
+      college: string;
+      collageLocation: string;
+      graduatedYear: string;
+      linkedinProfile: string;
+      githubProfile: string;
+      resume: string;
+    };
   };
   jobApplications: {
     recruiterUserID: string;
@@ -53,19 +79,35 @@ const CandidateJobCard = ({
   // console.log(jobItem?.recruiterId, "job aaja Item");
 
   const handleJobApply = async () => {
-    await createJobApplicationAction(
-      {
-        recruiterUserID: jobItem?.recruiterId,
-        name: profileInfo?.candidateInfo?.name,
-        email: profileInfo?.email,
-        candidateUserID: profileInfo?.userId,
-        status: ["Applied"],
-        jobID: jobItem?._id,
-        JobAppliedDate: new Date().toLocaleDateString(),
-      },
-      "/jobs"
-    );
-    setShowJobDetailsDrawer(false);
+    if (!profileInfo?.isPreminumUser && jobApplications.length >= 2) {
+      setShowJobDetailsDrawer(false);
+      toast("You can apply max 2 jobs", {
+        description: (
+          <p className="text-gray-600">
+            Please opt for membership to apply for more jobs
+          </p>
+        ),
+        action: {
+          label: <span className="text-red-700">Try</span>,
+          onClick: () => (window.location.href = "/membership"),
+        },
+      });
+      return;
+    } else {
+      await createJobApplicationAction(
+        {
+          recruiterUserID: jobItem?.recruiterId,
+          name: profileInfo?.candidateInfo?.name,
+          email: profileInfo?.email,
+          candidateUserID: profileInfo?.userId,
+          status: ["Applied"],
+          jobID: jobItem?._id,
+          JobAppliedDate: new Date().toLocaleDateString(),
+        },
+        "/jobs"
+      );
+      setShowJobDetailsDrawer(false);
+    }
   };
   return (
     <>
