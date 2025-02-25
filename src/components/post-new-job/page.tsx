@@ -90,13 +90,13 @@ const PostNewJob: React.FC<PostNewJobProps> = ({
     if (!profileInfo?.isPreminumUser && jobList?.length >= 2) {
       toast("You can post max 2 jobs", {
         description: (
-          <p className="text-gray-400">
+          <p className="text-gray-600">
             Please opt for membership to post more jobs
           </p>
         ),
         action: {
-          label: "Undo",
-          onClick: () => console.log("Undo"),
+          label: "Try",
+          onClick: () => (window.location.href = "/membership"),
         },
       });
       return;
