@@ -5,18 +5,69 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import CommonForm from "../common-form/page";
 import { initialPostNewJobFormData, PostNewJobFormControls } from "@/utils";
 import { postNewJobAction } from "@/actions/index";
+import { toast } from "sonner";
 
 interface Profileinterface {
-  recruiterInfo: { companyName: string };
-  _id: string;
-  name: string;
+  userId: string;
+  role: string;
+  email: string;
+  isPreminumUser: boolean;
+  memberShipType: string;
+  memberShipStartDate: string;
+  memberShipEndDate: string;
+  recruiterInfo: {
+    name: string;
+    companyName: string;
+    companyRole: string;
+  };
+  candidateInfo: {
+    name: string;
+    currentJobLocation: string;
+    preferedJobLocation: string;
+    currentSalary: string;
+    noticePeriod: string;
+    skills: string;
+    currentCompany: string;
+    previousCompanies: string;
+    totalExperience: string;
+    college: string;
+    collageLocation: string;
+    graduatedYear: string;
+    linkedinProfile: string;
+    githubProfile: string;
+    resume: string;
+  };
 }
 interface PostNewJobProps {
   user: { id: string; name: string; email: string };
   profileInfo: Profileinterface;
+  jobList: [
+    {
+      companyName: string;
+      title: string;
+      location: string;
+      type: string;
+      experience: string;
+      description: string;
+      skills: string;
+      recruiterId: string;
+      applicants: [
+        {
+          name: string;
+          email: string;
+          userId: string;
+          status: string;
+        }
+      ];
+    }
+  ];
 }
 
-const PostNewJob: React.FC<PostNewJobProps> = ({ user, profileInfo }) => {
+const PostNewJob: React.FC<PostNewJobProps> = ({
+  user,
+  profileInfo,
+  jobList,
+}) => {
   // console.log(profileInfo);
   const [showJobDialog, setShowJobDialog] = useState(false);
   const [jobFormData, setJobFormData] = useState<{
@@ -34,6 +85,25 @@ const PostNewJob: React.FC<PostNewJobProps> = ({ user, profileInfo }) => {
         jobFormData[control].trim() !== ""
     );
   }
+
+  const handelAddNewJob = () => {
+    if (!profileInfo?.isPreminumUser && jobList?.length >= 2) {
+      toast("You can post max 2 jobs", {
+        description: (
+          <p className="text-gray-400">
+            Please opt for membership to post more jobs
+          </p>
+        ),
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      });
+      return;
+    } else {
+      setShowJobDialog(true);
+    }
+  };
 
   async function createNewJob() {
     await postNewJobAction(
@@ -54,7 +124,7 @@ const PostNewJob: React.FC<PostNewJobProps> = ({ user, profileInfo }) => {
   return (
     <div>
       <Button
-        onClick={() => setShowJobDialog(true)}
+        onClick={() => handelAddNewJob()}
         className="disabled:opacity-60 flex h-11 items-center justify-center px-5"
       >
         Post A Job

@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import { ClerkProvider } from "@clerk/nextjs";
 import CommonLayout from "@/components/common-layout/CommonLayout";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
               {children} {/* Your page content */}
             </CommonLayout>
           </Suspense>
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>

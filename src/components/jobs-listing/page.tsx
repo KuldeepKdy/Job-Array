@@ -187,7 +187,11 @@ const JobListing = ({
                 ))}
               </Menubar>
             ) : (
-              <PostNewJob user={user} profileInfo={profileInfo} />
+              <PostNewJob
+                jobList={jobList}
+                user={user}
+                profileInfo={profileInfo}
+              />
             )}
           </div>
         </div>
