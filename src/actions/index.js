@@ -217,7 +217,7 @@ export async function createPaymentAction(price) {
         email: true,
         sms: true,
       },
-      callback_url: "https://yourwebsite.com/payment-success",
+      callback_url: "http://localhost:3000/membership" + "?status=success",
       callback_method: "get",
     });
 
