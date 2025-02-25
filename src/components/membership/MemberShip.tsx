@@ -98,14 +98,27 @@ const MemberShip = ({ profileInfo }: membershipInterface) => {
     if (pathName.get("status") === "success") updateProfile();
   }, [pathName]);
 
-  console.log(profileInfo, "updated profile info");
+  // console.log(profileInfo, "updated profile info");
 
   return (
     <div className="mx-auto max-w-7xl">
       <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
         <h1 className="text-4xl font-bold tracking-tighter text-gray-950">
-          Choose Your Best Plan
+          {profileInfo?.isPreminumUser
+            ? "You are a Premium user"
+            : "Choose Your Best Plan"}
         </h1>
+        <div>
+          {profileInfo?.isPreminumUser && (
+            <Button className="flex h-11 items-center justify-center px-5">
+              {
+                membershipPlans.find(
+                  (planItem) => planItem?.type === profileInfo?.memberShipType
+                )?.heading
+              }
+            </Button>
+          )}
+        </div>
       </div>
       <div className=" py-20 pb-24 pt-6">
         <div className="container mx-auto p-0 space-y-8">
@@ -124,15 +137,21 @@ const MemberShip = ({ profileInfo }: membershipInterface) => {
                 title={`${plan?.price} /yr`}
                 description={plan?.type}
                 footerContent={
-                  <Button
-                    onClick={() => {
-                      handlePayment(plan);
-                      // console.log(plan);
-                    }}
-                    className=" disabled:opacity-65 flex h-11 items-center justify-center px-5"
-                  >
-                    Get Premium
-                  </Button>
+                  profileInfo?.memberShipType === "enterprise" ||
+                  (profileInfo?.memberShipType === "basic" && index === 0) ||
+                  (profileInfo?.memberShipType === "teams" &&
+                    index >= 0 &&
+                    index < 2) ? null : (
+                    <Button
+                      onClick={() => {
+                        handlePayment(plan);
+                        // console.log(plan);
+                      }}
+                      className=" disabled:opacity-65 flex h-11 items-center justify-center px-5"
+                    >
+                      Get Premium
+                    </Button>
+                  )
                 }
               />
             ))}
