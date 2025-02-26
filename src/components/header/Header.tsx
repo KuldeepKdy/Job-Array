@@ -27,6 +27,11 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
       path: "/activity",
       show: profileInfo?.role === "candidate",
     },
+    {
+      label: "Companies",
+      path: "/companies",
+      show: profileInfo?.role === "candidate",
+    },
     { label: "Jobs", path: "/jobs", show: user },
     { label: "Membership", path: "/membership", show: user },
     { label: "Account", path: "/account", show: user },
