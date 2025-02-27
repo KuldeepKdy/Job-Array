@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Header from "../header/Header";
-import { currentUser } from "@clerk/nextjs/server";
 import { fetchProfileAction } from "@/actions";
+import { currentUser } from "@clerk/nextjs/server";
 
 const CommonLayout = async ({ children }: { children: ReactNode }) => {
   const user = await currentUser();

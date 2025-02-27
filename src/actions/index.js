@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import connectToDB from "../dabtabase/connectDb";
 import Profile from "../models/profile";
 import Job from "../models/Job";
+import Feed from "../models/feed";
 import Application from "../models/application";
 import Razorpay from "razorpay";
 
@@ -231,3 +232,21 @@ export async function createPaymentAction(price) {
     return { success: false, message: "Failed to generate payment link" };
   }
 }
+
+
+//create post action 
+export async function createFeedPostAction(data, pathToRevalidate) {
+  await connectToDB();
+  await Feed.create(data);
+  revalidatePath(pathToRevalidate);
+}
+
+
+//fetch all posts action
+export async function fetchAllFeedPostsAction() {
+  await connectToDB();
+  const result = await Feed.find({});
+  return JSON.parse(JSON.stringify(result));
+}
+
+//update post action
