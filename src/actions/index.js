@@ -8,6 +8,14 @@ import Feed from "../models/feed";
 import Application from "../models/application";
 import Razorpay from "razorpay";
 
+
+// to keep supbase server alive 
+async function keepSupabaseAlive() {
+  await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/keepalive`);
+}
+
+// Run every 24 hours
+setInterval(keepSupabaseAlive, 24 * 60 * 60 * 1000);
 //create profile action
 export async function createProfileAction(formData, pathToRevalidate) {
   await connectToDB();
