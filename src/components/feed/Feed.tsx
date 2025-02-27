@@ -8,8 +8,26 @@ import { Label } from "../ui/label";
 import { CirclePlus } from "lucide-react";
 import { Input } from "../ui/input";
 import { createClient } from "@supabase/supabase-js";
+import { createFeedPostAction } from "@/actions";
 
-const Feed = () => {
+interface FeedPostProps {
+  user: { id: string; name: string; email: string };
+  profileInfo: {
+    role: string;
+    recruiterInfo: { companyName: string };
+    _id: string;
+    name: string;
+    email: string;
+    userId: string;
+    candidateInfo: {
+      name: string;
+      email: string;
+      userId: string;
+    };
+    jobApplications: { jobId: string; status: string }[];
+  };
+}
+const Feed = ({ user, profileInfo }: FeedPostProps) => {
   // Supabase connection
   const supabaseUrl = "https://wzapditlogmdsweecqnx.supabase.co";
   const supabaseKey =
@@ -53,6 +71,21 @@ const Feed = () => {
       });
     console.log(data, error);
     if (data) handleFetchImagePublicUrl(data);
+  }
+
+  async function handelSavedFeedPost() {
+    await createFeedPostAction({
+      userId: String,
+      userName: String,
+      message: String,
+      image: String,
+      likes: [
+        {
+          reactorUserId: String,
+          reactorUserName: String,
+        },
+      ],
+    });
   }
 
   useEffect(() => {
@@ -112,6 +145,7 @@ const Feed = () => {
               />
             </Label>
             <Button
+              onClick={handelSavedFeedPost}
               disabled={formData?.imageURL === "" && formData?.message === ""}
               className="flex w-40 h-11 items-center justify-center px-5 disabled:opacity-60 "
             >
