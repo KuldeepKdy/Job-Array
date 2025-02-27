@@ -20,6 +20,7 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
   // console.log(typeof user);
   const menuItems = [
     { label: "Home", path: "/", show: true },
+    { label: "Feed", path: "/feed", show: profileInfo },
     { label: "Login", path: "/sign-in", show: !user },
     { label: "Register", path: "/sign-up", show: !user },
     {
@@ -32,9 +33,9 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
       path: "/companies",
       show: profileInfo?.role === "candidate",
     },
-    { label: "Jobs", path: "/jobs", show: user },
-    { label: "Membership", path: "/membership", show: user },
-    { label: "Account", path: "/account", show: user },
+    { label: "Jobs", path: "/jobs", show: profileInfo },
+    { label: "Membership", path: "/membership", show: profileInfo },
+    { label: "Account", path: "/account", show: profileInfo },
   ];
   return (
     <div>
