@@ -1,5 +1,10 @@
 "use client";
 
+import { Laptop } from "lucide-react";
+import CommonCard from "../CommonCard";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
+
 interface CompaniesInterface {
   jobsList: Array<{
     companyName: string;
@@ -19,6 +24,7 @@ interface CompaniesInterface {
   }>;
 }
 const Companies = ({ jobsList }: CompaniesInterface) => {
+  const router = useRouter();
   // console.log(jobsList);
   const createUniqueSetOfCompanies = [
     ...new Set(
@@ -30,7 +36,17 @@ const Companies = ({ jobsList }: CompaniesInterface) => {
         .map((item) => item?.companyName)
     ),
   ];
-  console.log(createUniqueSetOfCompanies);
+
+  function handelFilterJobsByCompanyName(getCompanyName: string) {
+    sessionStorage.setItem(
+      "filterParams",
+      JSON.stringify({
+        companyName: [getCompanyName],
+      })
+    );
+    router.push(`/jobs?companyName=${getCompanyName}`);
+  }
+  // console.log(createUniqueSetOfCompanies);
   return (
     <div className="mx-auto max-w-7xl">
       <div className="flex items-baseline justify-between border-b pb-6 pt-24">
@@ -45,7 +61,23 @@ const Companies = ({ jobsList }: CompaniesInterface) => {
               <div className="grid grid-cols-1 gap-x-8  gap-y-10 lg:grid-cols-3">
                 {createUniqueSetOfCompanies &&
                 createUniqueSetOfCompanies.length > 0
-                  ? createUniqueSetOfCompanies.map((companyName) => )
+                  ? createUniqueSetOfCompanies.map((companyName) => (
+                      <CommonCard
+                        key={companyName}
+                        icon={<Laptop />}
+                        title={companyName}
+                        footerContent={
+                          <Button
+                            onClick={() =>
+                              handelFilterJobsByCompanyName(companyName)
+                            }
+                            className="h-11 flex items-center justify-center px-5"
+                          >
+                            See Jobs
+                          </Button>
+                        }
+                      />
+                    ))
                   : "No Companies Found"}
               </div>
             </div>
