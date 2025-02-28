@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { Dialog, DialogContent } from "../ui/dialog";
 import { Textarea } from "../ui/textarea";
 import { Label } from "../ui/label";
-import { CirclePlus } from "lucide-react";
+import { CirclePlus, Heart } from "lucide-react";
 import { Input } from "../ui/input";
 import { createClient } from "@supabase/supabase-js";
 import { createFeedPostAction } from "@/actions";
@@ -14,7 +14,7 @@ interface FeedPostProps {
   user: { id: string; name: string; email: string };
   profileInfo: {
     role: string;
-    recruiterInfo: { companyName: string };
+    recruiterInfo: { name: string; companyName: string };
     _id: string;
     name: string;
     email: string;
@@ -26,8 +26,20 @@ interface FeedPostProps {
     };
     jobApplications: { jobId: string; status: string }[];
   };
+  allFeedPost: {
+    userId: string;
+    userName: string;
+    message: string;
+    image: string;
+    likes: [
+      {
+        reactorUserId: string;
+        reactorUserName: string;
+      }
+    ];
+  }[];
 }
-const Feed = ({ user, profileInfo }: FeedPostProps) => {
+const Feed = ({ user, profileInfo, allFeedPost }: FeedPostProps) => {
   // Supabase connection
   const supabaseUrl = "https://wzapditlogmdsweecqnx.supabase.co";
   const supabaseKey =
@@ -65,7 +77,7 @@ const Feed = ({ user, profileInfo }: FeedPostProps) => {
     if (!imageData) return;
     const { data, error } = await supabase.storage
       .from("job-board-public")
-      .upload(`/public/${imageData?.name}`, imageData, {
+      .upload(`/public/images/${imageData?.name}/${new Date()}`, imageData, {
         cacheControl: "3600",
         upsert: false,
       });
@@ -74,17 +86,21 @@ const Feed = ({ user, profileInfo }: FeedPostProps) => {
   }
 
   async function handelSavedFeedPost() {
-    await createFeedPostAction({
-      userId: String,
-      userName: String,
-      message: String,
-      image: String,
-      likes: [
-        {
-          reactorUserId: String,
-          reactorUserName: String,
-        },
-      ],
+    await createFeedPostAction(
+      {
+        userId: user?.id,
+        userName:
+          profileInfo?.candidateInfo?.name || profileInfo?.recruiterInfo?.name,
+        message: formData?.message,
+        image: formData?.imageURL,
+        likes: [],
+      },
+      "/feed"
+    );
+    setShowPostDialog(false);
+    setFormData({
+      message: "",
+      imageURL: "",
     });
   }
 
@@ -94,6 +110,7 @@ const Feed = ({ user, profileInfo }: FeedPostProps) => {
     }
   }, [imageData]);
 
+  console.log(allFeedPost, "allFeedPost");
   return (
     <>
       <div className="mx-auto max-w-7xl">
@@ -108,6 +125,48 @@ const Feed = ({ user, profileInfo }: FeedPostProps) => {
             >
               Add New Post
             </Button>
+          </div>
+        </div>
+        <div className="py-12">
+          <div className="container m-auto p-0 flex flex-col gap-5 text-gray-700">
+            {allFeedPost && allFeedPost.length > 0
+              ? allFeedPost.map((feedPostItem, index) => (
+                  <div
+                    key={index}
+                    className="group relative -mx-4 p-6 rounded-3xl bg-gray-100 hover:bg-white hover:shadow-2xl cursor-pointer shadow-2xl shadow-transparent gap-8 flex "
+                  >
+                    <div className="sm:w-2/6 rounded-3xl overflow-hidden transition-all duration-500 group-hover:rounded-xl">
+                      <img
+                        src={feedPostItem?.image}
+                        alt="Post"
+                        className="h-80 w-full object-cover object-top transition duration-500 group-hover:scale-105 "
+                      />
+                    </div>
+                    <div className="sm:p-2 sm:pl-0 sm:w-4/6 ">
+                      <span className="mt-4 mb-2 inline-block font-medium text-gray-500 sm:mt-0">
+                        {feedPostItem?.userName}
+                      </span>
+                      <h3 className="mb-6 text-4xl font-bold text-gray-900 ">
+                        {feedPostItem?.message}
+                      </h3>
+                      <div className="flex gap-5 ">
+                        <Heart
+                          size={25}
+                          fill={
+                            feedPostItem?.likes?.length > 0
+                              ? "#000000"
+                              : "#ffffff"
+                          }
+                          className="cursor-pointer"
+                        />
+                        <span className="font-semibold text-xl">
+                          {feedPostItem?.likes?.length}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              : "No Post Found"}
           </div>
         </div>
       </div>
