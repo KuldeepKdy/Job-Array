@@ -258,3 +258,20 @@ export async function fetchAllFeedPostsAction() {
 }
 
 //update post action
+
+export async function updatefeedPostAction(data, pathToRevalidate) {
+  await connectToDB();
+  const { userId, userName, message, image, likes, _id } = data;
+  await Feed.findOneAndUpdate(
+    { _id: _id },
+    {
+      userId,
+      userName,
+      message,
+      image,
+      likes,
+    },
+    { new: true }
+  );
+  revalidatePath(pathToRevalidate);
+}

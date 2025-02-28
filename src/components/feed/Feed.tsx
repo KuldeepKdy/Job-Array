@@ -8,7 +8,7 @@ import { Label } from "../ui/label";
 import { CirclePlus, Heart } from "lucide-react";
 import { Input } from "../ui/input";
 import { createClient } from "@supabase/supabase-js";
-import { createFeedPostAction } from "@/actions";
+import { createFeedPostAction, updatefeedPostAction } from "@/actions";
 
 interface FeedPostProps {
   user: { id: string; name: string; email: string };
@@ -104,6 +104,25 @@ const Feed = ({ user, profileInfo, allFeedPost }: FeedPostProps) => {
     });
   }
 
+  async function handleUpdateFeedPostLikes(getCurrentFeedPost: any) {
+    const cpyLikesFromCurrentFeedPostItem = [...getCurrentFeedPost?.likes];
+    const indexOfCurrentUser = cpyLikesFromCurrentFeedPostItem.findIndex(
+      (item) => item.reactorUserId === user?.id
+    );
+    if (indexOfCurrentUser === -1) {
+      cpyLikesFromCurrentFeedPostItem.push({
+        reactorUserId: user?.id,
+        reactorUserName:
+          profileInfo?.candidateInfo?.name || profileInfo?.recruiterInfo?.name,
+      });
+    } else {
+      cpyLikesFromCurrentFeedPostItem.splice(indexOfCurrentUser, 1);
+    }
+
+    getCurrentFeedPost.likes = cpyLikesFromCurrentFeedPostItem;
+    await updatefeedPostAction(getCurrentFeedPost, "/feed");
+  }
+
   useEffect(() => {
     if (imageData) {
       handleUploadImageToSupabase();
@@ -158,6 +177,9 @@ const Feed = ({ user, profileInfo, allFeedPost }: FeedPostProps) => {
                               : "#ffffff"
                           }
                           className="cursor-pointer"
+                          onClick={() =>
+                            handleUpdateFeedPostLikes(feedPostItem)
+                          }
                         />
                         <span className="font-semibold text-xl">
                           {feedPostItem?.likes?.length}
