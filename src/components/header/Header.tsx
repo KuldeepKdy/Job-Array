@@ -2,8 +2,9 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import { AlignJustify } from "lucide-react";
+import { AlignJustify, Moon } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
+import { useTheme } from "next-themes";
 
 interface HeaderProps {
   user: boolean;
@@ -17,6 +18,7 @@ interface HeaderProps {
 }
 
 const Header = ({ user, profileInfo }: HeaderProps) => {
+  const { theme, setTheme } = useTheme();
   // console.log(typeof user);
   const menuItems = [
     { label: "Home", path: "/", show: true },
@@ -63,6 +65,11 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
                   </Link>
                 ) : null;
               })}
+              <Moon
+                className="cursor-pointer mb-4 z-50"
+                fill={theme === "dark" ? "light" : "dark"}
+                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              />
               <UserButton afterSignOutUrl="/" />
             </div>
           </SheetContent>
@@ -70,7 +77,7 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
         <Link href="/" className="hidden z-50 font-bold text-3xl lg:flex mr-6">
           JOB ARRAY
         </Link>
-        <nav className="ml-auto hidden lg:flex gap-6">
+        <nav className="ml-auto hidden lg:flex gap-6 items-center">
           {menuItems.map((menuItem) =>
             menuItem.show ? (
               <Link
@@ -83,6 +90,11 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
               </Link>
             ) : null
           )}
+          <Moon
+            className="cursor-pointer z-50"
+            fill={theme === "dark" ? "light" : "dark"}
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          />
           <div className="z-50">
             <UserButton afterSignOutUrl="/" />
           </div>

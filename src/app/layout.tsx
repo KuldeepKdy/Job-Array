@@ -34,8 +34,8 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Suspense fallback={<Loading />}>
-            <CommonLayout>
-              {children} {/* Your page content */}
+            <CommonLayout attribute="class" defaultTheme="system">
+              {children}
             </CommonLayout>
           </Suspense>
           <Toaster />
