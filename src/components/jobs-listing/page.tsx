@@ -146,8 +146,8 @@ const JobListing = ({
   return (
     <div>
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-          <h1 className="text-4xl font-bold tracking-tighter text-gray-900">
+        <div className="flex items-baseline justify-between border-b dark:border-white pb-6 pt-24">
+          <h1 className="text-4xl font-bold dark:text-white tracking-tighter text-gray-900">
             {profileInfo?.role === "candidate"
               ? "Explore All Jobs"
               : "Jobs Dashboard"}
@@ -167,16 +167,16 @@ const JobListing = ({
                             onClick={() => handleFilter(filterMenu.id, option)}
                           >
                             <div
-                              className={` h-4 w-4 border rounded border-gray-900 text-indigo-600 ${
+                              className={` h-4 w-4 border rounded dark:border-white border-gray-900 text-indigo-600 ${
                                 filterParams &&
                                 Object.keys(filterParams).length > 0 &&
                                 filterParams[filterMenu.id] &&
                                 filterParams[filterMenu.id].indexOf(option) > -1
-                                  ? "bg-black"
+                                  ? "bg-black dark:bg-white "
                                   : ""
                               }`}
                             />
-                            <Label className="ml-3 cursor-pointer text-sm text-gray-600">
+                            <Label className="ml-3 cursor-pointer dark:text-white text-sm text-gray-600">
                               {option}
                             </Label>
                           </MenubarItem>

@@ -98,8 +98,8 @@ const AccountInfo = ({ profileInfo }: accountInterface) => {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <div className=" flex items-baseline justify-between pb-6 border-b pt-24">
-        <h1 className="text-3xl font-bold tracking-tighter  text-gray-900">
+      <div className=" flex items-baseline justify-between dark:border-white pb-6 border-b pt-24">
+        <h1 className="text-3xl font-bold dark:text-white tracking-tighter  text-gray-900">
           Account Details
         </h1>
       </div>

@@ -6,11 +6,22 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Laptop } from "lucide-react";
-const CommonCard = ({ icon, title, description, footerContent }: any) => {
+interface CommonCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  footerContent: React.ReactNode;
+}
+
+const CommonCard = ({ icon, title, description, footerContent }: CommonCardProps) => {
   return (
     <Card className="flex bg-gray-100 flex-col gap-6 rounded-2xl p-8 transition-all duration-200 hover:bg-white hover:shadow-lg hover:shadow-gray-600/10 cursor-pointer">
       <CardHeader className="p-0">
-        {icon ? <Laptop /> : <Laptop />}
+        {icon ? (
+          <Laptop className="dark:stroke-gray-950" />
+        ) : (
+          <Laptop className="dark:stroke-gray-950" />
+        )}
         {title ? (
           <CardTitle className="text-xl max-w-[250px] text-ellipsis overflow-hidden whitespace-nowrap font-semibold text-gray-950">
             {title}

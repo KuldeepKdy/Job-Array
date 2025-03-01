@@ -108,7 +108,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
                         jobApplicationtItem?.candidateUserID
                       )
                     }
-                    className="flex h-11 items-center justify-center px-5"
+                    className="flex h-11 items-center dark:bg-blue-500 justify-center px-5"
                   >
                     View Profile
                   </Button>
@@ -126,35 +126,35 @@ const CandidateList: React.FC<CandidateListProps> = ({
       >
         <DialogContent>
           <div>
-            <h1 className="text-xl font-bold text-black">
+            <h1 className="text-xl font-bold dark:text-white text-black">
               {currentCandidateDetails?.candidateInfo?.name},{" "}
               {currentCandidateDetails?.email}
             </h1>
-            <p className="text-lg font-medium text-black">
+            <p className="text-lg font-medium dark:text-white text-black">
               {currentCandidateDetails?.candidateInfo?.currentCompany}
             </p>
-            <p className="text-sm mt-2 ">
+            <p className="text-sm mt-2  dark:text-white ">
               {currentCandidateDetails?.candidateInfo?.currentJobLocation}
             </p>
-            <p>
+            <p className="dark:text-white">
               Total Experience:{" "}
               {currentCandidateDetails?.candidateInfo?.totalExperience}
             </p>
-            <p>
+            <p className="dark:text-white">
               Salary: {currentCandidateDetails?.candidateInfo?.currentSalary}
             </p>
-            <p>
+            <p className="dark:text-white">
               Notice Period:{" "}
               {currentCandidateDetails?.candidateInfo?.noticePeriod}
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-6">
-              <h2>Previous Companies</h2>
+              <h2 className="dark:text-white">Previous Companies</h2>
               {currentCandidateDetails?.candidateInfo?.previousCompanies
                 ?.split(",")
                 .map((skill: string, index: number) => (
                   <span
                     key={index}
-                    className="text-sm px-4 py-2 rounded-md font-medium bg-black text-white"
+                    className="text-sm px-4 py-2 rounded-md font-medium bg-black text-white dark:bg-white dark:text-black"
                   >
                     {skill}
                   </span>
@@ -166,7 +166,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
                 .map((skill: string, index: number) => (
                   <span
                     key={index}
-                    className="text-sm px-4 py-2 rounded-md font-medium bg-black text-white"
+                    className="text-sm px-4 py-2 rounded-md font-medium bg-black text-white dark:bg-white dark:text-black"
                   >
                     {skill}
                   </span>
@@ -177,13 +177,13 @@ const CandidateList: React.FC<CandidateListProps> = ({
             <div className="flex gap-3 mt-2">
               <Button
                 onClick={handlePreviewResume}
-                className="flex h-11 items-center justify-center px-5"
+                className="flex h-11 items-center justify-center dark:bg-blue-500 dark:text-white px-5"
               >
                 Resume
               </Button>
               <Button
                 onClick={() => handleUpadateJobStatus("selected")}
-                className="flex h-11 disabled:opacity-60 items-center justify-center px-5"
+                className="flex h-11 disabled:opacity-60 items-center justify-center dark:bg-blue-500 dark:text-white px-5"
                 disabled={
                   jobApplications
                     .find(
@@ -228,7 +228,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
                     ? true
                     : false
                 }
-                className="flex h-11 disabled:opacity-60 items-center justify-center px-5"
+                className="flex h-11 disabled:opacity-60 items-center dark:bg-blue-500 dark:text-white justify-center px-5"
               >
                 {jobApplications
                   .find(

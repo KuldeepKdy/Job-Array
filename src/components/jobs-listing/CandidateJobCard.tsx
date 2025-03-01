@@ -122,7 +122,7 @@ const CandidateJobCard = ({
           footerContent={
             <Button
               onClick={() => setShowJobDetailsDrawer(true)}
-              className="flex h-11 items-center justify-center px-5"
+              className="flex h-11 items-center dark:bg-blue-600 dark:text-white justify-center px-5"
             >
               View Details
             </Button>
@@ -131,7 +131,7 @@ const CandidateJobCard = ({
         <DrawerContent className="p-6">
           <DrawerHeader className="px-0">
             <div className="flex justify-between">
-              <DrawerTitle className="text-2xl font-bold text-gray-800">
+              <DrawerTitle className="text-2xl dark:text-white font-bold text-gray-800">
                 {jobItem?.title}
               </DrawerTitle>
               <div className="flex gap-3">
@@ -161,14 +161,16 @@ const CandidateJobCard = ({
               </div>
             </div>
           </DrawerHeader>
-          <DrawerDescription className="text-xl font-medium text-gray-600">
+          <DrawerDescription className="text-xl dark:text-white font-medium text-gray-600">
             {jobItem?.description}
-            <span className="text-lg ml-4 font-normal text-gray-500">
+            <span className="text-lg ml-4 dark:text-white font-normal text-gray-500">
               {jobItem?.location}
             </span>
           </DrawerDescription>
-          <div className="w-[150px] mt-6 flex justify-center items-center h-[40px] bg-black rounded-md">
-            <h2 className="text-lg font-bold text-white">{jobItem?.type} </h2>
+          <div className="w-[150px] mt-6 flex justify-center items-center h-[40px] bg-black dark:bg-white rounded-md">
+            <h2 className="text-lg font-bold text-white dark:text-black">
+              {jobItem?.type}{" "}
+            </h2>
           </div>
           <h3 className="text-xl font-medium text-black mt-3">
             Experience: {jobItem?.experience}
@@ -177,7 +179,7 @@ const CandidateJobCard = ({
             {jobItem?.skills?.split(",").map((skill, index) => (
               <span
                 key={index}
-                className="text-sm px-4 py-2 rounded-md font-medium bg-black text-white"
+                className="text-sm px-4 py-2 rounded-md font-medium bg-black dark:bg-white dark:text-black text-white"
               >
                 {skill}
               </span>

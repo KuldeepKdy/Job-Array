@@ -67,7 +67,7 @@ const RecruiterJobCard = ({
         footerContent={
           <Button
             onClick={() => setShowApplicantsDrawer(true)}
-            className=" disabled:opacity-60 flex h-11 items-center justify-center px-5"
+            className=" disabled:opacity-60 flex h-11 dark:bg-blue-600 dark:text-white items-center justify-center px-5"
             disabled={
               jobApplications.filter((item) => item.jobID === jobItem?._id)
                 .length === 0

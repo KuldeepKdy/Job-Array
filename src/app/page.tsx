@@ -21,12 +21,12 @@ async function Home() {
             <section className="w-full lg:w-[50%] flex flex-col md:px-2 lg:px-0 p-5 lg:p-10">
               <div className="w-full flex justify-start flex-col h-auto lg:pt-7">
                 <div className="flex space-x-2">
-                  <span className="block w-14 mb-2 border-b-2 border-gray-700"></span>
-                  <span className="font-medium text-gray-600 ">
+                  <span className="block w-14 mb-2 dark:border-white border-b-2 border-gray-700"></span>
+                  <span className="font-medium dark:text-white  text-gray-600 ">
                     One Stop Solution to find Jobs
                   </span>
                 </div>
-                <h1 className="text-3xl mt-5 lg:text-7xl text-black font-extrabold">
+                <h1 className="text-3xl dark:text-white mt-5 lg:text-7xl text-black font-extrabold">
                   Build your best community starting from here.{" "}
                 </h1>
                 <div className="w-full mt-6 flex items-center text-white justify-start gap-2">

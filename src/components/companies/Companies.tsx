@@ -49,8 +49,8 @@ const Companies = ({ jobsList }: CompaniesInterface) => {
   // console.log(createUniqueSetOfCompanies);
   return (
     <div className="mx-auto max-w-7xl">
-      <div className="flex items-baseline justify-between border-b pb-6 pt-24">
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+      <div className="flex items-baseline justify-between border-b dark:border-white pb-6 pt-24">
+        <h1 className="text-4xl font-bold dark:text-white tracking-tight text-gray-900">
           Browse Companies
         </h1>
       </div>
@@ -71,7 +71,7 @@ const Companies = ({ jobsList }: CompaniesInterface) => {
                             onClick={() =>
                               handelFilterJobsByCompanyName(companyName)
                             }
-                            className="h-11 flex items-center justify-center px-5"
+                            className="h-11 flex items-center dark:bg-blue-600 dark:text-white justify-center px-5"
                           >
                             See Jobs
                           </Button>

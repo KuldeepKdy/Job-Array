@@ -102,8 +102,8 @@ const MemberShip = ({ profileInfo }: membershipInterface) => {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-        <h1 className="text-4xl font-bold tracking-tighter text-gray-950">
+      <div className="flex items-baseline justify-between dark:border-white border-b border-gray-200 pb-6 pt-24">
+        <h1 className="text-4xl font-bold dark:text-white tracking-tighter text-gray-950">
           {profileInfo?.isPreminumUser
             ? "You are a Premium user"
             : "Choose Your Best Plan"}
@@ -147,7 +147,7 @@ const MemberShip = ({ profileInfo }: membershipInterface) => {
                         handlePayment(plan);
                         // console.log(plan);
                       }}
-                      className=" disabled:opacity-65 flex h-11 items-center justify-center px-5"
+                      className=" disabled:opacity-65 flex h-11 items-center dark:bg-blue-600 dark:text-white justify-center px-5"
                     >
                       {profileInfo?.memberShipType === "basic" ||
                       profileInfo?.memberShipType === "teams"
