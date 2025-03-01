@@ -14,45 +14,7 @@ async function Home() {
 
   return (
     <>
-      {/* <HeroSection /> */}
-      {/* <div className="bg-white relative pl-4">
-        <div className=" relative  w-full">
-          <div className="min-h-screen flex ">
-            <div className="container mx-auto mt-20 p-0">
-              <div className="flex items-center flex-wrap gap-12 lg:gap-0">
-                <div className="lg:w-6/12 space-y-8">
-                  <div className="flex space-x-2">
-                    <span className="block w-14 mb-2 border-b-2 border-gray-700"></span>
-                    <span className="font-medium text-gray-600 ">
-                      One Stop Solution to find Jobs
-                    </span>
-                  </div>
-                  <h1 className="text-4xl font-bold md:text-6xl">
-                    The Best <br /> Job Portal App
-                  </h1>
-                  <p className="text-xl text-gray-700">
-                    Find Best Jobs From Top Product Based Companies and Build
-                    Your Career
-                  </p>
-                  <HomePageButtons
-                    user={JSON.parse(JSON.stringify(user))}
-                    profileInfo={profileInfo}
-                  />
-                </div>
-                <div className="hidden relative md:flex  lg:w-6/12 h-fit   overflow-hidden ">
-                  <div className="aspect-[16/10] ml-auto">
-                    <img
-                      src="/images/money.png"
-                      alt="Job Partal"
-                      className="relative  w-full h-full object-contain "
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
+      <HeroSection />
       <section className="relative w-full h-full min-h-screen pb-10">
         <div className="w-full h-full relative">
           <div className="flex flex-col-reverse lg:flex-row gap-10 mt-16">
@@ -75,12 +37,47 @@ async function Home() {
                 </div>
               </div>
             </section>
-            <section className=" relative w-full lg:w-[50%] flex items-center justify-end">
-              <div className="grid grid-cols-3 grid-rows-5 gap-4 w-full h-full">
-                <div className="row-span-2">1</div>
-                <div className="row-span-3 col-start-2 row-start-2">2</div>
-                <div className="row-span-2 col-start-1 row-start-4">5</div>
-                <div className="row-span-5 col-start-3 row-start-1">8</div>
+            <section className=" relative w-full lg:w-[50%] flex items-center justify-center">
+              <div className="grid grid-cols-7 grid-rows-5 gap-8 w-full h-[95%]">
+                <div className="col-span-2 row-span-2">
+                  <img
+                    src="/images/person1.jpg"
+                    alt="person1"
+                    className="w-full h-full rounded-3xl object-cover"
+                  />
+                </div>
+                <div className="col-span-2 row-span-2 col-start-1 row-start-4">
+                  <img
+                    src="/images/person6.jpg"
+                    alt="person1"
+                    className="w-full h-full rounded-3xl object-cover"
+                  />
+                </div>
+                <div className="col-span-3 row-span-3 col-start-3 row-start-2">
+                  <img
+                    src="/images/person3.jpg"
+                    alt="person1"
+                    className="w-full h-full rounded-3xl object-cover"
+                  />
+                </div>
+                <div className="col-span-2 row-span-2 col-start-6 row-start-1">
+                  <img
+                    src="/images/person4.jpg"
+                    alt="person1"
+                    className="w-full h-full rounded-3xl object-cover"
+                  />
+                </div>
+                <div className="col-span-2 row-span-2 col-start-6 row-start-4">
+                  <img
+                    src="/images/person5.jpg"
+                    alt="person1"
+                    className="w-full h-full rounded-3xl object-cover"
+                  />
+                </div>
+                {/* <div className="col-span-2 col-start-1 row-start-3">6</div>
+                <div className="col-span-3 col-start-3 row-start-1">7</div>
+                <div className="col-span-3 col-start-3 row-start-5">8</div>
+                <div className="col-span-2 col-start-6 row-start-3">9</div> */}
               </div>
             </section>
           </div>

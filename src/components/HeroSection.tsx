@@ -7,7 +7,7 @@ const HeroSection = () => {
     <>
       <div className="hidden lg:grid grid-cols-[repeat(24,minmax(0,1fr))]  absolute inset-0 z-20  overflow-hidden  w-full max-h-screen ">
         {emojis.map((emoji, index) => (
-          <div key={index} className=" cursor-pointer ">
+          <div key={index} className=" cursor-grab">
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 0, scale: 1, transition: { duration: 2 } }}
