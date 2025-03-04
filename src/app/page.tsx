@@ -1,4 +1,5 @@
 import { fetchProfileAction } from "@/actions";
+import AboutSection from "@/components/AboutSection";
 import HeroSection from "@/components/HeroSection";
 import HomePageButtons from "@/components/HomePageButtons";
 import { Button } from "@/components/ui/button";
@@ -15,10 +16,10 @@ async function Home() {
   return (
     <>
       <HeroSection />
-      <section className="relative w-full h-full min-h-screen pb-10">
+      <section className="relative w-full h-full md:min-h-screen ">
         <div className="w-full h-full relative">
-          <div className="flex flex-col-reverse lg:flex-row gap-10 mt-16">
-            <section className="w-full lg:w-[50%] flex flex-col md:px-2 lg:px-0 p-5 lg:p-10">
+          <div className="flex flex-col-reverse lg:flex-row gap-6 mt-16">
+            <section className="w-full lg:w-[60%] flex flex-col md:px-2 lg:px-0  ">
               <div className="w-full flex justify-start flex-col h-auto lg:pt-7">
                 <div className="flex space-x-2">
                   <span className="block w-14 mb-2 dark:border-white border-b-2 border-gray-700"></span>
@@ -37,8 +38,8 @@ async function Home() {
                 </div>
               </div>
             </section>
-            <section className=" relative w-full lg:w-[50%] flex items-center justify-center">
-              <div className="grid grid-cols-7 grid-rows-5 gap-8 w-full h-[95%]">
+            <section className=" relative w-full lg:w-[40%] flex items-center justify-center">
+              <div className="grid grid-cols-7 grid-rows-5  gap-4 md:gap-6 w-full h-[80%]">
                 <div className="col-span-2 row-span-2">
                   <img
                     src="/images/person1.jpg"
@@ -83,6 +84,7 @@ async function Home() {
           </div>
         </div>
       </section>
+      <AboutSection />
     </>
   );
 }
