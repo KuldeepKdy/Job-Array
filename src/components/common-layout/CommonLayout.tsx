@@ -20,7 +20,7 @@ const CommonLayout = async ({
 
   return (
     <NextThemesProvider attribute={attribute} defaultTheme={defaultTheme}>
-      <div className="mx-auto max-w-7xl p-6 lg:px-8">
+      <div className="mx-auto px-4 md:px-10 lg:px-20  ">
         {/* Header Component  */}
         <Header
           profileInfo={profileInfo}
