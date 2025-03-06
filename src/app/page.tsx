@@ -1,5 +1,6 @@
 import { fetchProfileAction } from "@/actions";
 import AboutSection from "@/components/AboutSection";
+import HomeHero from "@/components/header/HomeHero";
 import HeroSection from "@/components/HeroSection";
 import HomePageButtons from "@/components/HomePageButtons";
 import { Button } from "@/components/ui/button";
@@ -15,8 +16,8 @@ async function Home() {
 
   return (
     <>
-      <HeroSection />
-      <section className="relative w-full h-full md:min-h-screen ">
+      {/* <HeroSection /> */}
+      {/* <section className="relative w-full h-full md:min-h-screen ">
         <div className="w-full h-full relative">
           <div className="flex flex-col-reverse lg:flex-row gap-6 mt-16">
             <section className="w-full lg:w-[60%] flex flex-col md:px-2 lg:px-0  ">
@@ -75,15 +76,13 @@ async function Home() {
                     className="w-full h-full rounded-3xl object-cover"
                   />
                 </div>
-                {/* <div className="col-span-2 col-start-1 row-start-3">6</div>
-                <div className="col-span-3 col-start-3 row-start-1">7</div>
-                <div className="col-span-3 col-start-3 row-start-5">8</div>
-                <div className="col-span-2 col-start-6 row-start-3">9</div> */}
+
               </div>
             </section>
           </div>
         </div>
-      </section>
+      </section> */}
+      <HomeHero user={user} profileInfo={profileInfo} />
       <AboutSection />
     </>
   );
