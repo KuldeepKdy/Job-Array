@@ -83,7 +83,23 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         </div>
       </div>
       {/* right side  */}
-      <div className="w-full max-w-[20%]"></div>
+      <div className="w-full max-w-[20%]">
+        <div>
+          <img
+            src="/images/person1.jpg"
+            alt="person1"
+            className="w-full h-full rounded-3xl object-cover"
+          />
+        </div>
+        <div>{/* card  */}</div>
+        <div>
+          <img
+            src="/images/person1.jpg"
+            alt="person1"
+            className="w-full h-full rounded-3xl object-cover"
+          />
+        </div>
+      </div>
     </div>
   );
 };
