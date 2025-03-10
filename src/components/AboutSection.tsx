@@ -51,27 +51,22 @@ const AboutSection = () => {
             Unlock Your True Potential And Discover A World Of Opportunities
             That Align With Your Skills, Interests, And Aspirations
           </h2>
-          <div className="flex gap-6 w-full  items-center">
+          <div className="flex gap-6 w-full mt-8  items-center">
             <img
               src="/images/spotify-logo.png"
               alt="spotify-logo"
-              className="max-w-[20%] max-h-6"
+              className="max-w-[20%] max-h-6 object-fill"
             />
 
             <img
               src="/images/microsoft-logo.png"
               alt="spotify-logo"
-              className="max-w-[20%] max-w-[20%] max-h-6"
+              className="max-w-[20%]  max-h-6"
             />
             <img
               src="/images/netflix-logo.png"
               alt="spotify-logo"
-              className="max-w-[20%] max-w-[20%] max-h-6"
-            />
-            <img
-              src="/images/g-fiber-logo.png"
-              alt="spotify-logo"
-              className="max-w-[20%] max-w-[20%] max-h-6"
+              className="max-w-[20%]  max-h-6"
             />
           </div>
         </div>
@@ -79,33 +74,37 @@ const AboutSection = () => {
           initial="offscreen"
           whileInView={"onscreen"}
           variants={titleVariants}
-          className="grid grid-cols-2 w-full h-full justify-between gap-4 md:gap-8 "
+          className="grid grid-cols-2 w-[70%] h-full justify-between gap-4 md:gap-8 "
         >
-          <div className="flex flex-col gap-1 p-4 bg-primary bg-opacity-60  text-white  dark:bg-gray-50 rounded-xl">
-            <h2 className="  font-bold text-xl md:text-2xl">400K</h2>
-            <p className="  dark:text-gray-500 font-medium text-sm md:text-base">
+          <div className="flex flex-col gap-1 p-4 text-center">
+            <h2 className="  text-gray-900 font-semibold  text-lg md:text-2xl">
+              400K
+            </h2>
+            <p className="  font-medium text-gray-400   text-xs md:text-sm">
               Job List
             </p>
           </div>
-          <div className="flex flex-col gap-1 p-4">
+          <div className="flex flex-col gap-1 p-4 text-center">
             <h2 className="text-gray-900 font-semibold text-lg md:text-2xl">
               800K
             </h2>
-            <p className="text-4ray-900  text-xs md:text-sm">People hired</p>
+            <p className="font-medium text-gray-400  text-xs md:text-sm">
+              People hired
+            </p>
           </div>
-          <div className="flex flex-col gap-1 p-4">
+          <div className="flex flex-col gap-1 p-4 text-center">
             <h2 className="text-gray-900 font-semibold text-lg md:text-2xl">
               20K
             </h2>
-            <p className="text-4ray-900 dark:text-gray-600  text-xs md:text-sm">
+            <p className="font-medium text-gray-400  dark:text-gray-600  text-xs md:text-sm">
               Company
             </p>
           </div>
-          <div className="flex flex-col gap-1 p-4">
+          <div className="flex flex-col gap-1 p-4 text-center">
             <h2 className="text-gray-900 font-semibold text-lg  md:text-2xl">
               120
             </h2>
-            <p className="text-4ray-900  text-xs md:text-sm">
+            <p className="font-medium text-gray-400  text-xs md:text-sm">
               Available country
             </p>
           </div>
