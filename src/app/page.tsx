@@ -84,8 +84,10 @@ async function Home() {
         </div>
       </section> */}
       <HomeHero user={user} profileInfo={profileInfo} />
-      <AboutSection />
-      <AboutSectionSecond />
+      <div className=" w-full h-fit flex flex-col gap-12 md:gap-24">
+        <AboutSection />
+        <AboutSectionSecond />
+      </div>
     </>
   );
 }
