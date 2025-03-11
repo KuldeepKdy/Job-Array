@@ -47,7 +47,7 @@ const AboutSection = () => {
             by many people to design their homes. We have also received many
             awards from various countries for our work.
           </motion.p> */}
-          <h2 className="text-2xl text-gray-900 mt-4 font-semibold">
+          <h2 className="text-4xl leading-snug text-gray-900 mt-4 font-semibold">
             Unlock Your True Potential And Discover A World Of Opportunities
             That Align With Your Skills, Interests, And Aspirations
           </h2>
@@ -76,32 +76,32 @@ const AboutSection = () => {
           variants={titleVariants}
           className="grid grid-cols-2 w-[70%] h-full justify-between gap-4 md:gap-8 "
         >
-          <div className="flex flex-col gap-1 p-4 text-center">
-            <h2 className="  text-gray-900 font-semibold  text-lg md:text-2xl">
+          <div className="flex flex-col gap-2 p-4 text-center">
+            <h2 className="  text-gray-900 font-semibold  text-xl md:text-3xl">
               400K
             </h2>
             <p className="  font-medium text-gray-400   text-xs md:text-sm">
               Job List
             </p>
           </div>
-          <div className="flex flex-col gap-1 p-4 text-center">
-            <h2 className="text-gray-900 font-semibold text-lg md:text-2xl">
+          <div className="flex flex-col gap-2 p-4 text-center">
+            <h2 className="text-gray-900 font-semibold text-xl md:text-3xl">
               800K
             </h2>
             <p className="font-medium text-gray-400  text-xs md:text-sm">
               People hired
             </p>
           </div>
-          <div className="flex flex-col gap-1 p-4 text-center">
-            <h2 className="text-gray-900 font-semibold text-lg md:text-2xl">
+          <div className="flex flex-col gap-2 p-4 text-center">
+            <h2 className="text-gray-900 font-semibold text-xl md:text-3xl">
               20K
             </h2>
             <p className="font-medium text-gray-400  dark:text-gray-600  text-xs md:text-sm">
               Company
             </p>
           </div>
-          <div className="flex flex-col gap-1 p-4 text-center">
-            <h2 className="text-gray-900 font-semibold text-lg  md:text-2xl">
+          <div className="flex flex-col gap-2 p-4 text-center">
+            <h2 className="text-gray-900 font-semibold text-xl  md:text-3xl">
               120
             </h2>
             <p className="font-medium text-gray-400  text-xs md:text-sm">
