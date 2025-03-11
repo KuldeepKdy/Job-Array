@@ -1,4 +1,4 @@
-import { ThumbsUpIcon } from "lucide-react";
+import { CheckCircle, ThumbsUpIcon } from "lucide-react";
 import HomePageButtons from "../HomePageButtons";
 
 interface PostNewJobProps {
@@ -39,27 +39,47 @@ interface PostNewJobProps {
 }
 const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
   return (
-    <div className=" flex justify-center  min-h-screen pt-14 ">
+    <div className=" flex justify-center  w-full h-fit pt-14 ">
       {/* left side  */}
-      <div className="w-full max-w-[20%]">
-        <div>
-          <img
-            src="/images/person1.jpg"
-            alt="person1"
-            className="w-full h-full rounded-3xl object-cover"
-          />
+      <div className="w-full flex flex-col gap-4 max-w-[20%]">
+        <div className="-left-8 w-full relative">
+          <div className="w-[60%] aspect-square ">
+            <img
+              src="/images/person3.jpg"
+              alt="person1"
+              className="w-full h-full rounded-3xl object-cover"
+            />
+          </div>
         </div>
-        <div>{/* card  */}</div>
-        <div>
-          <img
-            src="/images/person1.jpg"
-            alt="person1"
-            className="w-full h-full rounded-3xl object-cover"
-          />
+        <div className=" w-full relative -right-8 flex items-center justify-end">
+          <div className="rounded-3xl   shadow-lg w-[70%]  gap-2  flex flex-col items-center justify-center border border-gray-200 p-4">
+            <h2 className="text-gray-900 text-sm font-medium">
+              Complete your profile
+            </h2>
+            <div className="h-4 w-full rounded-sm overflow-hidden mt-1 bg-gray-200">
+              <div className="bg-primary h-full w-[20%]"></div>
+            </div>
+            <div className="w-full flex items-center justify-between">
+              <p className="text-xs text-green-500">2 of 10 data</p>
+              <CheckCircle className="stroke-green-500 size-3" />
+            </div>
+            <p className="text-gray-600 text-xs leading-relaxed mt-1">
+              Complete your profile now and let us help you navigate
+            </p>
+          </div>
+        </div>
+        <div className="-left-8 w-full relative">
+          <div className="w-[60%] aspect-square ">
+            <img
+              src="/images/person4.jpg"
+              alt="person1"
+              className="w-full h-full rounded-3xl object-cover"
+            />
+          </div>
         </div>
       </div>
       {/* center side  */}
-      <div className="flex w-full flex-col relative items-center max-w-[60%]">
+      <div className="flex w-full  flex-col  relative items-center max-w-[60%]">
         {/* Placing  */}
         <div className="w-fit flex items-center justify-center py-1 px-3 gap-2 rounded-full bg-gray-100 border border-primary ">
           <ThumbsUpIcon className="size-4 mb-0.5" />
@@ -70,7 +90,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           Supporting Job Seekers Every Step of the Way
         </h1>
         {/* Headline para  */}
-        <p className="text-base text-gray-400 text-center mt-4 max-w-[80%]">
+        <p className="text-base text-gray-600 leading-relaxed text-center mt-4 max-w-[80%]">
           Unlock your true potential and discover a world of opportunities that
           align with your skills, interests, and aspirations
         </p>
@@ -83,21 +103,41 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         </div>
       </div>
       {/* right side  */}
-      <div className="w-full max-w-[20%]">
-        <div>
-          <img
-            src="/images/person1.jpg"
-            alt="person1"
-            className="w-full h-full rounded-3xl object-cover"
-          />
+      <div className="w-full flex flex-col gap-4 max-w-[20%]">
+        <div className=" w-full relative">
+          <div className="w-[60%] aspect-square ">
+            <img
+              src="/images/person6.jpg"
+              alt="person1"
+              className="w-full h-full rounded-3xl object-cover"
+            />
+          </div>
         </div>
-        <div>{/* card  */}</div>
-        <div>
-          <img
-            src="/images/person1.jpg"
-            alt="person1"
-            className="w-full h-full rounded-3xl object-cover"
-          />
+        <div className=" w-full relative -right-8 flex items-center justify-end">
+          <div className="rounded-3xl   shadow-lg w-[70%]  gap-2  flex flex-col items-center justify-center border border-gray-200 p-4">
+            <h2 className="text-gray-900 text-sm font-medium">
+              Complete your profile
+            </h2>
+            <div className="h-4 w-full rounded-sm overflow-hidden mt-1 bg-gray-200">
+              <div className="bg-primary h-full w-[20%]"></div>
+            </div>
+            <div className="w-full flex items-center justify-between">
+              <p className="text-xs text-green-500">2 of 10 data</p>
+              <CheckCircle className="stroke-green-500 size-3" />
+            </div>
+            <p className="text-gray-600 text-xs leading-relaxed mt-1">
+              Complete your profile now and let us help you navigate
+            </p>
+          </div>
+        </div>
+        <div className="-left-20 w-full relative">
+          <div className="w-[60%] aspect-square ">
+            <img
+              src="/images/person1.jpg"
+              alt="person1"
+              className="w-full h-full rounded-3xl object-cover"
+            />
+          </div>
         </div>
       </div>
     </div>
