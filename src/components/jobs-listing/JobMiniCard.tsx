@@ -21,7 +21,7 @@ const JobMiniCard = () => {
           </motion.div>
         </div>
       </div>
-      <div className="flex w-full gap-1">
+      <div className="flex w-full gap-2">
         <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
           UI Designer
         </div>
