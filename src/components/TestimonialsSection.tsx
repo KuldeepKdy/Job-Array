@@ -19,16 +19,16 @@ const TestimonialsSection = () => {
           <MessageSquare className="size-3.5 stroke-primary" />
           Testiminial
         </motion.h3>
-        <h2 className="font-semibold text-gray-900 leading-normal text-4xl mt-4">
+        <h2 className="font-semibold text-gray-900 leading-snug text-5xl mt-4">
           Reviews of people who get jobs using Job Array
         </h2>
-        <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+        <p className="text-base text-gray-600 mt-4 leading-relaxed">
           Unlock your true potential and discover a world of apportunities that
           align with your skills, interests, and aspirations
         </p>
         <Button
           onClick={() => router.push("/jobs")}
-          className="flex h-11 mt-6 items-center w-fit  justify-center px-5"
+          className="flex h-11 mt-8 items-center w-fit  justify-center px-5"
         >
           More stories
         </Button>

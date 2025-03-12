@@ -16,7 +16,7 @@ const JobCard = () => {
             initial="offscreen"
             whileInView={"onscreen"}
             variants={titleVariants}
-            className=" flex gap-1 items-center mt-1  text-gray-300 text-xs "
+            className=" flex gap-1 items-center mt-2  text-gray-300 text-xs "
           >
             <CheckCircle className="size-3 fill-primary" />
             Pintrest

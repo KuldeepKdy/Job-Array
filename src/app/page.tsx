@@ -2,6 +2,7 @@ import { fetchProfileAction } from "@/actions";
 import AboutSection from "@/components/AboutSection";
 import AboutSectionSecond from "@/components/AboutSectionSecond";
 import AdvantageSection from "@/components/AdvantageSection";
+import CommunitySection from "@/components/CommunitySection";
 import FeaturesSection from "@/components/FeaturesSection";
 import HomeHero from "@/components/header/HomeHero";
 import HeroSection from "@/components/HeroSection";
@@ -86,13 +87,14 @@ async function Home() {
           </div>
         </div>
       </section> */}
-      <div className=" w-full h-fit flex flex-col gap-12 md:gap-24">
+      <div className=" w-full h-fit  flex flex-col gap-12 md:gap-24">
         <HomeHero user={user} profileInfo={profileInfo} />
         <AboutSection />
         <AboutSectionSecond />
         <AdvantageSection />
         <FeaturesSection />
         <TestimonialsSection />
+        <CommunitySection />
       </div>
     </>
   );
