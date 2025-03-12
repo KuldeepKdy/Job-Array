@@ -6,6 +6,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import HomeHero from "@/components/header/HomeHero";
 import HeroSection from "@/components/HeroSection";
 import HomePageButtons from "@/components/HomePageButtons";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
@@ -91,6 +92,7 @@ async function Home() {
         <AboutSectionSecond />
         <AdvantageSection />
         <FeaturesSection />
+        <TestimonialsSection />
       </div>
     </>
   );
