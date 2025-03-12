@@ -1,6 +1,7 @@
 import { fetchProfileAction } from "@/actions";
 import AboutSection from "@/components/AboutSection";
 import AboutSectionSecond from "@/components/AboutSectionSecond";
+import AdvantageSection from "@/components/AdvantageSection";
 import HomeHero from "@/components/header/HomeHero";
 import HeroSection from "@/components/HeroSection";
 import HomePageButtons from "@/components/HomePageButtons";
@@ -87,6 +88,7 @@ async function Home() {
         <HomeHero user={user} profileInfo={profileInfo} />
         <AboutSection />
         <AboutSectionSecond />
+        <AdvantageSection />
       </div>
     </>
   );

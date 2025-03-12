@@ -1,0 +1,43 @@
+"use client";
+import { titleVariants } from "@/utils/animations";
+import { motion } from "framer-motion";
+import { FlagIcon } from "lucide-react";
+import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
+
+const AdvantageSection = () => {
+  const router = useRouter();
+  return (
+    <div className=" grid grid-cols-3 items-center w-full gap-6 ">
+      <div className=" w-full h-fit col-span-2  flex flex-col">
+        <motion.h2
+          initial="offscreen"
+          whileInView={"onscreen"}
+          variants={titleVariants}
+          className=" flex gap-1 items-center  text-primary text-xs font-medium"
+        >
+          <FlagIcon className="size-3.5 stroke-primary" />
+          More about JobArray
+        </motion.h2>
+        <h1 className="font-semibold text-gray-900 leading-snug text-4xl mt-4">
+          We Empower Job Seekers Like You To Streamline And Supercharge Your{" "}
+          <br /> Job Search.
+        </h1>
+      </div>
+      <div className="flex flex-col col-span-1 w-full h-fit justify-center ">
+        <p className="text-gray-600 text-sm leading-relaxed">
+          Unlock your true potential and discover a world of opportunities that
+          align with your skills, interests, and aspirations
+        </p>
+        <Button
+          onClick={() => router.push("/jobs")}
+          className="flex h-11 mt-6  items-center w-fit  justify-center px-5"
+        >
+          Get started now
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default AdvantageSection;
