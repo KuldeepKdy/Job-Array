@@ -17,7 +17,7 @@ const AdvantageSection = () => {
           className=" flex gap-1 items-center  text-primary text-xs font-medium"
         >
           <FlagIcon className="size-3.5 stroke-primary" />
-          More about JobArray
+          Job Array advantages
         </motion.h2>
         <h1 className="font-semibold text-gray-900 leading-snug text-4xl mt-4">
           We Empower Job Seekers Like You To Streamline And Supercharge Your{" "}

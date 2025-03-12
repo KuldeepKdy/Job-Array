@@ -2,6 +2,7 @@ import { fetchProfileAction } from "@/actions";
 import AboutSection from "@/components/AboutSection";
 import AboutSectionSecond from "@/components/AboutSectionSecond";
 import AdvantageSection from "@/components/AdvantageSection";
+import FeaturesSection from "@/components/FeaturesSection";
 import HomeHero from "@/components/header/HomeHero";
 import HeroSection from "@/components/HeroSection";
 import HomePageButtons from "@/components/HomePageButtons";
@@ -89,6 +90,7 @@ async function Home() {
         <AboutSection />
         <AboutSectionSecond />
         <AdvantageSection />
+        <FeaturesSection />
       </div>
     </>
   );

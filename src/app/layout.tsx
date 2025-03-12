@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${montserrat.className}  antialiased`}>
+        <body className={`${montserrat.className} scroll-smooth antialiased`}>
           <Suspense fallback={<Loading />}>
             <CommonLayout attribute="class" defaultTheme="system">
               {children}
