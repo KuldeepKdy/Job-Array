@@ -1,4 +1,4 @@
-import { CheckCircle, Flag, ThumbsUpIcon } from "lucide-react";
+import { CheckCircle, Flag, ThumbsUpIcon, Users } from "lucide-react";
 import HomePageButtons from "../HomePageButtons";
 import { titleVariants } from "@/utils/animations";
 
@@ -40,7 +40,7 @@ interface PostNewJobProps {
 }
 const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
   return (
-    <div className=" flex justify-center  w-full h-fit pt-14 ">
+    <div className=" flex justify-center lg:px-8  w-full h-fit pt-14 ">
       {/* left side  */}
       <div className="w-full flex flex-col gap-4 max-w-[20%]">
         <div className="-left-8 w-full relative">
@@ -53,21 +53,41 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           </div>
         </div>
         <div className=" w-full relative -right-8 flex items-center justify-end">
-          <div className="rounded-3xl   shadow-lg w-[70%]  gap-2  flex flex-col items-center justify-center border border-gray-200 p-4">
-            <h2 className="text-gray-900 text-sm font-medium">
-              Complete your profile
-            </h2>
-            <div className="h-4 w-full rounded-sm overflow-hidden mt-1 bg-gray-200">
-              <div className="bg-primary h-full w-[20%]"></div>
+          {profileInfo?.role ? (
+            <div className="rounded-3xl   shadow-lg w-[70%]  gap-2  flex flex-col  border border-gray-200 p-4">
+              <h2 className="text-gray-900 text-sm font-medium">
+                Profile Completed
+              </h2>
+              <div className="h-4 w-full rounded-sm overflow-hidden mt-1 bg-gray-200">
+                <div className="bg-primary h-full w-[100%]"></div>
+              </div>
+              <div className="w-full flex items-center justify-between">
+                <p className="text-xs text-green-500">10 of 10 data</p>
+                <CheckCircle className="stroke-green-500 size-3" />
+              </div>
+              <p className="text-gray-600 text-xs leading-relaxed mt-1">
+                {profileInfo?.role == "candidate"
+                  ? "Now you can easily apply for job posts with enjoyable experience"
+                  : "Now you can easily post jobs with enjoyable experience"}
+              </p>
             </div>
-            <div className="w-full flex items-center justify-between">
-              <p className="text-xs text-green-500">2 of 10 data</p>
-              <CheckCircle className="stroke-green-500 size-3" />
+          ) : (
+            <div className="rounded-3xl   shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4">
+              <h2 className="text-gray-900 text-sm font-medium">
+                Complete your profile
+              </h2>
+              <div className="h-4 w-full rounded-sm overflow-hidden mt-1 bg-gray-200">
+                <div className="bg-primary h-full w-[0%]"></div>
+              </div>
+              <div className="w-full flex items-center justify-between">
+                <p className="text-xs text-green-500">0 of 10 data</p>
+                <CheckCircle className="stroke-green-500 size-3" />
+              </div>
+              <p className="text-gray-600 text-xs leading-relaxed mt-1">
+                Complete your profile now and let us help you navigate
+              </p>
             </div>
-            <p className="text-gray-600 text-xs leading-relaxed mt-1">
-              Complete your profile now and let us help you navigate
-            </p>
-          </div>
+          )}
         </div>
         <div className="-left-8 w-full relative">
           <div className="w-[60%] aspect-square ">
@@ -124,31 +144,87 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           </div>
         </div>
         <div className="-left-20 w-full relative">
-          <div className="rounded-3xl   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
-            <div className="w-fit border border-gray-100 p-2 rounded-md ">
-              <Flag />
-            </div>
-            <h2 className="text-gray-900 mt-2 text-sm font-medium">
-              Product Designer
-            </h2>
-            <div
-              // initial="offscreen"
-              // whileInView={"onscreen"}
-              // variants={titleVariants}
-              className=" flex gap-1 items-center mt-1  text-gray-400 text-xs "
-            >
-              Pintrest
-              <CheckCircle className="size-3 fill-primary" />
-            </div>
-            <div className="flex w-full gap-2 mt-3">
-              <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
-                UI Desig
+          {user ? (
+            profileInfo?.role === "candidate" ? (
+              <div className="rounded-3xl   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+                <div className="w-fit border border-gray-100 p-2 rounded-md ">
+                  <Flag />
+                </div>
+                <h2 className="text-gray-900 mt-2 text-sm font-medium">
+                  Product Designer
+                </h2>
+                <div
+                  // initial="offscreen"
+                  // whileInView={"onscreen"}
+                  // variants={titleVariants}
+                  className=" flex gap-1 items-center mt-1  text-gray-400 text-xs "
+                >
+                  Pintrest
+                  <CheckCircle className="size-3 fill-primary" />
+                </div>
+                <div className="flex w-full gap-2 mt-3">
+                  <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
+                    UI Desig
+                  </div>
+                  <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
+                    Full time
+                  </div>
+                </div>
               </div>
-              <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
-                Full time
+            ) : (
+              <div className="rounded-3xl   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+                <div className="w-fit border border-gray-100 p-2 rounded-md ">
+                  <Flag />
+                </div>
+                <h2 className="text-gray-900 mt-2 text-sm font-medium">
+                  Product Designer
+                </h2>
+                <div
+                  // initial="offscreen"
+                  // whileInView={"onscreen"}
+                  // variants={titleVariants}
+                  className=" flex gap-1 items-center mt-1  text-gray-400 text-xs "
+                >
+                  45 Applicants
+                  <Users className="size-3 fill-primary" />
+                </div>
+                <div className="flex w-full gap-2 mt-3">
+                  <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
+                    UI Desig
+                  </div>
+                  <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
+                    Full time
+                  </div>
+                </div>
+              </div>
+            )
+          ) : (
+            <div className="rounded-3xl   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+              <div className="w-fit border border-gray-100 p-2 rounded-md ">
+                <Flag />
+              </div>
+              <h2 className="text-gray-900 mt-2 text-sm font-medium">
+                Product Designer
+              </h2>
+              <div
+                // initial="offscreen"
+                // whileInView={"onscreen"}
+                // variants={titleVariants}
+                className=" flex gap-1 items-center mt-1  text-gray-400 text-xs "
+              >
+                Pintrest
+                <CheckCircle className="size-3 fill-primary" />
+              </div>
+              <div className="flex w-full gap-2 mt-3">
+                <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
+                  UI Desig
+                </div>
+                <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
+                  Full time
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
