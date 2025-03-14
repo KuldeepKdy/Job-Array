@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 
 const Footer = () => {
   return (
-    <div className="mt-20 w-full">
+    <div className="mt-20 w-full mx-auto px-4 md:px-10 lg:px-24 ">
       <div className=" lg:grid w-full lg:grid-cols-5 py-14">
         <div className="grid gap-4 pb-4 text-left col-span-3 lg:pb-0 lg:grid-cols-3">
           <motion.div

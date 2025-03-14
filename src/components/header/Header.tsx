@@ -40,7 +40,7 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
     { label: "Account", path: "/account", show: profileInfo },
   ];
   return (
-    <div className="sticky top-0 z-50 bg-white">
+    <div className="sticky top-0 z-50 bg-white mx-auto px-4 md:px-10 lg:px-24 ">
       <header className="flex h-16 md:h-20 relative w-full shrink-0 items-center">
         <div className="h-[1px] w-full absolute bottom-0  bg-gradient-to-r from-white via-gray-300 to-white z-50 "></div>
         <Sheet>

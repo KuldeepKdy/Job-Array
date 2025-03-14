@@ -21,14 +21,14 @@ const CommonLayout = async ({
 
   return (
     <NextThemesProvider attribute={attribute} defaultTheme={defaultTheme}>
-      <div className="mx-auto px-4 md:px-10 lg:px-24  ">
+      <div className=" ">
         {/* Header Component  */}
         <Header
           profileInfo={profileInfo}
           user={JSON.parse(JSON.stringify(user))}
         />
         {/* main Component  */}
-        <main>{children}</main>
+        <main className="mx-auto px-4 md:px-10 lg:px-24 ">{children}</main>
         <Footer />
       </div>
     </NextThemesProvider>
