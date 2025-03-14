@@ -1,5 +1,6 @@
-import { CheckCircle, ThumbsUpIcon } from "lucide-react";
+import { CheckCircle, Flag, ThumbsUpIcon } from "lucide-react";
 import HomePageButtons from "../HomePageButtons";
+import { titleVariants } from "@/utils/animations";
 
 interface PostNewJobProps {
   user: {
@@ -114,29 +115,39 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           </div>
         </div>
         <div className=" w-full relative -right-8 flex items-center justify-end">
-          <div className="rounded-3xl   shadow-lg w-[70%]  gap-2  flex flex-col items-center justify-center border border-gray-200 p-4">
-            <h2 className="text-gray-900 text-sm font-medium">
-              Complete your profile
-            </h2>
-            <div className="h-4 w-full rounded-sm overflow-hidden mt-1 bg-gray-200">
-              <div className="bg-primary h-full w-[20%]"></div>
-            </div>
-            <div className="w-full flex items-center justify-between">
-              <p className="text-xs text-green-500">2 of 10 data</p>
-              <CheckCircle className="stroke-green-500 size-3" />
-            </div>
-            <p className="text-gray-600 text-xs leading-relaxed mt-1">
-              Complete your profile now and let us help you navigate
-            </p>
-          </div>
-        </div>
-        <div className="-left-20 w-full relative">
-          <div className="w-[60%] aspect-square ">
+          <div className="w-[70%] aspect-square ">
             <img
               src="/images/person1.jpg"
               alt="person1"
               className="w-full h-full rounded-3xl object-cover"
             />
+          </div>
+        </div>
+        <div className="-left-20 w-full relative">
+          <div className="rounded-3xl   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+            <div className="w-fit border border-gray-100 p-2 rounded-md ">
+              <Flag />
+            </div>
+            <h2 className="text-gray-900 mt-2 text-sm font-medium">
+              Product Designer
+            </h2>
+            <div
+              // initial="offscreen"
+              // whileInView={"onscreen"}
+              // variants={titleVariants}
+              className=" flex gap-1 items-center mt-1  text-gray-400 text-xs "
+            >
+              Pintrest
+              <CheckCircle className="size-3 fill-primary" />
+            </div>
+            <div className="flex w-full gap-2 mt-3">
+              <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
+                UI Desig
+              </div>
+              <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
+                Full time
+              </div>
+            </div>
           </div>
         </div>
       </div>
