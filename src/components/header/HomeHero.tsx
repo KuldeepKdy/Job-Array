@@ -42,7 +42,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
   return (
     <div className=" flex justify-center lg:px-8  w-full h-fit pt-14 ">
       {/* left side  */}
-      <div className="w-full flex flex-col gap-4 max-w-[20%]">
+      <div className="w-full hidden lg:flex flex-col gap-4 lg:max-w-[20%]">
         <div className="-left-8 w-full relative">
           <div className="w-[60%] aspect-square ">
             <img
@@ -52,7 +52,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
             />
           </div>
         </div>
-        <div className=" w-full relative -right-8 flex items-center justify-end">
+        <div className=" w-full relative bg-white -right-8 flex items-center justify-end">
           {profileInfo?.role ? (
             <div className="rounded-3xl   shadow-lg w-[70%]  gap-2  flex flex-col  border border-gray-200 p-4">
               <h2 className="text-gray-900 text-sm font-medium">
@@ -72,7 +72,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
               </p>
             </div>
           ) : (
-            <div className="rounded-3xl   shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4">
+            <div className="rounded-3xl bg-white  shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4">
               <h2 className="text-gray-900 text-sm font-medium">
                 Complete your profile
               </h2>
@@ -100,18 +100,18 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         </div>
       </div>
       {/* center side  */}
-      <div className="flex w-full  flex-col  relative items-center max-w-[60%]">
+      <div className="flex w-full  flex-col  relative items-center  lg:max-w-[60%]">
         {/* Placing  */}
         <div className="w-fit flex items-center justify-center py-1 px-3 gap-2 rounded-full bg-gray-100 border border-primary ">
           <ThumbsUpIcon className="size-4 mb-0.5" />
           <p className="text-sm font-medium">#1 Top greatest on Product Hunt</p>
         </div>
         {/* Headline  */}
-        <h1 className="text-gray-900 font-[600] text-6xl mt-6 leading-[1.4]    text-center  ">
+        <h1 className="text-gray-900 font-[600] text-2xl md:text-4xl lg:text-6xl mt-6 leading-[1.4]    text-center  ">
           Supporting Job Seekers Every Step of the Way
         </h1>
         {/* Headline para  */}
-        <p className="text-base text-gray-600 leading-relaxed text-center mt-4 max-w-[80%]">
+        <p className=" text-sm md:text-base text-gray-600 leading-relaxed text-center mt-4 max-w-[80%]">
           Unlock your true potential and discover a world of opportunities that
           align with your skills, interests, and aspirations
         </p>
@@ -124,7 +124,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         </div>
       </div>
       {/* right side  */}
-      <div className="w-full flex flex-col gap-4 max-w-[20%]">
+      <div className="w-full hidden lg:flex flex-col gap-4 lg:max-w-[20%]">
         <div className=" w-full relative">
           <div className="w-[60%] aspect-square ">
             <img
@@ -146,7 +146,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         <div className="-left-20 w-full relative">
           {user ? (
             profileInfo?.role === "candidate" ? (
-              <div className="rounded-3xl   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+              <div className="rounded-3xl bg-white   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
                 <div className="w-fit border border-gray-100 p-2 rounded-md ">
                   <Flag />
                 </div>
@@ -172,7 +172,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                 </div>
               </div>
             ) : (
-              <div className="rounded-3xl   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+              <div className="rounded-3xl bg-white  shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
                 <div className="w-fit border border-gray-100 p-2 rounded-md ">
                   <Flag />
                 </div>
@@ -185,8 +185,8 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                   // variants={titleVariants}
                   className=" flex gap-1 items-center mt-1  text-gray-400 text-xs "
                 >
-                  45 Applicants
-                  <Users className="size-3 fill-primary" />
+                  X Applicants
+                  <Users className="size-3 fill-primary stroke-primary" />
                 </div>
                 <div className="flex w-full gap-2 mt-3">
                   <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">

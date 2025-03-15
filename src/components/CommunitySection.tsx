@@ -3,8 +3,8 @@ import { Button } from "./ui/button";
 
 const CommunitySection = () => {
   return (
-    <div className="w-full h-fit grid relative grid-cols-7 items-center  gap-6  p-12 bg-primary rounded-xl">
-      <div className="w-full flex flex-col col-span-5 gap-6">
+    <div className="w-full h-fit grid relative md:grid-cols-7 items-center  gap-6  p-12 bg-primary rounded-xl">
+      <div className="w-full flex flex-col md:col-span-5 gap-6">
         <h1 className="font-medium text-3xl leading-normal text-white">
           Join our community of ambitious professionals today and unlock the
           doors to your dream carrer.
@@ -17,7 +17,7 @@ const CommunitySection = () => {
           Get started now
         </Button>
       </div>
-      <div className=" flex flex-col absolute right-16   col-span-2 items-center gap-6">
+      <div className="  flex-col hidden md:flex absolute right-16   col-span-2 items-center gap-6">
        
         <div className="translate-x-10 -rotate-3">
           <JobMiniCard />

@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 const AdvantageSection = () => {
   const router = useRouter();
   return (
-    <div className=" grid grid-cols-3 items-center w-full gap-6 ">
-      <div className=" w-full h-fit col-span-2  flex flex-col">
+    <div className=" grid grid-cols-1 lg:grid-cols-3 items-center w-full gap-6 ">
+      <div className=" w-full h-fit lg:col-span-2  flex flex-col">
         <motion.h2
           initial="offscreen"
           whileInView={"onscreen"}
@@ -24,7 +24,7 @@ const AdvantageSection = () => {
           <br /> Job Search.
         </h1>
       </div>
-      <div className="flex flex-col col-span-1 w-full h-fit justify-center ">
+      <div className="flex flex-col lg:col-span-1 w-full h-fit justify-center ">
         <p className="text-gray-600 text-sm leading-relaxed">
           Unlock your true potential and discover a world of opportunities that
           align with your skills, interests, and aspirations

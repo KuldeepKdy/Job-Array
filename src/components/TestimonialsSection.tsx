@@ -8,7 +8,7 @@ import TestimonialCard from "./jobs-listing/TestimonialCard";
 const TestimonialsSection = () => {
   const router = useRouter();
   return (
-    <div className=" w-full h-fit flex gap-32 items-center">
+    <div className=" w-full h-fit flex-col flex lg:flex-row gap-32 items-center">
       <div className="flex flex-col w-full h-fit  justify-center ">
         <motion.h3
           initial="offscreen"
@@ -33,7 +33,7 @@ const TestimonialsSection = () => {
           More stories
         </Button>
       </div>
-      <div className="w-full grid grid-cols-2 gap-6">
+      <div className="w-full grid grid-cols-1  md:grid-cols-2 gap-6">
         {[0, 1, 2, 3].map((value) => (
           <TestimonialCard key={value} />
         ))}
