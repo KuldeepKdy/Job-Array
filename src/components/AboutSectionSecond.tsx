@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 const AboutSectionSecond = () => {
   const router = useRouter();
   return (
-    <div className="flex flex-col lg:flex-row  w-full h-full  gap-8 ">
+    <div className="flex flex-col lg:flex-row  w-full h-full gap-10 lg:gap-8 ">
       <div className=" flex w-full h-fit lg:h-[80vh] flex-col py-8 justify-center gap-4 rounded-xl shadow-lg border border-gray-200 bg-white  px-6">
         <div className="flex flex-col gap-2 w-[80%]">
           <span className=" px-4 py-2 w-fit rounded-lg font-medium leading-relaxed border border-gray-200 text-xs text-gray-600">
@@ -57,7 +57,7 @@ const AboutSectionSecond = () => {
           alt=""
           className="w-full h-full object-cover"
         />
-        <div className="p-4 flex items-center gap-4 bg-white rounded-xl absolute top-6 left-6 right-6">
+        <div className=" p-3 md:p-4 flex items-center  gap-4 bg-white rounded-xl absolute top-4 left-4 right-4 md:top-6 md:left-6 md:right-6">
           <div className="p-2 rounded-full bg-green-50">
             <div className="p-2 rounded-full bg-green-100">
               <Check className="size-5 stroke-green-400" />
@@ -67,13 +67,13 @@ const AboutSectionSecond = () => {
             <h3 className="text-gray-900 text-base leading-snug font-semibold">
               Successfully applied for a job
             </h3>
-            <p className="text-xs text-gray-500 leading-relaxed">
+            <p className="text-xs text-gray-500 leading-normal lg:leading-relaxed">
               Your application is now being carefully reviewed by our team.
             </p>
           </div>
         </div>
       </div>
-      <div className="flex flex-col w-full h-fit lg:h-[80vh] justify-center ">
+      <div className="flex flex-col w-full h-fit lg:h-[80vh] justify-center items-center text-center lg:items-start lg:justify-start  ">
         <motion.h3
           initial="offscreen"
           whileInView={"onscreen"}
@@ -83,10 +83,10 @@ const AboutSectionSecond = () => {
           <MessageSquare className="size-3.5 stroke-primary" />
           More about JobArray
         </motion.h3>
-        <h2 className="font-semibold text-gray-900 leading-normal text-4xl mt-4">
+        <h2 className="font-semibold lg:text-start text-gray-900 leading-snug  text-2xl lg:text-4xl mt-4">
           The thing you care about job matter to jobstera
         </h2>
-        <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+        <p className="text-sm text-gray-600 lg:text-start mt-2 leading-relaxed">
           Unlock your true potential and discover a world of apportunities that
           align with your skills, interests, and aspirations.
         </p>

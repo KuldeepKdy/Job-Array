@@ -8,7 +8,7 @@ import TestimonialCard from "./jobs-listing/TestimonialCard";
 const TestimonialsSection = () => {
   const router = useRouter();
   return (
-    <div className=" w-full h-fit flex-col flex lg:flex-row gap-32 items-center">
+    <div className=" w-full h-fit flex-col flex lg:flex-row gap-10 lg:gap-32 items-center">
       <div className="flex flex-col w-full h-fit  justify-center ">
         <motion.h3
           initial="offscreen"
@@ -19,10 +19,10 @@ const TestimonialsSection = () => {
           <MessageSquare className="size-3.5 stroke-primary" />
           Testiminial
         </motion.h3>
-        <h2 className="font-semibold text-gray-900 leading-snug text-5xl mt-4">
+        <h2 className="font-semibold text-gray-900 leading-snug text-2xl lg:text-4xl mt-4">
           Reviews of people who get jobs using Job Array
         </h2>
-        <p className="text-base text-gray-600 mt-4 leading-relaxed">
+        <p className=" text-sm md:text-base  text-gray-600 mt-4 leading-relaxed">
           Unlock your true potential and discover a world of apportunities that
           align with your skills, interests, and aspirations
         </p>
