@@ -6,14 +6,24 @@ import { useState } from "react";
 
 import { useEffect } from "react";
 
+interface JobData {
+  _id: string;
+  title: string;
+  companyName: string;
+  description: string;
+  location: string;
+  type: string;
+}
+
 const FeaturesSection = () => {
-  const [jobList, setJobList] = useState<{ _id: string; title: string }[]>([]);
-  const [selctedTitle, setselctedTitle] = useState<string>("");
+  const [jobList, setJobList] = useState<JobData[]>([]);
+  const [selctedTitle, setselctedTitle] = useState<string>(``);
 
   useEffect(() => {
     const fetchJobs = async () => {
       const jobs = await fetchJobsForRecruiterAction();
       setJobList(jobs);
+      setselctedTitle(jobs[0]?.title);
       console.log(jobs, "JobList");
     };
     fetchJobs();
@@ -50,19 +60,25 @@ const FeaturesSection = () => {
             <button
               onClick={() => setselctedTitle(job?.title)}
               key={job._id}
-              className="px-3 py-2 flex hover:bg-gray-50 whitespace-nowrap items-center rounded-full gap-1 bg-white border border-gray-200"
+              className={` ${
+                selctedTitle == job?.title
+                  ? "text-white bg-primary"
+                  : "text-gray-800 hover:bg-primary hover:text-white"
+              } px-3  py-2 flex hover:bg-primary  whitespace-nowrap items-center rounded-full gap-2 transition-all duration-200 ease-linear  border border-gray-200 `}
             >
               <MenuSquare className="size-4" />
-              <p className="text-gray-800 text-sm font-medium">{job.title}</p>
+              <p className=" text-sm font-medium">{job.title}</p>
             </button>
           );
         })}
       </div>
-      <div className=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+      <div className=" grid w-full items-start justify-start sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
         {jobList
-          ?.filter((job) => job.title === selctedTitle)
-          .map((value: { _id: string; title: string }, index: number) => (
-            <JobCard key={index} data={value} />
+          ?.filter((job) =>
+            selctedTitle == "All" ? " " : job.title === selctedTitle
+          )
+          .map((value: JobData) => (
+            <JobCard key={value._id} data={value} />
           ))}
       </div>
     </div>
