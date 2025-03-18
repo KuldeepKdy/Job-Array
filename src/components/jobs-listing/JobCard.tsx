@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { titleVariants } from "@/utils/animations";
 import { BadgeIcon, CheckCircle, Locate } from "lucide-react";
 
-const JobCard = () => {
+const JobCard = ({ data }: any) => {
   return (
     <div className="p-4 flex flex-col gap-2 border border-gray-100 bg-white rounded-lg">
       <div className="w-full flex items-center justify-between">

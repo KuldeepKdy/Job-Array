@@ -1,45 +1,23 @@
+"use client";
 import { FlagIcon, MenuSquare } from "lucide-react";
 import JobCard from "./jobs-listing/JobCard";
 import { fetchJobsForRecruiterAction } from "@/actions";
-interface PostNewJobProps {
-  user: {
-    id: string;
-  } | null;
-  profileInfo: {
-    userId: string;
-    role: string;
-    email: string;
-    isPreminumUser: boolean;
-    memberShipType: string;
-    memberShipStartDate: string;
-    memberShipEndDate: string;
-    recruiterInfo: {
-      name: string;
-      companyName: string;
-      companyRole: string;
+import { useState } from "react";
+
+import { useEffect } from "react";
+
+const FeaturesSection = () => {
+  const [jobList, setJobList] = useState<{ _id: string; title: string }[]>([]);
+  const [selctedTitle, setselctedTitle] = useState<string>("");
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      const jobs = await fetchJobsForRecruiterAction();
+      setJobList(jobs);
+      console.log(jobs, "JobList");
     };
-    candidateInfo: {
-      name: string;
-      currentJobLocation: string;
-      preferedJobLocation: string;
-      currentSalary: string;
-      noticePeriod: string;
-      skills: string;
-      currentCompany: string;
-      previousCompanies: string;
-      totalExperience: string;
-      college: string;
-      collageLocation: string;
-      graduatedYear: string;
-      linkedinProfile: string;
-      githubProfile: string;
-      resume: string;
-    };
-  };
-}
-const FeaturesSection = async ({ user, profileInfo }: PostNewJobProps) => {
-  const jobList = await fetchJobsForRecruiterAction();
-  console.log(jobList, "JobList");
+    fetchJobs();
+  }, []);
   return (
     <div className="flex flex-col w-full h-fit items-center justify-center bg-gray-50 rounded-xl px-4 py-6 md:py-10  md:px-10">
       <h2
@@ -60,39 +38,32 @@ const FeaturesSection = async ({ user, profileInfo }: PostNewJobProps) => {
         align with your skills, interests, and aspirations
       </p>
       <div className=" w-full flex whitespace-nowrap mt-10 overflow-x-scroll gap-2 no-scrollbar  scroll-smooth">
-        <div className=" px-3 py-2 flex whitespace-nowrap items-center rounded-full gap-1 bg-white border border-gray-200 ">
-          <MenuSquare className="size-4" />
-          <p className="text-gray-800 text-sm font-medium">Developer</p>
-        </div>
-        <div className=" px-3 py-2 flex whitespace-nowrap items-center rounded-full gap-1 bg-white border border-gray-200 ">
-          <MenuSquare className="size-4" />
-          <p className="text-gray-800 text-sm font-medium">Developer</p>
-        </div>
-        <div className=" px-3 py-2 flex whitespace-nowrap items-center rounded-full gap-1 bg-white border border-gray-200 ">
-          <MenuSquare className="size-4" />
-          <p className="text-gray-800 text-sm font-medium">Developer</p>
-        </div>
-        <div className=" px-3 py-2 flex whitespace-nowrap items-center rounded-full gap-1 bg-white border border-gray-200 ">
-          <MenuSquare className="size-4" />
-          <p className="text-gray-800 text-sm font-medium">Developer</p>
-        </div>
-        <div className=" px-3 py-2 flex whitespace-nowrap items-center rounded-full gap-1 bg-white border border-gray-200 ">
-          <MenuSquare className="size-4" />
-          <p className="text-gray-800 text-sm font-medium">Developer</p>
-        </div>
-        <div className=" px-3 py-2 flex whitespace-nowrap items-center rounded-full gap-1 bg-white border border-gray-200 ">
-          <MenuSquare className="size-4" />
-          <p className="text-gray-800 text-sm font-medium">Developer</p>
-        </div>
-        <div className=" px-3 py-2 flex whitespace-nowrap items-center rounded-full gap-1 bg-white border border-gray-200 ">
-          <MenuSquare className="size-4" />
-          <p className="text-gray-800 text-sm font-medium">Developer</p>
-        </div>
+        {[
+          ...new Map(
+            jobList?.map((job: { _id: string; title: string }) => [
+              job.title,
+              job,
+            ]) // Create a Map with unique titles as keys
+          ).values(),
+        ]?.map((job: { _id: string; title: string }) => {
+          return (
+            <button
+              onClick={() => setselctedTitle(job?.title)}
+              key={job._id}
+              className="px-3 py-2 flex hover:bg-gray-50 whitespace-nowrap items-center rounded-full gap-1 bg-white border border-gray-200"
+            >
+              <MenuSquare className="size-4" />
+              <p className="text-gray-800 text-sm font-medium">{job.title}</p>
+            </button>
+          );
+        })}
       </div>
       <div className=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
-        {[1, 2, 3, 4, 5, 6].map((value: any) => (
-          <JobCard key={value} />
-        ))}
+        {jobList
+          ?.filter((job) => job.title === selctedTitle)
+          .map((value: { _id: string; title: string }, index: number) => (
+            <JobCard key={index} data={value} />
+          ))}
       </div>
     </div>
   );

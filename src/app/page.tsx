@@ -92,7 +92,7 @@ async function Home() {
         <AboutSection />
         <AboutSectionSecond />
         <AdvantageSection />
-        <FeaturesSection user={user} profileInfo={profileInfo} />
+        <FeaturesSection />
         <TestimonialsSection />
         <CommunitySection />
       </div>

@@ -8,8 +8,7 @@ import Feed from "../models/feed";
 import Application from "../models/application";
 import Razorpay from "razorpay";
 
-
-// to keep supbase server alive 
+// to keep supbase server alive
 async function keepSupabaseAlive() {
   await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/keepalive`);
 }
@@ -40,8 +39,13 @@ export async function postNewJobAction(formData, pathToRevalidate) {
 // recruiter
 export async function fetchJobsForRecruiterAction(id) {
   await connectToDB();
-  const result = await Job.find({ recruiterId: id });
-  return JSON.parse(JSON.stringify(result));
+  if (id) {
+    const result = await Job.find({ recruiterId: id });
+    return JSON.parse(JSON.stringify(result));
+  } else {
+    const result = await Job.find({});
+    return JSON.parse(JSON.stringify(result));
+  }
 }
 
 // candidate
@@ -241,14 +245,12 @@ export async function createPaymentAction(price) {
   }
 }
 
-
-//create post action 
+//create post action
 export async function createFeedPostAction(data, pathToRevalidate) {
   await connectToDB();
   await Feed.create(data);
   revalidatePath(pathToRevalidate);
 }
-
 
 //fetch all posts action
 export async function fetchAllFeedPostsAction() {
