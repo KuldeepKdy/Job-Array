@@ -102,9 +102,19 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
       {/* center side  */}
       <div className="flex w-full  flex-col  relative items-center  lg:max-w-[60%]">
         {/* Placing  */}
-        <div className="w-fit flex items-center justify-center py-1 px-3 gap-2 rounded-full bg-gray-100 border border-primary ">
-          <ThumbsUpIcon className="size-4 mb-0.5" />
-          <p className="text-sm font-medium">#1 Top greatest on Product Hunt</p>
+        <div
+          className={`
+        inline-flex items-center px-4 py-1.5 rounded-full cursor-pointer blue
+        bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-200
+        transition-all duration-300 ease-in-out
+       hover:shadow-md hover:transform hover:scale-105 shadow-sm
+        hover:ring-2 hover:ring-amber-200/50
+      `}
+        >
+          <ThumbsUpIcon className="w-4 h-4 mr-2 text-amber-500" />
+          <p className="text-sm font-medium text-amber-800">
+            #1 Top greatest on Product Hunt
+          </p>
         </div>
         {/* Headline  */}
         <h1 className="text-gray-900 font-[600] text-4xl leading-snug lg:text-6xl mt-6 lg:leading-[1.4]    text-center  ">
