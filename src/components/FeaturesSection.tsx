@@ -4,26 +4,59 @@ import JobCard from "./jobs-listing/JobCard";
 
 import { useState } from "react";
 
-interface JobData {
-  _id: string;
-  companyName: string;
-  title: string;
-  location: string;
-  type: string;
-  experience: string;
-  description: string;
-  skills: string;
-  recruiterId: string;
-  applicants: [
-    {
+interface featureInterface {
+  jobList: {
+    _id: string;
+    companyName: string;
+    title: string;
+    location: string;
+    type: string;
+    experience: string;
+    description: string;
+    skills: string;
+    recruiterId: string;
+    applicants: [
+      {
+        name: string;
+        email: string;
+        userId: string;
+        status: string;
+      }
+    ];
+  }[];
+  profileInfo: {
+    userId: string;
+    role: string;
+    email: string;
+    isPreminumUser: boolean;
+    memberShipType: string;
+    memberShipStartDate: string;
+    memberShipEndDate: string;
+    recruiterInfo: {
       name: string;
-      email: string;
-      userId: string;
-      status: string;
-    }
-  ];
+      companyName: string;
+      companyRole: string;
+    };
+    candidateInfo: {
+      name: string;
+      currentJobLocation: string;
+      preferedJobLocation: string;
+      currentSalary: string;
+      noticePeriod: string;
+      skills: string;
+      currentCompany: string;
+      previousCompanies: string;
+      totalExperience: string;
+      college: string;
+      collageLocation: string;
+      graduatedYear: string;
+      linkedinProfile: string;
+      githubProfile: string;
+      resume: string;
+    };
+  };
 }
-const FeaturesSection = ({ jobList }: { jobList: JobData[] }) => {
+const FeaturesSection = ({ jobList, profileInfo }: featureInterface) => {
   const [selctedTitle, setselctedTitle] = useState<string>(
     `${jobList[0]?.title}`
   );
@@ -77,8 +110,8 @@ const FeaturesSection = ({ jobList }: { jobList: JobData[] }) => {
           ?.filter((job) =>
             selctedTitle == "All" ? " " : job.title === selctedTitle
           )
-          .map((value: JobData) => (
-            <JobCard key={value._id} data={value} />
+          .map((value) => (
+            <JobCard key={value._id} data={value} role={profileInfo?.role} />
           ))}
       </div>
     </div>
