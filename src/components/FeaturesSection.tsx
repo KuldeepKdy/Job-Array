@@ -1,33 +1,33 @@
 "use client";
 import { FlagIcon, MenuSquare } from "lucide-react";
 import JobCard from "./jobs-listing/JobCard";
-import { fetchJobsForRecruiterAction } from "@/actions";
-import { useState } from "react";
 
-import { useEffect } from "react";
+import { useState } from "react";
 
 interface JobData {
   _id: string;
-  title: string;
   companyName: string;
-  description: string;
+  title: string;
   location: string;
   type: string;
+  experience: string;
+  description: string;
+  skills: string;
+  recruiterId: string;
+  applicants: [
+    {
+      name: string;
+      email: string;
+      userId: string;
+      status: string;
+    }
+  ];
 }
+const FeaturesSection = ({ jobList }: { jobList: JobData[] }) => {
+  const [selctedTitle, setselctedTitle] = useState<string>(
+    `${jobList[0]?.title}`
+  );
 
-const FeaturesSection = () => {
-  const [jobList, setJobList] = useState<JobData[]>([]);
-  const [selctedTitle, setselctedTitle] = useState<string>(``);
-
-  useEffect(() => {
-    const fetchJobs = async () => {
-      const jobs = await fetchJobsForRecruiterAction();
-      setJobList(jobs);
-      setselctedTitle(jobs[0]?.title);
-      console.log(jobs, "JobList");
-    };
-    fetchJobs();
-  }, []);
   return (
     <div className="flex flex-col w-full h-fit items-center justify-center bg-gray-50 rounded-xl px-4 py-6 md:py-10  md:px-10">
       <h2

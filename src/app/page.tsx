@@ -1,21 +1,21 @@
-import { fetchProfileAction } from "@/actions";
+import { fetchJobsForRecruiterAction, fetchProfileAction } from "@/actions";
 import AboutSection from "@/components/AboutSection";
 import AboutSectionSecond from "@/components/AboutSectionSecond";
 import AdvantageSection from "@/components/AdvantageSection";
 import CommunitySection from "@/components/CommunitySection";
 import FeaturesSection from "@/components/FeaturesSection";
 import HomeHero from "@/components/header/HomeHero";
-import HeroSection from "@/components/HeroSection";
-import HomePageButtons from "@/components/HomePageButtons";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import { Button } from "@/components/ui/button";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 async function Home() {
   const user = await currentUser();
   // console.log(user, "Current User");
-  const profileInfo = await fetchProfileAction(user?.id);
+  const [profileInfo, jobs] = await Promise.all([
+    fetchProfileAction(user?.id),
+    fetchJobsForRecruiterAction(),
+  ]);
 
   if (user && !profileInfo?._id) redirect("/onboard");
 
@@ -92,7 +92,7 @@ async function Home() {
         <AboutSection />
         <AboutSectionSecond />
         <AdvantageSection />
-        <FeaturesSection />
+        <FeaturesSection jobList={jobs} />
         <TestimonialsSection />
         <CommunitySection />
       </div>
