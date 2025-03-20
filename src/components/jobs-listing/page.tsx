@@ -146,7 +146,7 @@ const JobListing = ({
   return (
     <div>
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-baseline justify-between border-b dark:border-white pb-6 pt-24">
+        <div className="flex flex-wrap gap-6 items-center  justify-between border-b dark:border-white pb-6 pt-24">
           <h1 className="text-4xl font-bold dark:text-white tracking-tighter text-gray-900">
             {profileInfo?.role === "candidate"
               ? "Explore All Jobs"
