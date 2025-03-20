@@ -17,13 +17,18 @@ interface JobData {
 
 interface JobCardProps {
   data: JobData;
-  role: string;
+  role?: string;
+  footerContent?: React.ReactNode;
+  cardBg?: string;
 }
 
-const JobCard = ({ data, role }: JobCardProps) => {
-  const router = useRouter();
+const JobCard = ({ data, footerContent, cardBg }: JobCardProps) => {
   return (
-    <div className="p-4 flex flex-col gap-2 border border-gray-100 bg-white rounded-lg">
+    <div
+      className={` ${
+        cardBg ? cardBg : "bg-white"
+      } p-4 flex flex-col shadow-md  gap-2 border border-gray-100  rounded-lg `}
+    >
       <div className="w-full flex items-center justify-between">
         <div className="w-full flex flex-col">
           <h3 className="text-gray-900 font-semibold text-sm">{data?.title}</h3>
@@ -62,32 +67,7 @@ const JobCard = ({ data, role }: JobCardProps) => {
           {data?.type}
         </motion.div>
       </div>
-      <Button
-        onClick={() =>
-          role === "candidate"
-            ? router.push("/jobs")
-            : toast(
-                <div className="text-red-600">
-                  Login as candidate to see more details
-                </div>,
-                {
-                  description: (
-                    <p className="text-gray-600">
-                      You loged as a recruiter. Please login as candidate to see
-                      more details of the job posting.
-                    </p>
-                  ),
-                  action: {
-                    label: <span className="text-red-600">Try</span>,
-                    onClick: () => (window.location.href = "/jobs"),
-                  },
-                }
-              )
-        }
-        className="flex  mt-4 items-center w-full text-xs  justify-center px-5"
-      >
-        Apply now
-      </Button>
+      <>{footerContent}</>
     </div>
   );
 };

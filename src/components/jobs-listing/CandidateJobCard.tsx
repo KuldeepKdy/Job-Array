@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/drawer";
 import { createJobApplicationAction } from "@/actions";
 import { toast } from "sonner";
+import JobCard from "./JobCard";
 
 interface CandidateJobCardProps {
   jobItem: {
@@ -115,7 +116,7 @@ const CandidateJobCard = ({
         open={showJobDetailsDrawer}
         onOpenChange={setShowJobDetailsDrawer}
       >
-        <CommonCard
+        {/* <CommonCard
           icon={<JobIcon />}
           title={jobItem?.title}
           description={jobItem?.companyName}
@@ -123,6 +124,18 @@ const CandidateJobCard = ({
             <Button
               onClick={() => setShowJobDetailsDrawer(true)}
               className="flex h-11 items-center dark:bg-blue-600 dark:text-white justify-center px-5"
+            >
+              View Details
+            </Button>
+          }
+        /> */}
+        <JobCard
+          data={jobItem}
+          cardBg="bg-gray-50"
+          footerContent={
+            <Button
+              onClick={() => setShowJobDetailsDrawer(true)}
+              className="flex  mt-4 items-center w-full text-xs  justify-center px-5"
             >
               View Details
             </Button>

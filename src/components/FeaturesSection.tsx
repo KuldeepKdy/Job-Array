@@ -3,6 +3,9 @@ import { FlagIcon, MenuSquare } from "lucide-react";
 import JobCard from "./jobs-listing/JobCard";
 
 import { useState } from "react";
+import { Button } from "./ui/button";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface featureInterface {
   jobList: {
@@ -60,6 +63,7 @@ const FeaturesSection = ({ jobList, profileInfo }: featureInterface) => {
   const [selctedTitle, setselctedTitle] = useState<string>(
     `${jobList[0]?.title}`
   );
+  const router = useRouter();
 
   return (
     <div className="flex flex-col w-full h-fit items-center justify-center bg-gray-50 rounded-xl px-4 py-6 md:py-10  md:px-10">
@@ -111,7 +115,40 @@ const FeaturesSection = ({ jobList, profileInfo }: featureInterface) => {
             selctedTitle == "All" ? " " : job.title === selctedTitle
           )
           .map((value) => (
-            <JobCard key={value._id} data={value} role={profileInfo?.role} />
+            <JobCard
+              key={value._id}
+              data={value}
+              role={profileInfo?.role}
+              footerContent={
+                <Button
+                  onClick={() =>
+                    profileInfo?.role === "candidate"
+                      ? router.push("/jobs")
+                      : toast(
+                          <div className="text-red-600">
+                            Login as candidate to see more details
+                          </div>,
+                          {
+                            description: (
+                              <p className="text-gray-600">
+                                You loged as a recruiter. Please login as
+                                candidate to see more details of the job
+                                posting.
+                              </p>
+                            ),
+                            action: {
+                              label: <span className="text-red-600">Try</span>,
+                              onClick: () => (window.location.href = "/jobs"),
+                            },
+                          }
+                        )
+                  }
+                  className="flex  mt-4 items-center w-full text-xs  justify-center px-5"
+                >
+                  Apply now
+                </Button>
+              }
+            />
           ))}
       </div>
     </div>
