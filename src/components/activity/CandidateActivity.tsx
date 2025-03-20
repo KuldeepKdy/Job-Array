@@ -42,7 +42,7 @@ const CandidateActivity = ({ jobList, jobApplicants }: candidateActivity) => {
   return (
     <div className="mx-auto max-w-7xl">
       <Tabs defaultValue="Applied" className="w-full">
-        <div className="flex items-baseline justify-between border-b dark:border-white pb-6 pt-24">
+        <div className="flex items-center gap-6 flex-wrap justify-between border-b dark:border-white pb-6 pt-24">
           <h1 className="text-3xl dark:text-white font-bold tracking-tight text-gray-950">
             Your Activity
           </h1>
@@ -81,11 +81,11 @@ const CandidateActivity = ({ jobList, jobApplicants }: candidateActivity) => {
                         key={index}
                         className="group p-4 flex flex-col shadow-md bg-gray-100  hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:shadow-gray-600/10 transition-all duration-200 ease-linear gap-2 border border-gray-100  rounded-lg"
                       >
-                        <div className="flex justify-between">
+                        <div className="flex items-center justify-between">
                           <h3 className="text-xl font-bold text-gray-800">
                             {finalFilteredData.title}
                           </h3>
-                          <span className="bg-white group-hover:bg-gray-100 text-primary text-sm font-medium px-3 py-1 rounded-full">
+                          <span className="bg-white group-hover:bg-gray-100 h-fit flex items-center justify-center text-primary text-sm font-medium px-3 py-1  rounded-full">
                             {finalFilteredData.companyName}
                           </span>
                         </div>
