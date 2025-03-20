@@ -27,7 +27,7 @@ const JobCard = ({ data, footerContent, cardBg }: JobCardProps) => {
     <div
       className={` ${
         cardBg ? cardBg : "bg-white"
-      } p-4 flex flex-col shadow-md  gap-2 border border-gray-100  rounded-lg `}
+      } p-4 flex flex-col shadow-md  hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:shadow-gray-600/10 transition-all duration-200 ease-linear gap-2 border border-gray-100  rounded-lg `}
     >
       <div className="w-full flex items-center justify-between">
         <div className="w-full flex flex-col">

@@ -27,7 +27,7 @@ const ApplicantsCard = ({
     <div
       className={` ${
         cardBg ? cardBg : "bg-white"
-      } p-4 flex flex-col shadow-md  gap-2 border border-gray-100  rounded-lg `}
+      } p-4 flex flex-col shadow-md  gap-2 hover:bg-white hover:-translate-y-1  hover:shadow-lg hover:shadow-gray-600/10 transition-all duration-200 ease-linear border border-gray-100  rounded-lg `}
     >
       <div className="w-fit border bg-gray-100 border-gray-100 p-2 rounded-md ">
         {icon}

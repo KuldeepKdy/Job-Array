@@ -131,7 +131,7 @@ const CandidateJobCard = ({
         /> */}
         <JobCard
           data={jobItem}
-          cardBg="bg-gray-50"
+          cardBg="bg-gray-100"
           footerContent={
             <Button
               onClick={() => setShowJobDetailsDrawer(true)}

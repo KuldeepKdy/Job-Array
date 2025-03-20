@@ -65,7 +65,7 @@ const RecruiterJobCard = ({
       <ApplicantsCard
         icon={<FlagIcon />}
         data={jobItem}
-        cardBg="bg-gray-50"
+        cardBg="bg-gray-100"
         footerContent={
           <Button
             onClick={() => setShowApplicantsDrawer(true)}
