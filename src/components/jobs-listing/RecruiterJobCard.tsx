@@ -5,6 +5,8 @@ import CommonCard from "../CommonCard";
 import JobIcon from "../JobIcon";
 import { Button } from "../ui/button";
 import JobApplicants from "./JobApplicants";
+import ApplicantsCard from "./ApplicantsCard";
+import { FlagIcon, Users } from "lucide-react";
 
 interface RecruiterJobCardProps {
   jobItem: {
@@ -16,7 +18,6 @@ interface RecruiterJobCardProps {
     location: string;
     experience: string;
     skills: string;
-
     type: string;
   };
   profileInfo: {
@@ -61,7 +62,33 @@ const RecruiterJobCard = ({
   ] = useState(false);
   return (
     <div>
-      <CommonCard
+      <ApplicantsCard
+        icon={<FlagIcon />}
+        data={jobItem}
+        cardBg="bg-gray-50"
+        footerContent={
+          <Button
+            onClick={() => setShowApplicantsDrawer(true)}
+            className=" disabled:opacity-60 flex h-11 dark:bg-blue-600 dark:text-white items-center justify-center  mt-4  w-full text-xs   px-5"
+            disabled={
+              jobApplications.filter((item) => item.jobID === jobItem?._id)
+                .length === 0
+            }
+          >
+            <Users className="size-3 fill-white stroke-white" />
+            {
+              <p>
+                {
+                  jobApplications.filter((item) => item.jobID === jobItem?._id)
+                    .length
+                }
+              </p>
+            }
+            <p>Applicants</p>
+          </Button>
+        }
+      />
+      {/* <CommonCard
         icon={JobIcon}
         title={jobItem?.title}
         footerContent={
@@ -80,7 +107,7 @@ const RecruiterJobCard = ({
             Applicants
           </Button>
         }
-      />
+      /> */}
       <JobApplicants
         showApplicantsDrawer={showApplicantsDrawer}
         setShowApplicantsDrawer={setShowApplicantsDrawer}
