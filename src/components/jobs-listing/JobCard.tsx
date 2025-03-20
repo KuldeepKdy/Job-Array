@@ -36,7 +36,7 @@ const JobCard = ({ data, footerContent, cardBg }: JobCardProps) => {
             initial="offscreen"
             whileInView={"onscreen"}
             variants={titleVariants}
-            className=" flex gap-1 items-center mt-2  text-gray-300 text-xs "
+            className=" flex gap-1 items-center mt-2  text-gray-400 text-xs "
           >
             <CheckCircle className="size-3 fill-primary" />
             {data?.companyName}
@@ -52,7 +52,7 @@ const JobCard = ({ data, footerContent, cardBg }: JobCardProps) => {
           initial="offscreen"
           whileInView={"onscreen"}
           variants={titleVariants}
-          className=" flex gap-1 items-center  text-green-400 text-xs font-medium"
+          className=" flex gap-1 items-center  text-green-500 text-xs font-medium"
         >
           <Locate className="size-3 " />
           {data?.location}
@@ -61,7 +61,7 @@ const JobCard = ({ data, footerContent, cardBg }: JobCardProps) => {
           initial="offscreen"
           whileInView={"onscreen"}
           variants={titleVariants}
-          className=" flex gap-1 items-center  text-green-400 text-xs font-medium"
+          className=" flex gap-1 items-center  text-green-500 text-xs font-medium"
         >
           <BadgeIcon className="size-3 " />
           {data?.type}
