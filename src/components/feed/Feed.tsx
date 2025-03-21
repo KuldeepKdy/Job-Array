@@ -146,29 +146,29 @@ const Feed = ({ user, profileInfo, allFeedPost }: FeedPostProps) => {
             </Button>
           </div>
         </div>
-        <div className="py-12">
-          <div className="container m-auto p-0 flex flex-col gap-5 text-gray-700">
+        <div className="py-12 w-full flex flex-col">
+          <div className=" w-full flex flex-col gap-5 text-gray-700">
             {allFeedPost && allFeedPost.length > 0
               ? allFeedPost.map((feedPostItem, index) => (
                   <div
                     key={index}
-                    className="group relative -mx-4 p-6 rounded-3xl bg-gray-100 hover:bg-white hover:shadow-2xl cursor-pointer shadow-2xl shadow-transparent gap-8 flex "
+                    className="group relative  p-4 md:p-6 flex flex-col shadow-md  hover:-translate-y-1 bg-gray-100 hover:bg-white hover:shadow-lg hover:shadow-gray-600/10 transition-all duration-200 ease-linear gap-2 border border-gray-100  rounded-lg md:flex-row "
                   >
                     <div className="sm:w-2/6 rounded-3xl overflow-hidden transition-all duration-500 group-hover:rounded-xl">
                       <img
                         src={feedPostItem?.image}
                         alt="Post"
-                        className="h-80 w-full object-cover object-top transition duration-500 group-hover:scale-105 "
+                        className=" aspect-[16/9] object-cover object-top transition duration-500 group-hover:scale-105 "
                       />
                     </div>
                     <div className="sm:p-2 sm:pl-0 sm:w-4/6 ">
                       <span className="mt-4 mb-2 inline-block font-medium text-gray-500 sm:mt-0">
                         {feedPostItem?.userName}
                       </span>
-                      <h3 className="mb-6 text-4xl font-bold text-gray-900 ">
+                      <h3 className="mb-4 text-2xl md:text-3xl font-bold text-gray-900 ">
                         {feedPostItem?.message}
                       </h3>
-                      <div className="flex gap-5 ">
+                      <div className="flex gap-2 items-center ">
                         <Heart
                           size={25}
                           fill={
