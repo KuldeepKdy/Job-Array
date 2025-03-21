@@ -19,13 +19,13 @@ const AdvantageSection = () => {
           <FlagIcon className="size-3.5 stroke-primary" />
           Job Array advantages
         </motion.h2>
-        <h1 className="font-semibold text-gray-900 leading-snug text-2xl lg:text-4xl mt-4">
+        <h1 className="font-semibold dark:text-white text-gray-900 leading-snug text-2xl lg:text-4xl mt-4">
           We Empower Job Seekers Like You To Streamline And Supercharge Your{" "}
           <br /> Job Search.
         </h1>
       </div>
       <div className="flex flex-col lg:col-span-1 w-full h-fit justify-center items-center text-center lg:items-start lg:text-start ">
-        <p className="text-gray-600  text-sm leading-relaxed">
+        <p className="text-gray-600  text-sm dark:text-gray-50 leading-relaxed">
           Unlock your true potential and discover a world of opportunities that
           align with your skills, interests, and aspirations
         </p>

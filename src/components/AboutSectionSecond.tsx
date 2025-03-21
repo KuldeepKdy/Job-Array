@@ -31,7 +31,7 @@ const AboutSectionSecond = () => {
         </div>
         <div className="w-full flex items-center justify-end">
           <div className="flex flex-col w-[80%] gap-2">
-            <span className=" px-4 py-2 w-fit font-medium rounded-lg border leading-relaxed bg-primary text-white border-gray-200 text-xs ">
+            <span className=" px-4 py-2 w-fit font-medium rounded-lg border leading-relaxed bg-primary text-white dark:text-gray-600  border-gray-200 text-xs ">
               Hii Anjali, Thank you for offering me the position. I appreciate
               your willingeners to discuss the details of the position with me
               and give me to consider your offer.
@@ -83,10 +83,10 @@ const AboutSectionSecond = () => {
           <MessageSquare className="size-3.5 stroke-primary" />
           More about JobArray
         </motion.h3>
-        <h2 className="font-semibold lg:text-start text-gray-900 leading-snug  text-2xl lg:text-4xl mt-4">
+        <h2 className="font-semibold dark:text-white lg:text-start text-gray-900 leading-snug  text-2xl lg:text-4xl mt-4">
           The thing you care about job matter to jobstera
         </h2>
-        <p className="text-sm text-gray-600 lg:text-start mt-2 leading-relaxed">
+        <p className="text-sm text-gray-600 dark:text-gray-50 lg:text-start mt-2 leading-relaxed">
           Unlock your true potential and discover a world of apportunities that
           align with your skills, interests, and aspirations.
         </p>

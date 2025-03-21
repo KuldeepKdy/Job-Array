@@ -99,8 +99,8 @@ const FeaturesSection = ({ jobList, profileInfo }: featureInterface) => {
               key={job._id}
               className={` ${
                 selctedTitle == job?.title
-                  ? "text-white bg-primary"
-                  : "text-gray-800 hover:bg-primary hover:text-white"
+                  ? "text-white bg-primary dark:bg-primary-foreground"
+                  : "text-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary-foreground dark:hover:text-white"
               } px-3  py-2 flex hover:bg-primary  whitespace-nowrap items-center rounded-full gap-2 transition-all duration-200 ease-linear  border border-gray-200 `}
             >
               <MenuSquare className="size-4" />
@@ -143,7 +143,7 @@ const FeaturesSection = ({ jobList, profileInfo }: featureInterface) => {
                           }
                         )
                   }
-                  className="flex  mt-4 items-center w-full text-xs  justify-center px-5"
+                  className="flex  mt-4 dark:bg-primary-foreground dark:text-white items-center w-full text-xs  justify-center px-5"
                 >
                   Apply now
                 </Button>

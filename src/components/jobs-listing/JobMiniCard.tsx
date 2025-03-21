@@ -7,7 +7,7 @@ const JobMiniCard = () => {
   return (
     <div className=" bg-gray-50 border border-gray-200 shadow-md rounded-lg p-4 w-fit  flex flex-col gap-4">
       <div className="w-full flex items-center gap-2">
-        <Flag />
+        <Flag className="dark:stroke-primary-foreground" />
         <div>
           <h3 className="text-gray-900 font-medium text-sm">UI/UX Designer</h3>
           <motion.div

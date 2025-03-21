@@ -93,7 +93,7 @@ const Footer = () => {
               placeholder="Email Address"
               className="h-14"
             />
-            <Button className="absolute flex items-center justify-center text-white rounded-full h-10 px-4 text-sm top-2 right-2 ">
+            <Button className="absolute flex items-center justify-center text-white dark:text-primary-foreground rounded-full h-10 px-4 text-sm top-2 right-2 ">
               Subscribe
             </Button>
           </div>
@@ -112,11 +112,11 @@ const Footer = () => {
         className="py-10 border-t border-gray-200  w-full flex items-center "
       >
         <div className=" w-full text-gray-900 text-center lg:justify-between lg:flex">
-          <div className="pb-4 lg:pb-0">
+          <div className="pb-4 lg:pb-0 dark:text-white">
             <p>&copy; 2025 Job Array. All Rights Reserved</p>
           </div>
-          <div className=" flex gap-8">
-            <Link className=" hover:underline" href="/">
+          <div className=" flex gap-8 dark:text-white">
+            <Link className=" hover:underline " href="/">
               Privacy
             </Link>
             <Link className=" hover:underline" href="/">

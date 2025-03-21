@@ -52,9 +52,9 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
             />
           </div>
         </div>
-        <div className=" w-full relative bg-white -right-8 flex items-center justify-end">
+        <div className=" w-full relative -right-8 flex items-center justify-end">
           {profileInfo?.role ? (
-            <div className="rounded-3xl   shadow-lg w-[70%]  gap-2  flex flex-col  border border-gray-200 p-4">
+            <div className="rounded-3xl bg-white dark:bg-gray-50  shadow-lg w-[70%]  gap-2  flex flex-col  border border-gray-200 p-4">
               <h2 className="text-gray-900 text-sm font-medium">
                 Profile Completed
               </h2>
@@ -72,7 +72,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
               </p>
             </div>
           ) : (
-            <div className="rounded-3xl bg-white  shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4">
+            <div className="rounded-3xl bg-white dark:bg-gray-50   shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4">
               <h2 className="text-gray-900 text-sm font-medium">
                 Complete your profile
               </h2>
@@ -117,11 +117,11 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           </p>
         </div>
         {/* Headline  */}
-        <h1 className="text-gray-900 font-[600] text-4xl leading-snug lg:text-6xl mt-6 lg:leading-[1.4]    text-center  ">
+        <h1 className="text-gray-900 font-[600] dark:text-white text-4xl leading-snug lg:text-6xl mt-6 lg:leading-[1.4]    text-center  ">
           Supporting Job Seekers Every Step of the Way
         </h1>
         {/* Headline para  */}
-        <p className=" text-sm md:text-base text-gray-600 leading-relaxed text-center mt-4 max-w-[80%]">
+        <p className=" text-sm md:text-base dark:text-gray-50 text-gray-600 leading-relaxed text-center mt-4 max-w-[80%]">
           Unlock your true potential and discover a world of opportunities that
           align with your skills, interests, and aspirations
         </p>
@@ -156,8 +156,8 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         <div className="-left-20 w-full relative">
           {user ? (
             profileInfo?.role === "candidate" ? (
-              <div className="rounded-3xl bg-white   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
-                <div className="w-fit border border-gray-100 p-2 rounded-md ">
+              <div className="rounded-3xl bg-white dark:bg-gray-50   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+                <div className="w-fit border border-gray-100 dark:bg-primary-foreground p-2 rounded-md ">
                   <Flag />
                 </div>
                 <h2 className="text-gray-900 mt-2 text-sm font-medium">
@@ -182,8 +182,8 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                 </div>
               </div>
             ) : (
-              <div className="rounded-3xl bg-white  shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
-                <div className="w-fit border border-gray-100 p-2 rounded-md ">
+              <div className="rounded-3xl bg-white dark:bg-gray-50  shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+                <div className="w-fit border border-gray-100 dark:bg-primary-foreground p-2 rounded-md ">
                   <Flag />
                 </div>
                 <h2 className="text-gray-900 mt-2 text-sm font-medium">
@@ -209,8 +209,8 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
               </div>
             )
           ) : (
-            <div className="rounded-3xl   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
-              <div className="w-fit border border-gray-100 p-2 rounded-md ">
+            <div className="rounded-3xl   shadow-lg dark:bg-gray-50 w-fit flex flex-col border border-gray-200 p-4">
+              <div className="w-fit border dark:bg-primary-foreground border-gray-100 p-2 rounded-md ">
                 <Flag />
               </div>
               <h2 className="text-gray-900 mt-2 text-sm font-medium">
@@ -223,7 +223,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                 className=" flex gap-1 items-center mt-1  text-gray-400 text-xs "
               >
                 Pintrest
-                <CheckCircle className="size-3 fill-primary" />
+                <CheckCircle className="size-3 fill-primary " />
               </div>
               <div className="flex w-full gap-2 mt-3">
                 <div className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs">
