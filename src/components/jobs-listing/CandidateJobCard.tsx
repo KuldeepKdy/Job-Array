@@ -17,16 +17,22 @@ import JobCard from "./JobCard";
 
 interface CandidateJobCardProps {
   jobItem: {
-    _id: string;
-    recruiterId: string;
-    title: string;
     companyName: string;
-    description: string;
+    title: string;
     location: string;
-    experience: string;
-    skills: string;
-
     type: string;
+    experience: string;
+    description: string;
+    skills: string;
+    recruiterId: string;
+    applicants: [
+      {
+        name: string;
+        email: string;
+        userId: string;
+        status: string;
+      }
+    ];
   };
   profileInfo: {
     userId: string;

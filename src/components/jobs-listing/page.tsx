@@ -154,7 +154,7 @@ const JobListing = ({
           </h1>
           <div className="flex items-center ">
             {profileInfo?.role === "candidate" ? (
-              <Menubar>
+              <Menubar className="w-full h-fit md:p-4 ">
                 {filterMenus.map((filterMenu, index) => (
                   <MenubarMenu key={index}>
                     <MenubarTrigger>{filterMenu.name}</MenubarTrigger>
