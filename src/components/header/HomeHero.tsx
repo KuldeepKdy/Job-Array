@@ -59,7 +59,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                 Profile Completed
               </h2>
               <div className="h-4 w-full rounded-sm overflow-hidden mt-1 bg-gray-200">
-                <div className="bg-primary h-full w-[100%]"></div>
+                <div className="bg-primary h-full dark:bg-primary-foreground w-[100%]"></div>
               </div>
               <div className="w-full flex items-center justify-between">
                 <p className="text-xs text-green-500">10 of 10 data</p>

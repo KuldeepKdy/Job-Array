@@ -149,7 +149,7 @@ const CandidateJobCard = ({
           footerContent={
             <Button
               onClick={() => setShowJobDetailsDrawer(true)}
-              className="flex  mt-4 items-center w-full text-xs  justify-center px-5"
+              className="flex  mt-4 items-center w-full text-xs dark:bg-primary-foreground dark:text-white  justify-center px-5"
             >
               View Details
             </Button>
@@ -188,7 +188,7 @@ const CandidateJobCard = ({
               </div>
             </div> */}
             <div className="relative w-full  border-b pb-4">
-              <h2 className=" text-2xl text-start w-full font-bold text-gray-900">
+              <h2 className=" text-2xl text-start w-full dark:text-white font-bold text-gray-900">
                 {jobItem?.title}
               </h2>
             </div>
@@ -204,30 +204,43 @@ const CandidateJobCard = ({
             {/* Info Pills */}
             <div className="flex flex-wrap gap-3 mb-6">
               <div className="flex items-center bg-gray-100 px-3 py-1.5 rounded-lg">
-                <MapPin size={16} className="text-gray-500 mr-1.5" />
-                <span className="text-sm font-medium">{jobItem?.location}</span>
+                <MapPin
+                  size={16}
+                  className="text-gray-500 dark:text-primary-foreground mr-1.5"
+                />
+                <span className="text-sm font-medium dark:text-primary-foreground">
+                  {jobItem?.location}
+                </span>
               </div>
               <div className="flex items-center bg-gray-100 px-3 py-1.5 rounded-lg">
-                <Briefcase size={16} className="text-gray-500 mr-1.5" />
-                <span className="text-sm font-medium">{jobItem?.type}</span>
+                <Briefcase
+                  size={16}
+                  className="text-gray-500 dark:text-primary-foreground mr-1.5"
+                />
+                <span className="text-sm font-medium dark:text-primary-foreground">
+                  {jobItem?.type}
+                </span>
               </div>
               <div className="flex items-center bg-gray-100 px-3 py-1.5 rounded-lg">
-                <Clock size={16} className="text-gray-500 mr-1.5" />
-                <span className="text-sm font-medium">
+                <Clock
+                  size={16}
+                  className="text-gray-500 dark:text-primary-foreground mr-1.5"
+                />
+                <span className="text-sm font-medium dark:text-primary-foreground">
                   {jobItem?.experience}
                 </span>
               </div>
             </div>
             {/* Required Skills */}
             <div className="mb-6">
-              <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3">
+              <h3 className="text-sm font-semibold dark:text-gray-50 text-gray-500 uppercase mb-3">
                 Required Skills
               </h3>
               <div className="flex flex-wrap gap-2">
                 {jobItem?.skills?.split(",").map((skill, index) => (
                   <span
                     key={index}
-                    className={`px-3 py-1.5 rounded-full text-sm font-medium 
+                    className={`px-3 py-1.5  rounded-full text-sm font-medium 
                   ${
                     index === 0 || index === 1 || index === 2
                       ? "bg-blue-100 text-blue-800"
@@ -241,7 +254,9 @@ const CandidateJobCard = ({
             </div>
             {/* Job Description Preview */}
             <div className="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-100">
-              <h3 className="text-sm font-semibold mb-2">Job Overview</h3>
+              <h3 className="text-sm font-semibold mb-2 dark:text-primary-foreground">
+                Job Overview
+              </h3>
               <p className="text-gray-600 text-sm">{jobItem?.description}</p>
             </div>
           </div>
