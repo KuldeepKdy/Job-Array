@@ -157,7 +157,9 @@ const JobListing = ({
               <Menubar className="w-full h-fit md:p-4 ">
                 {filterMenus.map((filterMenu, index) => (
                   <MenubarMenu key={index}>
-                    <MenubarTrigger>{filterMenu.name}</MenubarTrigger>
+                    <MenubarTrigger className="cursor-pointer">
+                      {filterMenu.name}
+                    </MenubarTrigger>
                     <MenubarContent>
                       {filterMenu.options.map(
                         (option: string, optionIndex: number) => (
