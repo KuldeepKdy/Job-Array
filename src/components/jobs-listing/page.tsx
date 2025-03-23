@@ -53,14 +53,14 @@ interface JobListingProps {
     ];
   }[]; // Replace with the appropriate type for jobList
   jobApplications: {
-    JobAppliedDate: string;
-    candidateUserID: string;
-    email: string;
-    jobID: string;
-    name: string;
-    recruiterUserID: string;
-    status: [];
     _id: string;
+    recruiterUserID: string;
+    name: string;
+    email: string;
+    candidateUserID: string;
+    status: [];
+    jobID: string;
+    JobAppliedDate: string;
   }[];
   filterCategories: {
     applicants: string[];

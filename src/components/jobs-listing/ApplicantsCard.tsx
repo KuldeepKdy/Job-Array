@@ -27,9 +27,9 @@ const ApplicantsCard = ({
     <div
       className={` ${
         cardBg ? cardBg : "bg-white"
-      } p-4 flex flex-col shadow-md  gap-2 hover:bg-white hover:-translate-y-1  hover:shadow-lg hover:shadow-gray-600/10 transition-all duration-200 ease-linear border border-gray-100  rounded-lg `}
+      } group p-4 flex flex-col shadow-md  gap-2 hover:bg-white hover:-translate-y-1  hover:shadow-lg hover:shadow-gray-600/10 transition-all duration-200 ease-linear border border-gray-100  rounded-lg `}
     >
-      <div className="w-fit border bg-gray-100 border-gray-100 p-2 rounded-md ">
+      <div className="w-fit border bg-white group-hover:bg-gray-100  p-2 rounded-md ">
         {icon}
       </div>
       <h2 className="text-gray-900 mt-2 text-sm font-medium">{data?.title}</h2>
@@ -37,7 +37,7 @@ const ApplicantsCard = ({
         {data?.skills?.split(",").map((skill, index) => (
           <div
             key={index}
-            className="bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs"
+            className=" bg-white group-hover:bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs"
           >
             {skill}
           </div>

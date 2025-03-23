@@ -7,6 +7,7 @@ import {
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogFooter } from "../ui/dialog";
 import { createClient } from "@supabase/supabase-js";
+import { Calendar, User } from "lucide-react";
 
 interface CandidateListProps {
   currentCandidateDetails: any;
@@ -91,31 +92,89 @@ const CandidateList: React.FC<CandidateListProps> = ({
   }
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 p-10 md:grid-cols-2 lg:grid-cols-3">
-        {jobApplications && jobApplications.length > 0
-          ? jobApplications.map((jobApplicationtItem) => (
-              <div
-                key={jobApplicationtItem._id}
-                className="bg-white p-4 w-full max-w-sm overflow-hidden mx-auto mt-4 rounded-md shadow-md cursor-pointer"
-              >
-                <div className="px-4 my-6 flex justify-between items-center">
-                  <h3 className="text-lg font-bold text-gray-900">
-                    {jobApplicationtItem?.name}
-                  </h3>
-                  <Button
-                    onClick={() =>
-                      handleFetchCandidateDetails(
-                        jobApplicationtItem?.candidateUserID
-                      )
-                    }
-                    className="flex h-11 items-center dark:bg-blue-500 justify-center px-5"
-                  >
-                    View Profile
-                  </Button>
+      <div className="w-full flex flex-col pt-4 px-6">
+        <div className="relative w-full  border-b pb-4">
+          <h2 className=" text-2xl text-start w-full dark:text-white font-bold text-gray-900">
+            Applicant Details
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 gap-3 px-6 py-6 md:grid-cols-2 lg:grid-cols-3">
+          {jobApplications && jobApplications.length > 0
+            ? jobApplications.map((jobApplicationtItem) => (
+                <div
+                  key={jobApplicationtItem._id}
+                  className="border rounded-xl"
+                >
+                  {/* Content */}
+                  <div className="px-6 py-4">
+                    <div className="flex flex-col space-y-4">
+                      <div className="flex items-center">
+                        <div className="bg-blue-100 rounded-full p-3 mr-4">
+                          <User className="" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-gray-900">
+                            {jobApplicationtItem?.name}
+                          </h4>
+                          <p className="text-sm text-gray-500">
+                            {jobApplicationtItem?.email}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center">
+                        <div className="bg-green-100 rounded-full p-3 mr-4">
+                          <Calendar />
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-gray-900">
+                            Applied Date
+                          </h4>
+                          <p className="text-sm text-gray-500">
+                            {jobApplicationtItem?.JobAppliedDate}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Footer with action buttons */}
+                  <div className="bg-gray-50 px-6 py-4 flex justify-end border-t">
+                    <button
+                      onClick={() =>
+                        handleFetchCandidateDetails(
+                          jobApplicationtItem?.candidateUserID
+                        )
+                      }
+                      className="bg-primary dark:bg-primary-foreground text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out"
+                    >
+                      View Profile
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))
-          : ""}
+                // <div
+                //   key={jobApplicationtItem._id}
+                //   className="bg-white p-4 w-full max-w-sm overflow-hidden mx-auto mt-4 rounded-md shadow-md cursor-pointer"
+                // >
+                //   <div className="px-4 my-6 flex justify-between items-center">
+                //     <h3 className="text-lg font-bold text-gray-900">
+                //       {jobApplicationtItem?.name}
+                //     </h3>
+                //     <Button
+                //       onClick={() =>
+                //         handleFetchCandidateDetails(
+                //           jobApplicationtItem?.candidateUserID
+                //         )
+                //       }
+                //       className="flex h-11 items-center dark:bg-blue-500 justify-center px-5"
+                //     >
+                //       View Profile
+                //     </Button>
+                //   </div>
+                // </div>
+              ))
+            : ""}
+        </div>
       </div>
       <Dialog
         open={showCurrentCandidateDetailsModel}
