@@ -33,7 +33,7 @@ const TestimonialsSection = () => {
           More stories
         </Button>
       </div>
-      <div className="w-full grid grid-cols-1  md:grid-cols-2 gap-6">
+      <div className="w-full grid grid-cols-1 relative  md:grid-cols-2 gap-6">
         {[0, 1, 2, 3].map((value) => (
           <TestimonialCard key={value} />
         ))}

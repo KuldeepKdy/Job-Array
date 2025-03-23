@@ -2,7 +2,7 @@ import { Share, Star } from "lucide-react";
 
 const TestimonialCard = () => {
   return (
-    <div className="p-4 rounded-lg bg-white border border-gray-200 flex flex-col">
+    <div className="p-4 rounded-lg bg-white border sticky top-20 border-gray-200 flex flex-col">
       <div className="w-full h-fit flex items-center justify-between">
         <div className="px-2 py-1 text-gray-400 rounded-full border border-gray-200 text-xs">
           User Testimonial
