@@ -25,24 +25,26 @@ const JobCard = ({ data, footerContent, cardBg }: JobCardProps) => {
     >
       <div className="w-full flex items-center justify-between">
         <div className="w-full flex flex-col">
-          <h3 className="text-gray-900 font-semibold text-sm">{data?.title}</h3>
-          <div className=" flex gap-1 items-center mt-2  text-gray-400 text-xs ">
-            <CheckCircle className="size-3 fill-primary" />
+          <h3 className="text-gray-900 mt-2 text-sm md:text-base lg:text-xl font-medium md:font-semibold lg:font-bold">
+            {data?.title}
+          </h3>
+          <div className=" flex gap-1 items-center mt-2  text-gray-400 text-xs md:text-sm dark:text-gray-600 ">
+            <CheckCircle className="size-3 md:size-4 fill-primary" />
             {data?.companyName}
           </div>
         </div>
         <div></div>
       </div>
-      <p className="line-clamp-2 text-gray-600 text-xs my-2">
+      <p className="line-clamp-2 text-gray-600 md:text-sm text-xs my-2">
         {data?.description}
       </p>
       <div className=" w-full flex items-center justify-between">
-        <div className=" flex gap-1 items-center  text-green-500 text-xs font-medium">
-          <Locate className="size-3 " />
+        <div className=" flex gap-1 items-center  text-green-500 md:text-sm text-xs font-medium">
+          <Locate className="size-3 md:size-4 " />
           {data?.location}
         </div>
-        <div className=" flex gap-1 items-center  text-green-500 text-xs font-medium">
-          <BadgeIcon className="size-3 " />
+        <div className=" flex gap-1 items-center  text-green-500 text-xs md:text-sm font-medium">
+          <BadgeIcon className="size-3 md:size-4 " />
           {data?.type}
         </div>
       </div>

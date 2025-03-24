@@ -149,7 +149,7 @@ const CandidateJobCard = ({
           footerContent={
             <Button
               onClick={() => setShowJobDetailsDrawer(true)}
-              className="flex  mt-4 items-center w-full text-xs dark:bg-primary-foreground dark:text-white  justify-center px-5"
+              className="flex  mt-4 h-11 items-center w-full text-xs md:text-sm dark:bg-primary-foreground dark:text-white  justify-center px-5"
             >
               View Details
             </Button>

@@ -85,7 +85,7 @@ const CandidateActivity = ({ jobList, jobApplicants }: candidateActivity) => {
                           <h3 className="text-xl font-bold text-gray-800">
                             {finalFilteredData.title}
                           </h3>
-                          <span className="bg-white group-hover:bg-gray-100 h-fit flex items-center justify-center text-primary text-sm font-medium px-3 py-1  rounded-full">
+                          <span className="bg-white dark:text-primary-foreground group-hover:bg-gray-100 h-fit flex items-center justify-center text-primary text-sm font-medium px-3 py-1  rounded-full">
                             {finalFilteredData.companyName}
                           </span>
                         </div>
@@ -115,7 +115,7 @@ const CandidateActivity = ({ jobList, jobApplicants }: candidateActivity) => {
                             .map((skill, index) => (
                               <span
                                 key={index}
-                                className="bg-white group-hover:bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded"
+                                className="bg-white group-hover:bg-gray-100 font-medium text-gray-600 py-1 px-2 md:px-3 md:py-1.5  rounded-md text-xs md:text-sm"
                               >
                                 {skill}
                               </span>
