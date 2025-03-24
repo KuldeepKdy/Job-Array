@@ -183,9 +183,123 @@ const CandidateList: React.FC<CandidateListProps> = ({
           setShowCurrentCandidateDetailsModel(false);
         }}
       >
-        <DialogContent>
-          <div>
-            <h1 className="text-xl font-bold dark:text-white text-black">
+        <DialogContent className="w-full h-full overflow-y-scroll overflow-x-hidden">
+          <div className="w-full flex flex-col">
+            {/* Header */}
+            <div className="relative w-full pb-6 border-b">
+              {/* <button
+                onClick={onClose}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors"
+                aria-label="Close"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button> */}
+
+              <div className="flex flex-col">
+                <h2 className="text-2xl font-bold text-gray-900">
+                  {currentCandidateDetails?.candidateInfo?.name}
+                </h2>
+                <p className="text-blue-600">
+                  {currentCandidateDetails?.email}
+                </p>
+                <p className="text-gray-700 text-sm mt-1 text-wrap">
+                  {currentCandidateDetails?.candidateInfo?.currentCompany}
+                </p>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className=" w-full flex  pt-4 flex-col overflow-y-scroll h-fit">
+              <div className="grid grid-cols-2  gap-4 mb-6">
+                <div className="bg-gray-50 py-2 px-4 rounded-lg">
+                  <p className="text-gray-500 text-sm">Location</p>
+                  <p className="font-medium">
+                    {currentCandidateDetails?.candidateInfo?.currentJobLocation}
+                  </p>
+                </div>
+                <div className="bg-gray-50 py-2 px-4 rounded-lg">
+                  <p className="text-gray-500 text-sm">Experience</p>
+                  <p className="font-medium">
+                    {currentCandidateDetails?.candidateInfo?.totalExperience}
+                  </p>
+                </div>
+                <div className="bg-gray-50 py-2 px-4 rounded-lg">
+                  <p className="text-gray-500 text-sm">Salary Expected</p>
+                  <p className="font-medium">
+                    {currentCandidateDetails?.candidateInfo?.currentSalary}
+                  </p>
+                </div>
+                <div className="bg-gray-50 py-2 px-4 rounded-lg">
+                  <p className="text-gray-500 text-sm">Notice Period</p>
+                  <p className="font-medium">
+                    {currentCandidateDetails?.candidateInfo?.noticePeriod}
+                  </p>
+                </div>
+              </div>
+
+              {/* Previous Companies */}
+              <div className="mb-4">
+                <p className="text-gray-500 text-sm mb-2">Previous Companies</p>
+                <div className="flex flex-wrap gap-2">
+                  {currentCandidateDetails?.candidateInfo?.previousCompanies
+                    ?.split(",")
+                    .map((company: string, index: number) => (
+                      <span
+                        key={index}
+                        className="bg-gray-900 text-white px-3 py-1 rounded-md text-sm"
+                      >
+                        {company}
+                      </span>
+                    ))}
+                </div>
+              </div>
+
+              {/* Skills */}
+              <div className="mb-4">
+                <p className="text-gray-500 text-sm mb-2">Skills</p>
+                <div className="flex flex-wrap gap-2">
+                  {currentCandidateDetails?.candidateInfo?.skills
+                    ?.split(",")
+                    .map((skill: string, index: number) => (
+                      <span
+                        key={index}
+                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-md text-sm"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                </div>
+              </div>
+
+              {/* Applied Date */}
+              <div className="mt-4">
+                <p className="text-gray-500 text-sm mb-1">Applied Date</p>
+                <div className="flex items-center gap-1">
+                  <Calendar className="size-4" />
+                  {jobApplications && jobApplications.length > 0
+                    ? jobApplications.map((jobApplicationtItem) => (
+                        <span key={jobApplicationtItem?._id}>
+                          {jobApplicationtItem?.JobAppliedDate}
+                        </span>
+                      ))
+                    : ""}
+                </div>
+              </div>
+            </div>
+
+            {/* <h1 className="text-xl font-bold dark:text-white text-black">
               {currentCandidateDetails?.candidateInfo?.name},{" "}
               {currentCandidateDetails?.email}
             </h1>
@@ -230,10 +344,77 @@ const CandidateList: React.FC<CandidateListProps> = ({
                     {skill}
                   </span>
                 ))}
-            </div>
+            </div> */}
           </div>
           <DialogFooter>
-            <div className="flex gap-3 mt-2">
+            {/* Action Buttons */}
+            <div className=" py-4 flex gap-3 justify-end bg-gray-50 border-t w-full">
+              <button
+                onClick={handlePreviewResume}
+                className="bg-primary text-white text-sm sm:text-base dark:bg-primary-foreground font-medium px-4 py-2 rounded-md transition-colors"
+              >
+                Resume
+              </button>
+              <button
+                onClick={() => handleUpadateJobStatus("selected")}
+                disabled={
+                  jobApplications
+                    .find(
+                      (item) =>
+                        item.candidateUserID === currentCandidateDetails?.userId
+                    )
+                    ?.status.includes("selected") ||
+                  jobApplications
+                    .find(
+                      (item) =>
+                        item.candidateUserID === currentCandidateDetails?.userId
+                    )
+                    ?.status.includes("rejected")
+                    ? true
+                    : false
+                }
+                className="bg-primary dark:bg-primary-foreground  text-sm sm:text-base disabled:opacity-60 text-white hover:bg-gray-700 font-medium px-6 py-2 rounded-md transition-colors"
+              >
+                {jobApplications
+                  .find(
+                    (item) =>
+                      item.candidateUserID === currentCandidateDetails?.userId
+                  )
+                  ?.status.includes("selected")
+                  ? "Selected"
+                  : "Select"}
+              </button>
+              <button
+                onClick={() => handleUpadateJobStatus("rejected")}
+                disabled={
+                  jobApplications
+                    .find(
+                      (item) =>
+                        item.candidateUserID === currentCandidateDetails?.userId
+                    )
+                    ?.status.includes("rejected") ||
+                  jobApplications
+                    .find(
+                      (item) =>
+                        item.candidateUserID === currentCandidateDetails?.userId
+                    )
+                    ?.status.includes("selected")
+                    ? true
+                    : false
+                }
+                className="bg-white text-sm sm:text-base disabled:opacity-60 text-gray-700 border border-gray-300 hover:bg-gray-50 font-medium px-4 py-2 rounded-md transition-colors"
+              >
+                {jobApplications
+                  .find(
+                    (item) =>
+                      item.candidateUserID === currentCandidateDetails?.userId
+                  )
+                  ?.status.includes("rejected")
+                  ? "Rejected"
+                  : "Reject"}
+              </button>
+            </div>
+            {/* <div className="flex gap-3 mt-2">
               <Button
                 onClick={handlePreviewResume}
                 className="flex h-11 items-center justify-center dark:bg-blue-500 dark:text-white px-5"
@@ -298,7 +479,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
                   ? "Rejected"
                   : "Reject"}
               </Button>
-            </div>
+            </div> */}
           </DialogFooter>
         </DialogContent>
       </Dialog>
