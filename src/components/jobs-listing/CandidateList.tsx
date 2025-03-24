@@ -109,28 +109,28 @@ const CandidateList: React.FC<CandidateListProps> = ({
                   <div className="px-6 py-4">
                     <div className="flex flex-col space-y-4">
                       <div className="flex items-center">
-                        <div className="bg-blue-100 rounded-full p-3 mr-4">
-                          <User className="" />
+                        <div className="bg-blue-100 dark:bg-gray-50 rounded-full p-3 mr-4">
+                          <User className="dark:text-primary-foreground" />
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">
+                          <h4 className="font-medium dark:text-white text-gray-900">
                             {jobApplicationtItem?.name}
                           </h4>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
                             {jobApplicationtItem?.email}
                           </p>
                         </div>
                       </div>
 
                       <div className="flex items-center">
-                        <div className="bg-green-100 rounded-full p-3 mr-4">
-                          <Calendar />
+                        <div className="bg-green-100 dark:bg-gray-50 rounded-full p-3 mr-4">
+                          <Calendar className="dark:text-primary-foreground" />
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">
+                          <h4 className="font-medium dark:text-white text-gray-900">
                             Applied Date
                           </h4>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
                             {jobApplicationtItem?.JobAppliedDate}
                           </p>
                         </div>
@@ -139,7 +139,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
                   </div>
 
                   {/* Footer with action buttons */}
-                  <div className="bg-gray-50 px-6 py-4 flex justify-end border-t">
+                  <div className="bg-gray-50 rounded-t-lg px-6 py-4 flex justify-end border-t">
                     <button
                       onClick={() =>
                         handleFetchCandidateDetails(
@@ -183,7 +183,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
           setShowCurrentCandidateDetailsModel(false);
         }}
       >
-        <DialogContent className="w-full h-full overflow-y-scroll overflow-x-hidden">
+        <DialogContent className="w-full h-fit no-scrollbar overflow-y-scroll overflow-x-hidden">
           <div className="w-full flex flex-col">
             {/* Header */}
             <div className="relative w-full pb-6 border-b">
@@ -208,41 +208,49 @@ const CandidateList: React.FC<CandidateListProps> = ({
               </button> */}
 
               <div className="flex flex-col">
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2 className="text-2xl dark:text-white font-bold text-gray-900">
                   {currentCandidateDetails?.candidateInfo?.name}
                 </h2>
                 <p className="text-blue-600">
                   {currentCandidateDetails?.email}
                 </p>
-                <p className="text-gray-700 text-sm mt-1 text-wrap">
+                <p className="text-gray-700 dark:text-gray-50 text-sm mt-1 text-wrap">
                   {currentCandidateDetails?.candidateInfo?.currentCompany}
                 </p>
               </div>
             </div>
 
             {/* Main Content */}
-            <div className=" w-full flex  pt-4 flex-col overflow-y-scroll h-fit">
+            <div className=" w-full flex  pt-4 flex-col overflow-y-scroll no-scrollbar h-fit">
               <div className="grid grid-cols-2  gap-4 mb-6">
                 <div className="bg-gray-50 py-2 px-4 rounded-lg">
-                  <p className="text-gray-500 text-sm">Location</p>
+                  <p className="text-gray-500 dark:text-gray-800 text-sm">
+                    Location
+                  </p>
                   <p className="font-medium">
                     {currentCandidateDetails?.candidateInfo?.currentJobLocation}
                   </p>
                 </div>
                 <div className="bg-gray-50 py-2 px-4 rounded-lg">
-                  <p className="text-gray-500 text-sm">Experience</p>
+                  <p className="text-gray-500 dark:text-gray-800 text-sm">
+                    Experience
+                  </p>
                   <p className="font-medium">
                     {currentCandidateDetails?.candidateInfo?.totalExperience}
                   </p>
                 </div>
                 <div className="bg-gray-50 py-2 px-4 rounded-lg">
-                  <p className="text-gray-500 text-sm">Salary Expected</p>
+                  <p className="text-gray-500 dark:text-gray-800 text-sm">
+                    Salary Expected
+                  </p>
                   <p className="font-medium">
                     {currentCandidateDetails?.candidateInfo?.currentSalary}
                   </p>
                 </div>
                 <div className="bg-gray-50 py-2 px-4 rounded-lg">
-                  <p className="text-gray-500 text-sm">Notice Period</p>
+                  <p className="text-gray-500 dark:text-gray-800 text-sm">
+                    Notice Period
+                  </p>
                   <p className="font-medium">
                     {currentCandidateDetails?.candidateInfo?.noticePeriod}
                   </p>
@@ -251,7 +259,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
 
               {/* Previous Companies */}
               <div className="mb-4">
-                <p className="text-gray-500 text-sm mb-2">Previous Companies</p>
+                <p className="text-gray-500 dark:text-gray-50 text-sm mb-2">Previous Companies</p>
                 <div className="flex flex-wrap gap-2">
                   {currentCandidateDetails?.candidateInfo?.previousCompanies
                     ?.split(",")
@@ -268,7 +276,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
 
               {/* Skills */}
               <div className="mb-4">
-                <p className="text-gray-500 text-sm mb-2">Skills</p>
+                <p className="text-gray-500 dark:text-gray-50 text-sm mb-2">Skills</p>
                 <div className="flex flex-wrap gap-2">
                   {currentCandidateDetails?.candidateInfo?.skills
                     ?.split(",")
@@ -285,7 +293,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
 
               {/* Applied Date */}
               <div className="mt-4">
-                <p className="text-gray-500 text-sm mb-1">Applied Date</p>
+                <p className="text-gray-500 dark:text-gray-50 text-sm mb-1">Applied Date</p>
                 <div className="flex items-center gap-1">
                   <Calendar className="size-4" />
                   {jobApplications && jobApplications.length > 0
@@ -348,10 +356,10 @@ const CandidateList: React.FC<CandidateListProps> = ({
           </div>
           <DialogFooter>
             {/* Action Buttons */}
-            <div className=" py-4 flex gap-3 justify-end bg-gray-50 border-t w-full">
+            <div className=" py-4 flex gap-3 justify-end bg-gray-50 pr-4 rounded-lg border-t w-full">
               <button
                 onClick={handlePreviewResume}
-                className="bg-primary text-white text-sm sm:text-base dark:bg-primary-foreground font-medium px-4 py-2 rounded-md transition-colors"
+                className="bg-primary max-h-12 text-white text-sm sm:text-base dark:bg-primary-foreground font-medium px-4 py-2 rounded-md transition-colors"
               >
                 Resume
               </button>
@@ -373,7 +381,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
                     ? true
                     : false
                 }
-                className="bg-primary dark:bg-primary-foreground  text-sm sm:text-base disabled:opacity-60 text-white hover:bg-gray-700 font-medium px-6 py-2 rounded-md transition-colors"
+                className="bg-primary max-h-12 dark:bg-primary-foreground  text-sm sm:text-base disabled:opacity-60 text-white hover:bg-gray-700 font-medium px-6 py-2 rounded-md transition-colors"
               >
                 {jobApplications
                   .find(
@@ -402,7 +410,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
                     ? true
                     : false
                 }
-                className="bg-white text-sm sm:text-base disabled:opacity-60 text-gray-700 border border-gray-300 hover:bg-gray-50 font-medium px-4 py-2 rounded-md transition-colors"
+                className="bg-white max-h-12 text-sm sm:text-base disabled:opacity-60 text-gray-700 border border-gray-300 hover:bg-gray-50 font-medium px-4 py-2 rounded-md transition-colors"
               >
                 {jobApplications
                   .find(

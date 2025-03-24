@@ -63,13 +63,13 @@ const RecruiterJobCard = ({
   return (
     <div>
       <ApplicantsCard
-        icon={<FlagIcon />}
+        icon={<FlagIcon className="dark:text-primary-foreground" />}
         data={jobItem}
         cardBg="bg-gray-100"
         footerContent={
           <Button
             onClick={() => setShowApplicantsDrawer(true)}
-            className=" disabled:opacity-60 flex h-11 dark:bg-blue-600 dark:text-white items-center justify-center  mt-4  w-full text-xs   px-5"
+            className=" disabled:opacity-60 flex h-11 dark:bg-primary-foreground dark:text-white items-center justify-center  mt-4  w-full text-xs   px-5"
             disabled={
               jobApplications.filter((item) => item.jobID === jobItem?._id)
                 .length === 0

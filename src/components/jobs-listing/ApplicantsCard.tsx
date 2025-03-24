@@ -32,12 +32,12 @@ const ApplicantsCard = ({
       <div className="w-fit border bg-white group-hover:bg-gray-100  p-2 rounded-md ">
         {icon}
       </div>
-      <h2 className="text-gray-900 mt-2 text-sm font-medium">{data?.title}</h2>
+      <h2 className="text-gray-900 mt-2 text-sm md:text-base lg:text-xl font-medium md:font-semibold lg:font-bold">{data?.title}</h2>
       <div className="flex w-full gap-2 mt-2">
         {data?.skills?.split(",").map((skill, index) => (
           <div
             key={index}
-            className=" bg-white group-hover:bg-gray-100 text-gray-600 py-1 px-2  rounded-md text-xs"
+            className=" bg-white group-hover:bg-gray-100 font-medium text-gray-600 py-1 px-2 md:px-3 md:py-1.5  rounded-md text-xs md:text-sm"
           >
             {skill}
           </div>
