@@ -2,6 +2,7 @@
 import { desVariants, tagVariants, titleVariants } from "@/utils/animations";
 import { motion } from "framer-motion";
 import { FlagIcon } from "lucide-react";
+import AnimatedComponent from "./ui/AnimatedComponent";
 
 const AboutSection = () => {
   return (
@@ -70,7 +71,7 @@ const AboutSection = () => {
             />
           </div>
         </div>
-        <motion.div
+        <AnimatedComponent
           initial="offscreen"
           whileInView={"onscreen"}
           variants={titleVariants}
@@ -108,7 +109,7 @@ const AboutSection = () => {
               Available country
             </p>
           </div>
-        </motion.div>
+        </AnimatedComponent>
       </div>
     </div>
   );
