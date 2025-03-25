@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import connectToDB from "../dabtabase/connectDb";
 import Profile from "../models/profile";
-import Job from "../models/Job";
+import Job from "../models/job";
 import Feed from "../models/feed";
 import Application from "../models/application";
 import Razorpay from "razorpay";
