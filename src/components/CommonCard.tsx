@@ -9,7 +9,7 @@ import { Laptop } from "lucide-react";
 interface CommonCardProps {
   icon: React.ReactNode;
   title: string;
-  description: string;
+  description?: string;
   footerContent: React.ReactNode;
 }
 

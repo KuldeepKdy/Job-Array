@@ -41,26 +41,22 @@ interface Profileinterface {
 interface PostNewJobProps {
   user: { id: string; name: string; email: string };
   profileInfo: Profileinterface;
-  jobList: [
-    {
-      companyName: string;
-      title: string;
-      location: string;
-      type: string;
-      experience: string;
-      description: string;
-      skills: string;
-      recruiterId: string;
-      applicants: [
-        {
-          name: string;
-          email: string;
-          userId: string;
-          status: string;
-        }
-      ];
-    }
-  ];
+  jobList: {
+    companyName: string;
+    title: string;
+    location: string;
+    type: string;
+    experience: string;
+    description: string;
+    skills: string;
+    recruiterId: string;
+    applicants: {
+      name: string;
+      email: string;
+      userId: string;
+      status: string;
+    }[];
+  }[];
 }
 
 const PostNewJob: React.FC<PostNewJobProps> = ({

@@ -15,24 +15,40 @@ import { Label } from "../ui/label";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-interface ProfileInfo {
-  role: string;
-  recruiterInfo: { companyName: string };
-  _id: string;
-  name: string;
-  email: string;
-  userId: string;
-  candidateInfo: {
-    name: string;
-    email: string;
-    userId: string;
-  };
-  jobApplications: { jobId: string; status: string }[]; // Replace with the appropriate type for jobApplications
-}
 
 interface JobListingProps {
   user: { id: string; name: string; email: string }; // Replace with the appropriate type for user
-  profileInfo: ProfileInfo;
+  profileInfo: {
+    userId: string;
+    role: string;
+    email: string;
+    isPreminumUser: boolean;
+    memberShipType: string;
+    memberShipStartDate: string;
+    memberShipEndDate: string;
+    recruiterInfo: {
+      name: string;
+      companyName: string;
+      companyRole: string;
+    };
+    candidateInfo: {
+      name: string;
+      currentJobLocation: string;
+      preferedJobLocation: string;
+      currentSalary: string;
+      noticePeriod: string;
+      skills: string;
+      currentCompany: string;
+      previousCompanies: string;
+      totalExperience: string;
+      college: string;
+      collageLocation: string;
+      graduatedYear: string;
+      linkedinProfile: string;
+      githubProfile: string;
+      resume: string;
+    };
+  };
   jobList: {
     _id: string;
     companyName: string;
