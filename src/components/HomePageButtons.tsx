@@ -46,7 +46,7 @@ const HomePageButtons = ({ user, profileInfo }: userInterface) => {
   const router = useRouter();
   useEffect(() => {
     router.refresh();
-  }, []);
+  }, [router]);
 
   return (
     <div className="flex space-x-4">

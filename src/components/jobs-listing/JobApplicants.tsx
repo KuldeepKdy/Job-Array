@@ -10,16 +10,36 @@ interface JobApplicationsProps {
   showCurrentCandidateDetailsModel: boolean;
   setShowCurrentCandidateDetailsModel: (show: boolean) => void;
   currentCandidateDetails: {
-    [key: string]: string | number | boolean;
-    id: string;
-    name: string;
+    candidateInfo: {
+      name: string;
+      resume: string;
+      currentCompany: string;
+      currentJobLocation: string;
+      totalExperience: string;
+      currentSalary: string;
+      noticePeriod: string;
+      previousCompanies: string;
+      skills: string;
+    };
+    email: string;
+    userId: string;
   } | null;
   setCurrentCandidateDetails: (details: {
-    id: string;
-    name: string;
-    [key: string]: string | number | boolean;
-  }) => void;
-  jobItem: {};
+    candidateInfo: {
+      name: string;
+      resume: string;
+      currentCompany: string;
+      currentJobLocation: string;
+      totalExperience: string;
+      currentSalary: string;
+      noticePeriod: string;
+      previousCompanies: string;
+      skills: string;
+    };
+    email: string;
+    userId: string;
+  } | null) => void;
+
   jobApplications: {
     _id: string;
     recruiterUserID: string;
@@ -38,10 +58,10 @@ const JobApplicants = ({
   setShowCurrentCandidateDetailsModel,
   currentCandidateDetails,
   setCurrentCandidateDetails,
-  jobItem,
+
   jobApplications,
 }: JobApplicationsProps) => {
-//   console.log(jobApplications, "Job application are here");
+  //   console.log(jobApplications, "Job application are here");
   return (
     <Drawer open={showApplicantsDrawer} onOpenChange={setShowApplicantsDrawer}>
       <DrawerContent className="max-h-[50vh]">

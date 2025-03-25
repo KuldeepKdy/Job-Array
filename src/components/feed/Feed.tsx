@@ -104,7 +104,16 @@ const Feed = ({ user, profileInfo, allFeedPost }: FeedPostProps) => {
     });
   }
 
-  async function handleUpdateFeedPostLikes(getCurrentFeedPost: any) {
+  async function handleUpdateFeedPostLikes(getCurrentFeedPost: {
+    userId: string;
+    userName: string;
+    message: string;
+    image: string;
+    likes: {
+      reactorUserId: string;
+      reactorUserName: string;
+    }[];
+  }) {
     const cpyLikesFromCurrentFeedPostItem = [...getCurrentFeedPost?.likes];
     const indexOfCurrentUser = cpyLikesFromCurrentFeedPostItem.findIndex(
       (item) => item.reactorUserId === user?.id

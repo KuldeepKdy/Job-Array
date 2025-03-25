@@ -1,4 +1,4 @@
-import { Users } from "lucide-react";
+
 
 interface ApplicantsCardProps {
   icon: React.ReactNode;

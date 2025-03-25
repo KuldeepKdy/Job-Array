@@ -4,13 +4,27 @@ import {
   fetchCandidateDetailsByIDAction,
   updateJobApplicationAction,
 } from "@/actions";
-import { Button } from "../ui/button";
+
 import { Dialog, DialogContent, DialogFooter } from "../ui/dialog";
 import { createClient } from "@supabase/supabase-js";
 import { Calendar, User } from "lucide-react";
 
 interface CandidateListProps {
-  currentCandidateDetails: any;
+  currentCandidateDetails: {
+    candidateInfo: {
+      name: string;
+      resume: string;
+      currentCompany: string;
+      currentJobLocation: string;
+      totalExperience: string;
+      currentSalary: string;
+      noticePeriod: string;
+      previousCompanies: string;
+      skills: string;
+    };
+    email: string;
+    userId: string;
+  } | null;
 
   jobApplications: Array<{
     JobAppliedDate: string;
@@ -24,6 +38,7 @@ interface CandidateListProps {
   }>;
   showCurrentCandidateDetailsModel: boolean;
   setShowCurrentCandidateDetailsModel: (show: boolean) => void;
+  setCurrentCandidateDetails: (details: CandidateListProps['currentCandidateDetails']) => void;
 }
 
 const CandidateList: React.FC<CandidateListProps> = ({
@@ -52,7 +67,7 @@ const CandidateList: React.FC<CandidateListProps> = ({
   function handlePreviewResume() {
     const { data } = supabase.storage
       .from("job-board-public")
-      .getPublicUrl(currentCandidateDetails?.candidateInfo?.resume);
+      .getPublicUrl(currentCandidateDetails?.candidateInfo?.resume || "");
     // console.log(data);
     const a = document.createElement("a");
     a.href = data?.publicUrl;
@@ -259,7 +274,9 @@ const CandidateList: React.FC<CandidateListProps> = ({
 
               {/* Previous Companies */}
               <div className="mb-4">
-                <p className="text-gray-500 dark:text-gray-50 text-sm mb-2">Previous Companies</p>
+                <p className="text-gray-500 dark:text-gray-50 text-sm mb-2">
+                  Previous Companies
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {currentCandidateDetails?.candidateInfo?.previousCompanies
                     ?.split(",")
@@ -276,7 +293,9 @@ const CandidateList: React.FC<CandidateListProps> = ({
 
               {/* Skills */}
               <div className="mb-4">
-                <p className="text-gray-500 dark:text-gray-50 text-sm mb-2">Skills</p>
+                <p className="text-gray-500 dark:text-gray-50 text-sm mb-2">
+                  Skills
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {currentCandidateDetails?.candidateInfo?.skills
                     ?.split(",")
@@ -293,7 +312,9 @@ const CandidateList: React.FC<CandidateListProps> = ({
 
               {/* Applied Date */}
               <div className="mt-4">
-                <p className="text-gray-500 dark:text-gray-50 text-sm mb-1">Applied Date</p>
+                <p className="text-gray-500 dark:text-gray-50 text-sm mb-1">
+                  Applied Date
+                </p>
                 <div className="flex items-center gap-1">
                   <Calendar className="size-4" />
                   {jobApplications && jobApplications.length > 0

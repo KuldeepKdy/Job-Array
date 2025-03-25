@@ -5,7 +5,6 @@ import AdvantageSection from "@/components/AdvantageSection";
 import CommunitySection from "@/components/CommunitySection";
 import FeaturesSection from "@/components/FeaturesSection";
 import HomeHero from "@/components/header/HomeHero";
-import HeroSection from "@/components/HeroSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";

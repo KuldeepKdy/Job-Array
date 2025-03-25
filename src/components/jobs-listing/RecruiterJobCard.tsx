@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import CommonCard from "../CommonCard";
-import JobIcon from "../JobIcon";
+
 import { Button } from "../ui/button";
 import JobApplicants from "./JobApplicants";
 import ApplicantsCard from "./ApplicantsCard";
@@ -40,7 +39,6 @@ interface RecruiterJobCardProps {
 
 const RecruiterJobCard = ({
   jobItem,
-  profileInfo,
   jobApplications,
 }: RecruiterJobCardProps) => {
   // console.log(
@@ -52,9 +50,19 @@ const RecruiterJobCard = ({
 
   const [showApplicantsDrawer, setShowApplicantsDrawer] = useState(false);
   const [currentCandidateDetails, setCurrentCandidateDetails] = useState<{
-    [key: string]: string | number | boolean;
-    id: string;
-    name: string;
+    candidateInfo: {
+      name: string;
+      resume: string;
+      currentCompany: string;
+      currentJobLocation: string;
+      totalExperience: string;
+      currentSalary: string;
+      noticePeriod: string;
+      previousCompanies: string;
+      skills: string;
+    };
+    email: string;
+    userId: string;
   } | null>(null);
   const [
     showCurrentCandidateDetailsModel,
@@ -117,7 +125,7 @@ const RecruiterJobCard = ({
         }
         currentCandidateDetails={currentCandidateDetails}
         setCurrentCandidateDetails={setCurrentCandidateDetails}
-        jobItem={jobItem}
+       
         jobApplications={jobApplications.filter(
           (jobApplicantItem) => jobApplicantItem.jobID == jobItem?._id
         )}

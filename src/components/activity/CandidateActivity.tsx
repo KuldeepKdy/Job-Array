@@ -1,7 +1,5 @@
 "use client";
 
-import { Laptop } from "lucide-react";
-import CommonCard from "../CommonCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 interface candidateActivity {

@@ -1,7 +1,7 @@
 "use client";
 import { Check, CheckCheck, MessageSquare } from "lucide-react";
 import React from "react";
-import { desVariants, tagVariants, titleVariants } from "@/utils/animations";
+import {  titleVariants } from "@/utils/animations";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
@@ -45,7 +45,7 @@ const AboutSectionSecond = () => {
           </div>
           <div className="flex flex-col w-[80%] gap-2">
             <span className=" px-4 py-2 font-medium w-fit rounded-lg leading-relaxed border border-gray-200 text-xs text-gray-600">
-              Your Welcome 👌. So what's you answer for my offer?
+              Your Welcome 👌. So what&apos;s you answer for my offer ?
             </span>
             <span className="text-[10px] text-gray-500 leading-snug">
               08:34 AM

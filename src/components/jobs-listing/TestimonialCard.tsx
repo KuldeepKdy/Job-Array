@@ -23,7 +23,7 @@ const TestimonialCard = () => {
       <div className="w-full flex items-center justify-between pt-4 mt-4 border-t border-gray-200">
         <div className="w-full flex items-center gap-2">
           <div className="w-10 h-9 rounded-full border border-gray-200">
-            <img src="" alt="" />
+            <img src="/" alt="img" />
           </div>
           <div className="w-full flex flex-col">
             <h2 className="font-semibold text-gray-900 text-sm">Yash Kumar</h2>

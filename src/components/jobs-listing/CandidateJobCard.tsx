@@ -1,19 +1,12 @@
 "use client";
 import { useState } from "react";
-import CommonCard from "../CommonCard";
-import JobIcon from "../JobIcon";
+
 import { Button } from "../ui/button";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerHeader } from "@/components/ui/drawer";
 import { createJobApplicationAction } from "@/actions";
 import { toast } from "sonner";
 import JobCard from "./JobCard";
-import { Briefcase, Clock, MapPin, Share2, X } from "lucide-react";
+import { Briefcase, Clock, MapPin, Share2 } from "lucide-react";
 
 interface CandidateJobCardProps {
   jobItem: {

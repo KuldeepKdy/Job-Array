@@ -1,5 +1,5 @@
 "use client";
-import { desVariants, tagVariants, titleVariants } from "@/utils/animations";
+import {  titleVariants } from "@/utils/animations";
 import { motion } from "framer-motion";
 import { FlagIcon } from "lucide-react";
 import AnimatedComponent from "./ui/AnimatedComponent";

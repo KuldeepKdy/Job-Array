@@ -1,6 +1,5 @@
 import { CheckCircle, Flag, ThumbsUpIcon, Users } from "lucide-react";
 import HomePageButtons from "../HomePageButtons";
-import { titleVariants } from "@/utils/animations";
 
 interface PostNewJobProps {
   user: {
