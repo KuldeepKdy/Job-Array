@@ -5,6 +5,7 @@ import AdvantageSection from "@/components/AdvantageSection";
 import CommunitySection from "@/components/CommunitySection";
 import FeaturesSection from "@/components/FeaturesSection";
 import HomeHero from "@/components/header/HomeHero";
+import JobsFeatureSection from "@/components/JobsFeatureSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
@@ -92,6 +93,7 @@ async function Home() {
         <AboutSection />
         <AboutSectionSecond />
         <AdvantageSection />
+        <JobsFeatureSection jobList={jobs} profileInfo={profileInfo} />
         <FeaturesSection jobList={jobs} profileInfo={profileInfo} />
         <TestimonialsSection />
         <CommunitySection />
