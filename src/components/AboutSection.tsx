@@ -75,7 +75,7 @@ const AboutSection = () => {
           initial="offscreen"
           whileInView={"onscreen"}
           variants={titleVariants}
-          className="grid grid-cols-2 w-full lg:w-[70%] bg-gray-100 lg:bg-white dark:bg-transparent py-2 lg:py-0 h-full justify-between gap-4 md:gap-8 "
+          className="grid grid-cols-2 w-full lg:w-[70%] bg-gray-100 rounded-lg lg:bg-white dark:bg-transparent py-2 lg:py-0 h-full justify-between gap-4 md:gap-8 "
         >
           <div className="flex flex-col gap-2 p-4 text-center">
             <h2 className="  text-gray-900 dark:text-white font-semibold  text-2xl md:text-3xl">
