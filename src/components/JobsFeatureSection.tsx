@@ -155,7 +155,18 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
           </p>
         </div>
       </div>
-      <div className="bg-white shadow-lg md:col-span-4 border rounded-xl py-6 px-4 flex flex-col gap-4"></div>
+      <div className="bg-white shadow-lg md:col-span-4 border rounded-xl py-6 px-4 flex flex-col gap-4">
+        <div>
+          <h2 className="font-bold text-gray-900 leading-tight text-xl md:text-2xl  ">
+            User-friendly and intuitive interface both easy to use and intuitive
+          </h2>
+          <p className="text-gray-400 text-sm font-medium">
+            You can focus on what matters most - finding the right apportunity
+            to propel your career forward.
+          </p>
+        </div>
+        <img src="/images/" alt="" className="w-full h-full" />
+      </div>
       <div className="bg-white shadow-lg md:col-span-2 border rounded-xl py-6 px-4 flex flex-col gap-4"></div>
     </div>
   );
