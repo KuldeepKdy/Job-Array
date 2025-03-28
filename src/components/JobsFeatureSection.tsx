@@ -1,4 +1,4 @@
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, MenuSquare } from "lucide-react";
 
 interface featureInterface {
   jobList: {
@@ -54,9 +54,9 @@ interface featureInterface {
 }
 const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
   return (
-    <div className="w-full h-fit grid grid-cols-1 md:grid-cols-8 gap-6 md:gap-8">
-      <div className="bg-white shadow-lg md:col-span-2 border rounded-xl py-6 px-4 flex flex-col ">
-        <div className="p-3 bg-white border -rotate-2 flex flex-col sticky top-24 border-gray-100 rounded-2xl">
+    <div className="w-full h-fit grid grid-cols-1 lg:grid-cols-8 gap-6 md:gap-8">
+      <div className="bg-white lg:max-h-[80vh] max-h-[70vh] shadow-lg lg:col-span-2 sticky top-20 border rounded-xl py-6 px-4 flex flex-col h-full justify-between  ">
+        <div className="p-3 bg-white border lg:-rotate-2 flex flex-col lg:sticky lg:top-24  rounded-2xl">
           <div className="w-full flex items-center gap-2">
             <div className="size-12 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
               <img
@@ -85,7 +85,7 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
             ))}
           </div>
         </div>
-        <div className="p-3 px-3 bg-white border rotate-2 flex flex-col mt-4 sticky top-24 border-gray-100 rounded-2xl">
+        <div className="p-3 px-3 bg-white border lg:rotate-2 flex flex-col mt-4 lg:sticky lg:top-24 rounded-2xl">
           <div className="w-full flex items-center gap-2">
             <div className="size-12 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
               <img
@@ -115,7 +115,7 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
             ))}
           </div>
         </div>
-        <div className="p-3 bg-white border -rotate-2 flex flex-col mt-4 sticky top-24 border-gray-100 rounded-2xl">
+        <div className="p-3 bg-white border lg:-rotate-2 flex flex-col mt-4 lg:sticky lg:top-24  rounded-2xl">
           <div className="w-full flex items-center gap-2">
             <div className="size-12 py-0.5 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
               <img
@@ -146,16 +146,16 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-1 sticky top-20 bg-white pt-4">
+        <div className="flex flex-col gap-1 sticky top-20 bg-white z-10 pt-4">
           <h2 className="font-bold text-gray-900 leading-tight text-xl md:text-2xl md:leading-[1.23] ">
             Personalized Job Recommendations
           </h2>
-          <p className="text-gray-400 text-sm font-medium">
+          <p className="text-gray-400 text-sm md:text-base font-medium mt-1">
             Say goodbye to tedious job searches and endless scrolling.
           </p>
         </div>
       </div>
-      <div className="bg-white shadow-lg md:col-span-4 border rounded-xl py-6 px-4 flex flex-col gap-4">
+      <div className="bg-white lg:max-h-[80vh] max-h-[70vh] shadow-lg lg:col-span-4 border sticky top-20 rounded-xl py-6 px-4 flex flex-col ">
         <div className="">
           <h2 className="font-bold text-gray-900 leading-tight text-xl  md:text-3xl  ">
             User-friendly and intuitive interface both easy to use and intuitive
@@ -165,15 +165,64 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
             to propel your career forward.
           </p>
         </div>
-        <div className="w-full h-full ">
+        <div className="w-full h-fit">
           <img
             src="/images/jobsPageMocup.png"
-            alt=""
-            className="w-full h-full scale-[1.4] "
+            alt="jobsPageMocup"
+            className="w-full h-full lg:scale-[1.4] lg:-translate-y-2 -translate-y-14 "
           />
         </div>
       </div>
-      <div className="bg-white shadow-lg md:col-span-2 border rounded-xl py-6 px-4 flex flex-col gap-4"></div>
+      <div className="bg-white lg:max-h-[80vh] max-h-[80vh] shadow-lg lg:col-span-2 border sticky top-20 rounded-xl py-6 px-4 flex flex-col gap-4">
+        <div className="border rounded-2xl flex flex-col overflow-hidden">
+          <div className="p-4 border-b font-semibold text-lg text-gray-900">
+            Filters
+          </div>
+          <div className="p-4 border-b w-full h-fit overflow-hidden ">
+            <img
+              src="/images/jobFilters.png"
+              alt="jobFilters"
+              className="lg:scale-x-[1.4] w-full h-full lg:scale-y-150 lg:-translate-x-1 scale-125 "
+            />
+          </div>
+          <div className="p-4 border-b overflow-hidden">
+            <img
+              src="/images/filtersBar.png"
+              alt="jobFilters"
+              className="scale-x-110 scale-y-125"
+            />
+          </div>
+          <div className=" p-4 flex overflow-x-scroll gap-2 no-scrollbar ">
+            {[
+              "Software Tester",
+              "Frontend Developer",
+              "Tester",
+              "UI/UX Designer",
+            ].map((title) => (
+              <button
+                key={title}
+                className={` ${
+                  title == "Software Tester"
+                    ? "text-white bg-primary dark:bg-primary-foreground"
+                    : "text-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary-foreground dark:hover:text-white"
+                } px-3  py-2 flex hover:bg-primary  whitespace-nowrap items-center rounded-full gap-2 transition-all duration-200 ease-linear  border border-gray-200 `}
+              >
+                <MenuSquare className="size-4" />
+                <p className=" text-sm font-medium">{title}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="">
+          <h2 className="font-bold text-gray-900 leading-tight text-xl md:text-2xl md:leading-[1.23] ">
+            Advanced Job Filters Options
+          </h2>
+          <p className="text-gray-400 text-sm md:text-base font-medium mt-2">
+            You can save time and focus your efforts on the opportunities that
+            align with your career goals.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
