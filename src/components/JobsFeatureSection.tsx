@@ -52,10 +52,10 @@ interface featureInterface {
     };
   };
 }
-const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
+const JobsFeatureSection = ({ jobList }: featureInterface) => {
   return (
-    <div className="w-full h-fit grid grid-cols-1 lg:grid-cols-8 gap-6 md:gap-8">
-      <div className="bg-white lg:max-h-[80vh] max-h-[70vh] shadow-lg lg:col-span-2 sticky top-20 border rounded-xl py-6 px-4 flex flex-col h-full justify-between  ">
+    <div className="w-full h-fit grid  grid-cols-1 lg:grid-cols-8 gap-6 md:gap-8">
+      <div className="bg-white lg:max-h-[80vh] order-3 lg:order-1  shadow-lg lg:col-span-2 sticky top-20 border rounded-xl py-6 px-4 flex flex-col h-full justify-between  ">
         <div className="p-3 bg-white border lg:-rotate-2 flex flex-col lg:sticky lg:top-24  rounded-2xl">
           <div className="w-full flex items-center gap-2">
             <div className="size-12 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
@@ -150,17 +150,17 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
           <h2 className="font-bold text-gray-900 leading-tight text-xl md:text-2xl md:leading-[1.23] ">
             Personalized Job Recommendations
           </h2>
-          <p className="text-gray-400 text-sm md:text-base font-medium mt-1">
+          <p className="text-gray-600 text-sm md:text-base md:font-medium mt-1">
             Say goodbye to tedious job searches and endless scrolling.
           </p>
         </div>
       </div>
-      <div className="bg-white lg:max-h-[80vh] max-h-[70vh] shadow-lg lg:col-span-4 border sticky top-20 rounded-xl py-6 px-4 flex flex-col ">
+      <div className="bg-white lg:max-h-[80vh] order-2   shadow-lg lg:col-span-4 border sticky top-20 rounded-xl py-6 px-4 flex flex-col ">
         <div className="">
           <h2 className="font-bold text-gray-900 leading-tight text-xl  md:text-3xl  ">
             User-friendly and intuitive interface both easy to use and intuitive
           </h2>
-          <p className="text-gray-400 text-sm md:text-base font-medium mt-2">
+          <p className="text-gray-600 text-sm md:text-base md:font-medium mt-2">
             You can focus on what matters most - finding the right apportunity
             to propel your career forward.
           </p>
@@ -169,16 +169,17 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
           <img
             src="/images/jobsPageMocup.png"
             alt="jobsPageMocup"
-            className="w-full h-full lg:scale-[1.4] lg:-translate-y-2 -translate-y-14 "
+            className="w-full h-full scale-125 lg:scale-[1.4] lg:-translate-y-2 "
           />
         </div>
       </div>
-      <div className="bg-white lg:max-h-[80vh] max-h-[80vh] shadow-lg lg:col-span-2 border sticky top-20 rounded-xl py-6 px-4 flex flex-col gap-4">
-        <div className="border rounded-2xl flex flex-col overflow-hidden">
+      <div className="bg-white lg:max-h-[80vh] order-1 lg:order-3  shadow-lg lg:col-span-2 border sticky top-20 rounded-xl py-6 px-4 flex flex-col gap-4">
+        <div className="border w-full h-full rounded-2xl flex flex-col overflow-hidden">
           <div className="p-4 border-b font-semibold text-lg text-gray-900">
             Filters
           </div>
-          <div className="p-4 border-b w-full h-fit overflow-hidden ">
+          <div className="p-4 ">Adding Data Soon...</div>
+          {/* <div className="p-4 border-b w-full h-fit overflow-hidden ">
             <img
               src="/images/jobFilters.png"
               alt="jobFilters"
@@ -191,8 +192,8 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
               alt="jobFilters"
               className="scale-x-110 scale-y-125"
             />
-          </div>
-          <div className=" p-4 flex overflow-x-scroll gap-2 no-scrollbar ">
+          </div> */}
+          <div className=" p-4 w-fit h-fit mt-auto flex overflow-x-scroll gap-2 no-scrollbar ">
             {[
               "Software Tester",
               "Frontend Developer",
@@ -205,7 +206,7 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
                   title == "Software Tester"
                     ? "text-white bg-primary dark:bg-primary-foreground"
                     : "text-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary-foreground dark:hover:text-white"
-                } px-3  py-2 flex hover:bg-primary  whitespace-nowrap items-center rounded-full gap-2 transition-all duration-200 ease-linear  border border-gray-200 `}
+                } px-3  py-2 flex hover:bg-primary   whitespace-nowrap items-center rounded-full gap-2 transition-all duration-200 ease-linear  border border-gray-200 `}
               >
                 <MenuSquare className="size-4" />
                 <p className=" text-sm font-medium">{title}</p>
@@ -213,11 +214,11 @@ const JobsFeatureSection = ({ jobList, profileInfo }: featureInterface) => {
             ))}
           </div>
         </div>
-        <div className="">
+        <div className="mt-auto">
           <h2 className="font-bold text-gray-900 leading-tight text-xl md:text-2xl md:leading-[1.23] ">
             Advanced Job Filters Options
           </h2>
-          <p className="text-gray-400 text-sm md:text-base font-medium mt-2">
+          <p className="text-gray-600 text-sm md:text-base md:font-medium mt-2">
             You can save time and focus your efforts on the opportunities that
             align with your career goals.
           </p>
