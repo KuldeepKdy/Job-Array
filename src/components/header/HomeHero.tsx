@@ -116,11 +116,11 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           </p>
         </div>
         {/* Headline  */}
-        <h1 className="text-gray-900 font-[600] dark:text-white text-4xl leading-snug lg:text-6xl mt-6 lg:leading-[1.4]    text-center  ">
+        <h1 className="text-gray-900 font-[600] dark:text-white text-4xl leading-snug lg:text-6xl mt-6 lg:leading-[1.3]    text-center  ">
           Supporting Job Seekers Every Step of the Way
         </h1>
         {/* Headline para  */}
-        <p className=" text-sm md:text-base dark:text-gray-50 text-gray-600 leading-relaxed text-center mt-4 max-w-[80%]">
+        <p className=" text-sm  md:font-medium leading-relaxed  md:text-base dark:text-gray-50  text-gray-600 text-center mt-4 max-w-[80%]">
           Unlock your true potential and discover a world of opportunities that
           align with your skills, interests, and aspirations
         </p>

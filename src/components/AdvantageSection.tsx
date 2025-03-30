@@ -25,7 +25,7 @@ const AdvantageSection = () => {
         </h1>
       </div>
       <div className="flex flex-col lg:col-span-1 w-full h-fit justify-center items-center text-center lg:items-start lg:text-start ">
-        <p className="text-gray-600  text-sm dark:text-gray-50 leading-relaxed">
+        <p className="text-gray-600 md:font-medium md:text-base  text-sm dark:text-gray-50 leading-relaxed">
           Unlock your true potential and discover a world of opportunities that
           align with your skills, interests, and aspirations
         </p>

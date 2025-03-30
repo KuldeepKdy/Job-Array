@@ -68,7 +68,7 @@ const AboutSectionSecond = () => {
               <h3 className="text-gray-900 text-base leading-snug font-semibold">
                 Successfully applied for a job
               </h3>
-              <p className="text-xs text-gray-500 leading-normal lg:leading-relaxed">
+              <p className="text-xs text-gray-500 leading-normal font-medium lg:leading-relaxed">
                 Your application is now being carefully reviewed by our team.
               </p>
             </div>
@@ -88,7 +88,7 @@ const AboutSectionSecond = () => {
         <h2 className="font-semibold dark:text-white lg:text-start text-gray-900 leading-snug  text-2xl lg:text-4xl mt-4">
           The thing you care about job matter to jobstera
         </h2>
-        <p className="text-sm text-gray-600 dark:text-gray-50 lg:text-start mt-2 leading-relaxed">
+        <p className="text-sm text-gray-600  md:font-medium md:text-base  dark:text-gray-50 lg:text-start mt-3 leading-relaxed">
           Unlock your true potential and discover a world of apportunities that
           align with your skills, interests, and aspirations.
         </p>

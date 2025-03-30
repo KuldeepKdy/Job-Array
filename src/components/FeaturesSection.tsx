@@ -80,7 +80,7 @@ const FeaturesSection = ({ jobList, profileInfo }: featureInterface) => {
         We Empower Job Seekers Like You To Streamline And Supercharge Your Job
         Search.
       </h1>
-      <p className="text-gray-600 text-sm mt-2 lg:mt-4 text-center leading-relaxed">
+      <p className="text-gray-600 text-sm mt-2 md:font-medium md:text-base lg:mt-5 text-center leading-relaxed">
         Unlock your true potential and discover a world of opportunities that
         align with your skills, interests, and aspirations
       </p>
