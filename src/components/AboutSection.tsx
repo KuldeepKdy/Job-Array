@@ -6,7 +6,7 @@ import AnimatedComponent from "./ui/AnimatedComponent";
 
 const AboutSection = () => {
   return (
-    <div className="w-full mt-12 md:mt-0">
+    <div className="w-full mt-6 md:mt-0">
       <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-10 place-items-center">
         <div className=" w-full flex flex-col items-center lg:items-start">
           <motion.h2

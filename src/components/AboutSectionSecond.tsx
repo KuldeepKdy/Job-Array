@@ -1,7 +1,7 @@
 "use client";
 import { Check, CheckCheck, MessageSquare } from "lucide-react";
 import React from "react";
-import {  titleVariants } from "@/utils/animations";
+import { titleVariants } from "@/utils/animations";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
@@ -52,25 +52,22 @@ const AboutSectionSecond = () => {
             </span>
           </div>
         </div>
-        <div className="w-full flex h-fit lg:h-[80vh] gap-4 items-center relative rounded-xl shadow-lg overflow-hidden border border-gray-200 ">
-          <img
-            src="/images/AboutImg.avif"
-            alt=""
-            className="w-full h-full object-cover"
-          />
-          <div className=" p-3 md:p-4 flex items-center  gap-4 bg-white rounded-xl absolute top-4 left-4 right-4 md:top-6 md:left-6 md:right-6">
-            <div className="p-2 rounded-full bg-green-50">
-              <div className="p-2 rounded-full bg-green-100">
-                <Check className="size-5 stroke-green-400" />
+        <div className="w-full flex h-[80vh] bg-[url(/images/AboutImg.avif)]  bg-center bg-no-repeat py-6 px-4 md:p-6 bg-cover  rounded-xl shadow-lg z-10 border border-gray-200 ">
+          <div className=" p-3 md:p-4 h-fit w-full flex items-center  gap-4 bg-white rounded-xl sticky top-20 sm:top-24">
+            <div className="flex items-center gap-4 sticky top-20">
+              <div className="p-2 rounded-full bg-green-50">
+                <div className="p-2 rounded-full bg-green-100">
+                  <Check className="size-5 stroke-green-400" />
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-1">
-              <h3 className="text-gray-900 text-base leading-snug font-semibold">
-                Successfully applied for a job
-              </h3>
-              <p className="text-xs text-gray-500 leading-normal font-medium lg:leading-relaxed">
-                Your application is now being carefully reviewed by our team.
-              </p>
+              <div className="flex flex-col gap-1">
+                <h3 className="text-gray-900 text-base leading-snug font-semibold">
+                  Successfully applied for a job
+                </h3>
+                <p className="text-xs text-gray-500 leading-normal font-medium lg:leading-relaxed">
+                  Your application is now being carefully reviewed by our team.
+                </p>
+              </div>
             </div>
           </div>
         </div>
