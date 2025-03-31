@@ -34,8 +34,41 @@ const TestimonialsSection = () => {
         </Button>
       </div>
       <div className="w-full grid grid-cols-1 relative  md:grid-cols-2 gap-6">
-        {[0, 1, 2, 3].map((value) => (
-          <TestimonialCard key={value} />
+        {[
+          {
+            name: "Yash Kumar",
+            image: "/images/yashphoto.jpg",
+            rating: 5,
+            review:
+              "Absolutely fantastic service! The team was highly professional, attentive to details, and delivered beyond my expectations. Their dedication and expertise made the entire experience seamless. Highly recommend!",
+            position: "Web Developer",
+          },
+          {
+            name: "Raja Yadav",
+            image: "/images/rajaphoto.jpg",
+            rating: 4,
+            review:
+              "Great experience working with this team! They communicated well, understood my requirements, and provided exceptional results. The project was delivered on time with outstanding quality. Impressive work!",
+            position: "Lead Designer",
+          },
+          {
+            name: "Amit Yadav",
+            image: "/images/amitphoto.jpg",
+            rating: 3,
+            review:
+              "Very satisfied with the service. The team was responsive, hardworking, and committed to delivering a great product. A few minor tweaks were needed, but overall, excellent!",
+            position: "Team Leader",
+          },
+          {
+            name: "Gajender Yadav",
+            image: "/images/krsnaphoto.png",
+            rating: 5,
+            review:
+              "Exceptional service! From start to finish, the process was smooth, and the quality of work exceeded my expectations. A talented team that truly values customer satisfaction!",
+            position: "Developer",
+          },
+        ].map((value, index) => (
+          <TestimonialCard key={index} data={value} />
         ))}
       </div>
     </div>
