@@ -39,7 +39,7 @@ interface PostNewJobProps {
 }
 const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
   return (
-    <div className=" flex justify-center lg:px-8 min-h-[70vh]  w-full h-fit pt-14 ">
+    <div className=" flex justify-center lg:px-8 min-h-[70vh]  w-full h-fit pt-20 lg:pt-14 ">
       {/* left side  */}
       <div className="w-full hidden lg:flex flex-col gap-4 lg:max-w-[20%]">
         <div className="-left-8 w-full relative">
