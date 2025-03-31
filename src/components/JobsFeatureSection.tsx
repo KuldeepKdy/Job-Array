@@ -55,8 +55,8 @@ interface featureInterface {
 const JobsFeatureSection = ({ jobList }: featureInterface) => {
   return (
     <div className="w-full h-fit grid  grid-cols-1 lg:grid-cols-8 gap-6 md:gap-8">
-      <div className="bg-white lg:max-h-[80vh] order-3 lg:order-1  shadow-lg lg:col-span-2 sticky top-20 border rounded-xl py-6 px-4 flex flex-col h-full justify-between  ">
-        <div className="p-3 bg-white border lg:-rotate-2 flex flex-col lg:sticky lg:top-24  rounded-2xl">
+      <div className="bg-white lg:max-h-[80vh] order-3 lg:order-1  shadow-lg lg:col-span-2 sticky top-20 border dark:border-gray-200 rounded-xl py-6 px-4 flex flex-col h-full justify-between  ">
+        <div className="p-3 bg-white border dark:border-gray-200  lg:-rotate-2 flex flex-col lg:sticky lg:top-24  rounded-2xl">
           <div className="w-full flex items-center gap-2">
             <div className="size-12 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
               <img
@@ -85,7 +85,7 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
             ))}
           </div>
         </div>
-        <div className="p-3 px-3 bg-white border lg:rotate-2 flex flex-col mt-4 lg:sticky lg:top-24 rounded-2xl">
+        <div className="p-3 px-3 bg-white border dark:border-gray-200 lg:rotate-2 flex flex-col mt-4 lg:sticky lg:top-24 rounded-2xl">
           <div className="w-full flex items-center gap-2">
             <div className="size-12 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
               <img
@@ -115,7 +115,7 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
             ))}
           </div>
         </div>
-        <div className="p-3 bg-white border lg:-rotate-2 flex flex-col mt-4 lg:sticky lg:top-24  rounded-2xl">
+        <div className="p-3 bg-white border dark:border-gray-200 lg:-rotate-2 flex flex-col mt-4 lg:sticky lg:top-24  rounded-2xl">
           <div className="w-full flex items-center gap-2">
             <div className="size-12 py-0.5 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
               <img
@@ -155,7 +155,7 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
           </p>
         </div>
       </div>
-      <div className="bg-white lg:max-h-[80vh] order-2   shadow-lg lg:col-span-4 border sticky top-20 rounded-xl py-6 px-4 flex flex-col ">
+      <div className="bg-white lg:max-h-[80vh] order-2   shadow-lg lg:col-span-4 border dark:border-gray-200 sticky top-20 rounded-xl py-6 px-4 flex flex-col ">
         <div className="">
           <h2 className="font-bold text-gray-900 leading-tight text-xl  md:text-3xl  ">
             User-friendly and intuitive interface both easy to use and intuitive
@@ -173,9 +173,9 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
           />
         </div>
       </div>
-      <div className="bg-white lg:max-h-[80vh] order-1 lg:order-3  shadow-lg lg:col-span-2 border sticky top-20 rounded-xl py-6 px-4 flex flex-col gap-4">
-        <div className="border w-full h-full rounded-2xl flex flex-col overflow-hidden">
-          <div className="p-4 border-b font-semibold text-lg text-gray-900">
+      <div className="bg-white lg:max-h-[80vh] order-1 lg:order-3  shadow-lg lg:col-span-2 border dark:border-gray-200 sticky top-20 rounded-xl py-6 px-4 flex flex-col gap-4">
+        <div className="border dark:border-gray-200 w-full h-full rounded-2xl flex flex-col overflow-hidden">
+          <div className="p-4 border-b dark:border-gray-200 font-semibold text-lg text-gray-900">
             Filters
           </div>
           <div className="p-4 ">Adding Data Soon...</div>
