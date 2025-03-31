@@ -99,7 +99,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         </div>
       </div>
       {/* center side  */}
-      <div className="flex w-full  flex-col  relative items-center  lg:max-w-[60%]">
+      <div className="flex w-full  flex-col  relative items-center lg:mt-8  lg:max-w-[60%]">
         {/* Placing  */}
         <div
           className={`
