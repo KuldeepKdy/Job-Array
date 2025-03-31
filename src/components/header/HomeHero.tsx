@@ -39,7 +39,7 @@ interface PostNewJobProps {
 }
 const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
   return (
-    <div className=" flex justify-center lg:px-8  w-full h-fit pt-14 ">
+    <div className=" flex justify-center lg:px-8 min-h-[80vh]  w-full h-fit pt-14 ">
       {/* left side  */}
       <div className="w-full hidden lg:flex flex-col gap-4 lg:max-w-[20%]">
         <div className="-left-8 w-full relative">
@@ -120,7 +120,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           Supporting Job Seekers Every Step of the Way
         </h1>
         {/* Headline para  */}
-        <p className=" text-sm  md:font-medium leading-relaxed  md:text-base dark:text-gray-50  text-gray-600 text-center mt-4 max-w-[80%]">
+        <p className=" md:font-medium leading-relaxed  text-base dark:text-gray-50  text-gray-600 text-center mt-4 max-w-[80%]">
           Unlock your true potential and discover a world of opportunities that
           align with your skills, interests, and aspirations
         </p>
