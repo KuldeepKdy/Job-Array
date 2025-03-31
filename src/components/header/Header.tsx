@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 import { AlignJustify, Moon } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
@@ -57,13 +57,15 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
             <div className="grid gap-2 py-6">
               {menuItems.map((menuItem) => {
                 return menuItem.show ? (
-                  <Link
-                    key={menuItem.label}
-                    href={menuItem.path}
-                    className="flex w-full z-50 items-center py-2 text-lg font-semibold"
-                  >
-                    {menuItem.label}
-                  </Link>
+                  <SheetClose key={menuItem.label} asChild>
+                    <Link
+                      onClick={() => sessionStorage.removeItem("filterParams")}
+                      href={menuItem.path}
+                      className="flex w-full z-50 items-center py-2 text-lg font-semibold"
+                    >
+                      {menuItem.label}
+                    </Link>
+                  </SheetClose>
                 ) : null;
               })}
               <Moon
