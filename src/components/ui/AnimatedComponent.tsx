@@ -1,13 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-const AnimatedComponent = ({
-  initial,
-  whileInView,
-  variants,
-  className,
-  children,
-}: {
+interface AnimatedComponentProps {
   initial?:
     | boolean
     | import("framer-motion").TargetAndTransition
@@ -18,14 +12,24 @@ const AnimatedComponent = ({
   variants?: import("framer-motion").Variants;
   className?: string;
   children?: React.ReactNode;
-  data?: React.ReactNode;
-}) => {
+  drag?: boolean | "x" | "y" | undefined;
+}
+
+const AnimatedComponent = ({
+  initial,
+  whileInView,
+  variants,
+  className,
+  children,
+  drag,
+}: AnimatedComponentProps) => {
   return (
     <motion.div
       initial={initial}
       whileInView={whileInView}
       variants={variants}
       className={className}
+      drag={drag}
     >
       {children}
     </motion.div>

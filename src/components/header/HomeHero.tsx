@@ -53,7 +53,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         </div>
         <div className=" w-full relative -right-8 flex items-center justify-end">
           {profileInfo?.role ? (
-            <div className="rounded-3xl bg-white dark:bg-gray-50  shadow-lg w-[70%]  gap-2  flex flex-col  border border-gray-200 p-4">
+            <div className="rounded-3xl z-30 bg-white dark:bg-gray-50  shadow-lg w-[70%]  gap-2  flex flex-col  border border-gray-200 p-4">
               <h2 className="text-gray-900 text-sm font-medium">
                 Profile Completed
               </h2>
@@ -71,7 +71,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
               </p>
             </div>
           ) : (
-            <div className="rounded-3xl bg-white dark:bg-gray-50   shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4">
+            <div className="rounded-3xl z-30 bg-white dark:bg-gray-50   shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4">
               <h2 className="text-gray-900 text-sm font-medium">
                 Complete your profile
               </h2>
@@ -89,7 +89,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           )}
         </div>
         <div className="-left-8 w-full relative">
-          <div className="w-[60%] aspect-square ">
+          <div className="w-[60%]  aspect-square ">
             <img
               src="/images/person4.jpg"
               alt="person1"
@@ -103,7 +103,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         {/* Placing  */}
         <div
           className={`
-        inline-flex items-center px-4 py-1.5 rounded-full cursor-pointer blue
+        inline-flex items-center  px-4 py-1.5 rounded-full cursor-pointer blue
         bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-200
         transition-all duration-300 ease-in-out
        hover:shadow-md hover:transform hover:scale-105 shadow-sm
@@ -112,11 +112,11 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         >
           <ThumbsUpIcon className="w-4 h-4 mr-2 text-amber-500" />
           <p className="text-sm font-medium text-amber-800">
-            #1 Top greatest on Product Hunt
+            #1 Greatest on Product Hunt
           </p>
         </div>
         {/* Headline  */}
-        <h1 className="text-gray-900 font-[600] dark:text-white text-4xl leading-snug lg:text-6xl mt-6 lg:leading-[1.3]    text-center  ">
+        <h1 className="text-gray-900 font-[600] dark:text-white text-4xl leading-snug lg:text-6xl mt-8 lg:leading-[1.3]    text-center  ">
           Supporting Job Seekers Every Step of the Way
         </h1>
         {/* Headline para  */}
@@ -152,10 +152,10 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
             />
           </div>
         </div>
-        <div className="-left-20 w-full relative">
+        <div className="-left-20 w-full z-30 relative">
           {user ? (
             profileInfo?.role === "candidate" ? (
-              <div className="rounded-3xl bg-white dark:bg-gray-50   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+              <div className="rounded-3xl  bg-white dark:bg-gray-50   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
                 <div className="w-fit border border-gray-100 dark:bg-primary-foreground p-2 rounded-md ">
                   <Flag />
                 </div>
@@ -181,7 +181,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                 </div>
               </div>
             ) : (
-              <div className="rounded-3xl bg-white dark:bg-gray-50  shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+              <div className="rounded-3xl  bg-white dark:bg-gray-50  shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
                 <div className="w-fit border border-gray-100 dark:bg-primary-foreground p-2 rounded-md ">
                   <Flag />
                 </div>
@@ -208,7 +208,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
               </div>
             )
           ) : (
-            <div className="rounded-3xl   shadow-lg dark:bg-gray-50 w-fit flex flex-col border border-gray-200 p-4">
+            <div className="rounded-3xl  shadow-lg dark:bg-gray-50 w-fit flex flex-col border border-gray-200 p-4">
               <div className="w-fit border dark:bg-primary-foreground border-gray-100 p-2 rounded-md ">
                 <Flag />
               </div>

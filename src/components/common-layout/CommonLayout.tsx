@@ -28,7 +28,9 @@ const CommonLayout = async ({
           user={JSON.parse(JSON.stringify(user))}
         />
         {/* main Component  */}
-        <main className="mx-auto px-4 md:px-10 lg:px-24 ">{children}</main>
+        <main className="mx-auto px-4 md:px-10 lg:px-24  ">
+          {children}
+        </main>
         <Footer />
       </div>
     </NextThemesProvider>

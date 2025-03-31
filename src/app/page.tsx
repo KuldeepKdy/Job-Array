@@ -5,6 +5,7 @@ import AdvantageSection from "@/components/AdvantageSection";
 import CommunitySection from "@/components/CommunitySection";
 import FeaturesSection from "@/components/FeaturesSection";
 import HomeHero from "@/components/header/HomeHero";
+import HeroSection from "@/components/HeroSection";
 import JobsFeatureSection from "@/components/JobsFeatureSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { currentUser } from "@clerk/nextjs/server";
@@ -22,7 +23,7 @@ async function Home() {
 
   return (
     <>
-      {/* <HeroSection /> */}
+      <HeroSection />
       {/* <section className="relative w-full h-full md:min-h-screen ">
         <div className="w-full h-full relative">
           <div className="flex flex-col-reverse lg:flex-row gap-6 mt-16">
