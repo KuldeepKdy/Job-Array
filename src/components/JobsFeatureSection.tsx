@@ -155,8 +155,8 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
           </p>
         </div>
       </div>
-      <div className="bg-white lg:max-h-[80vh] order-2   shadow-lg lg:col-span-4 border dark:border-gray-200 sticky top-20 rounded-xl py-6 px-4 flex flex-col ">
-        <div className="">
+      <div className="bg-white w-full lg:max-h-[80vh] order-2   shadow-lg lg:col-span-4 border dark:border-gray-200 sticky top-20 rounded-xl py-6 px-4 flex flex-col ">
+        <div className=" w-full">
           <h2 className="font-bold text-gray-900 leading-tight text-xl  md:text-3xl  ">
             User-friendly and intuitive interface both easy to use and intuitive
           </h2>
@@ -165,7 +165,7 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
             to propel your career forward.
           </p>
         </div>
-        <div className="w-full h-fit">
+        <div className="w-full h-fit overflow-hidden">
           <img
             src="/images/jobsPageMocup.png"
             alt="jobsPageMocup"

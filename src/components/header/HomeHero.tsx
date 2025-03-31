@@ -99,7 +99,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
         </div>
       </div>
       {/* center side  */}
-      <div className="flex w-full  flex-col  relative items-center lg:mt-8  lg:max-w-[60%]">
+      <div className="flex w-full  flex-col  relative items-center lg:mt-4  lg:max-w-[60%]">
         {/* Placing  */}
         <div
           className={`
@@ -125,7 +125,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           align with your skills, interests, and aspirations
         </p>
         {/* Redired Button  */}
-        <div className="mt-8">
+        <div className="mt-10">
           <HomePageButtons
             user={JSON.parse(JSON.stringify(user))}
             profileInfo={profileInfo}
