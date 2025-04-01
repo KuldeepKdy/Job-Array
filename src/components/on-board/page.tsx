@@ -106,7 +106,7 @@ function OnBoard() {
     <div className="bg-white">
       <Tabs value={currentTab} onValueChange={handleTabChange}>
         <div className="w-full">
-          <div className="flex items-baseline justify-between border-b pb-6 pt-24 ">
+          <div className="flex flex-col md:flex-row gap-4  items-baseline justify-between border-b pb-6 pt-24 ">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               Welcome to OnBoarding
             </h1>
