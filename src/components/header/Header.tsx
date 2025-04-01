@@ -7,7 +7,7 @@ import { UserButton } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 
 interface HeaderProps {
-  user: boolean;
+  user: { emailAddresses: { emailAddress: string }[] } | null;
   profileInfo: {
     _id: string;
     name: string;
@@ -68,12 +68,24 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
                   </SheetClose>
                 ) : null;
               })}
-              <Moon
-                className="cursor-pointer mb-4 z-50"
-                fill={theme === "dark" ? "light" : "dark"}
+              <div
                 onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-              />
-              <UserButton afterSignOutUrl="/" />
+                className="flex items-center cursor-pointer gap-2 pb-6 border-b border-primary dark:border-primary-foreground"
+              >
+                <Moon
+                  className="cursor-pointer  z-50 size-6"
+                  fill={theme === "dark" ? "light" : "dark"}
+                />
+                <p className="text-lg font-semibold">
+                  {theme === "light" ? "Dark" : "Light"}
+                </p>
+              </div>
+              <div className="flex items-center cursor-pointer gap-2 py-4">
+                <UserButton afterSignOutUrl="/" />
+                <p className="text-lg font-semibold">
+                  {user?.emailAddresses[0]?.emailAddress}
+                </p>
+              </div>
             </div>
           </SheetContent>
         </Sheet>
