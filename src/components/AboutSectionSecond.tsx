@@ -77,7 +77,7 @@ const AboutSectionSecond = () => {
           <AnimatedComponent
             initial="offscreen"
             whileInView={"onscreen"}
-            variants={heroImages(0.2)}
+            variants={heroImages(0.3)}
             className=" p-3 md:p-4 h-fit w-full flex items-center  gap-4 bg-white rounded-xl sticky top-20 sm:top-24"
           >
             <div className="flex items-center gap-4 sticky top-20">
