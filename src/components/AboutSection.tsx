@@ -1,6 +1,4 @@
-"use client";
-import {  titleVariants } from "@/utils/animations";
-import { motion } from "framer-motion";
+import { titleVariants } from "@/utils/animations";
 import { FlagIcon } from "lucide-react";
 import AnimatedComponent from "./ui/AnimatedComponent";
 
@@ -9,7 +7,7 @@ const AboutSection = () => {
     <div className="w-full mt-10 md:mt-0">
       <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-10 place-items-center">
         <div className=" w-full flex flex-col items-center lg:items-start">
-          <motion.h2
+          <AnimatedComponent
             initial="offscreen"
             whileInView={"onscreen"}
             variants={titleVariants}
@@ -17,7 +15,7 @@ const AboutSection = () => {
           >
             <FlagIcon className="size-3.5 stroke-primary" />
             More about JobArray
-          </motion.h2>
+          </AnimatedComponent>
           {/* <motion.p
             initial="offscreen"
             whileInView={"onscreen"}

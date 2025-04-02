@@ -1,10 +1,11 @@
 "use client";
 import { Check, CheckCheck, MessageSquare } from "lucide-react";
 import React from "react";
-import { titleVariants } from "@/utils/animations";
+import { heroImages, titleVariants } from "@/utils/animations";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import AnimatedComponent from "./ui/AnimatedComponent";
 
 const AboutSectionSecond = () => {
   const router = useRouter();
@@ -13,30 +14,45 @@ const AboutSectionSecond = () => {
       <div className="flex flex-col lg:flex-row lg:col-span-2 relative  w-full h-full gap-10 lg:gap-8">
         <div className=" flex w-full h-fit sticky top-16 lg:h-[80vh] flex-col py-8 justify-center gap-4 rounded-xl shadow-lg border border-gray-200 bg-white  px-6">
           <div className="flex flex-col gap-2 w-[80%]">
-            <span className=" px-4 py-2 w-fit rounded-lg font-medium leading-relaxed border border-gray-200 text-xs text-gray-600">
+            <AnimatedComponent
+              initial="offscreen"
+              whileInView={"onscreen"}
+              variants={heroImages()}
+              className=" px-4 py-2 w-fit rounded-lg font-medium leading-relaxed border border-gray-200 text-xs text-gray-600"
+            >
               Good Morning
-            </span>
+            </AnimatedComponent>
             <span className="text-[10px]  text-gray-500 leading-snug">
               08:34 AM
             </span>
           </div>
           <div className="flex flex-col w-[80%] gap-2">
-            <span className=" px-4 py-2 w-fit rounded-lg font-medium leading-relaxed border border-gray-200 text-xs text-gray-600">
+            <AnimatedComponent
+              initial="offscreen"
+              whileInView={"onscreen"}
+              variants={heroImages(0.2)}
+              className=" px-4 py-2 w-fit rounded-lg font-medium leading-relaxed border border-gray-200 text-xs text-gray-600"
+            >
               Hii Kuldeep, <br />I am Anjali. I,m a UI/UX Designer at Exact
               Studio. I have a feeling we may have some very interesting work
               that you may be interested in full-time opportunities?
-            </span>
+            </AnimatedComponent>
             <span className="text-[10px] text-gray-500 leading-snug">
               08:34 AM
             </span>
           </div>
           <div className="w-full flex items-center justify-end">
             <div className="flex flex-col w-[80%] gap-2">
-              <span className=" px-4 py-2 w-fit font-medium rounded-lg border leading-relaxed bg-primary text-white dark:text-gray-600  border-gray-200 text-xs ">
+              <AnimatedComponent
+                initial="offscreen"
+                whileInView={"onscreen"}
+                variants={heroImages(0.4)}
+                className=" px-4 py-2 w-fit font-medium rounded-lg border leading-relaxed bg-primary text-white dark:text-gray-600  border-gray-200 text-xs "
+              >
                 Hii Anjali, Thank you for offering me the position. I appreciate
                 your willingeners to discuss the details of the position with me
                 and give me to consider your offer.
-              </span>
+              </AnimatedComponent>
               <span className="text-[10px] text-gray-500 flex gap-0.5">
                 <CheckCheck className="stroke-blue-600 size-3.5 leading-snug" />{" "}
                 11:12 AM
@@ -44,18 +60,28 @@ const AboutSectionSecond = () => {
             </div>
           </div>
           <div className="flex flex-col w-[80%] gap-2">
-            <span className=" px-4 py-2 font-medium w-fit rounded-lg leading-relaxed border border-gray-200 text-xs text-gray-600">
+            <AnimatedComponent
+              initial="offscreen"
+              whileInView={"onscreen"}
+              variants={heroImages(0.6)}
+              className=" px-4 py-2 font-medium w-fit rounded-lg leading-relaxed border border-gray-200 text-xs text-gray-600"
+            >
               Your Welcome 👌. So what&apos;s you answer for my offer ?
-            </span>
+            </AnimatedComponent>
             <span className="text-[10px] text-gray-500 leading-snug">
               08:34 AM
             </span>
           </div>
         </div>
         <div className="w-full flex h-[80vh] bg-[url(/images/AboutImg.avif)]  bg-center bg-no-repeat py-6 px-4 md:p-6 bg-cover  rounded-xl shadow-lg z-10 border border-gray-200 ">
-          <div className=" p-3 md:p-4 h-fit w-full flex items-center  gap-4 bg-white rounded-xl sticky top-20 sm:top-24">
+          <AnimatedComponent
+            initial="offscreen"
+            whileInView={"onscreen"}
+            variants={heroImages()}
+            className=" p-3 md:p-4 h-fit w-full flex items-center  gap-4 bg-white rounded-xl sticky top-20 sm:top-24"
+          >
             <div className="flex items-center gap-4 sticky top-20">
-              <div className="p-2 rounded-full bg-green-50">
+              <div className="p-2 rounded-full bg-green-50  ">
                 <div className="p-2 rounded-full bg-green-100">
                   <Check className="size-5 stroke-green-400" />
                 </div>
@@ -69,7 +95,7 @@ const AboutSectionSecond = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </AnimatedComponent>
         </div>
       </div>
       <div className="flex flex-col w-full h-fit lg:h-[80vh] lg:col-span-1 justify-center items-center text-center lg:items-start lg:justify-start  ">

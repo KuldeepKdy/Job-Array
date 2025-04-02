@@ -1,5 +1,7 @@
 import { CheckCircle, Flag, ThumbsUpIcon, Users } from "lucide-react";
 import HomePageButtons from "../HomePageButtons";
+import AnimatedComponent from "../ui/AnimatedComponent";
+import { heroImages } from "@/utils/animations";
 
 interface PostNewJobProps {
   user: {
@@ -43,17 +45,27 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
       {/* left side  */}
       <div className="w-full hidden lg:flex flex-col gap-4 lg:max-w-[20%]">
         <div className="-left-8 w-full relative">
-          <div className="w-[60%] aspect-square ">
+          <AnimatedComponent
+            initial="offscreen"
+            whileInView={"onscreen"}
+            variants={heroImages()}
+            className="w-[60%] aspect-square "
+          >
             <img
               src="/images/person3.jpg"
               alt="person1"
               className="w-full h-full rounded-3xl object-cover"
             />
-          </div>
+          </AnimatedComponent>
         </div>
         <div className=" w-full relative -right-8 flex items-center justify-end">
           {profileInfo?.role ? (
-            <div className="rounded-3xl z-30 bg-white dark:bg-gray-50  shadow-lg w-[70%]  gap-2  flex flex-col  border border-gray-200 p-4">
+            <AnimatedComponent
+              initial="offscreen"
+              whileInView={"onscreen"}
+              variants={heroImages(0.3)}
+              className="rounded-3xl z-30 bg-white dark:bg-gray-50  shadow-lg w-[70%]  gap-2  flex flex-col  border border-gray-200 p-4"
+            >
               <h2 className="text-gray-900 text-sm font-medium">
                 Profile Completed
               </h2>
@@ -69,9 +81,14 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                   ? "Now you can easily apply for job posts with enjoyable experience"
                   : "Now you can easily post jobs with enjoyable experience"}
               </p>
-            </div>
+            </AnimatedComponent>
           ) : (
-            <div className="rounded-3xl z-30 bg-white dark:bg-gray-50   shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4">
+            <AnimatedComponent
+              initial="offscreen"
+              whileInView={"onscreen"}
+              variants={heroImages(0.3)}
+              className="rounded-3xl z-30 bg-white dark:bg-gray-50   shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4"
+            >
               <h2 className="text-gray-900 text-sm font-medium">
                 Complete your profile
               </h2>
@@ -85,21 +102,26 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
               <p className="text-gray-600 text-xs leading-relaxed mt-1">
                 Complete your profile now and let us help you navigate
               </p>
-            </div>
+            </AnimatedComponent>
           )}
         </div>
         <div className="-left-8 w-full relative">
-          <div className="w-[60%]  aspect-square ">
+          <AnimatedComponent
+            initial="offscreen"
+            whileInView={"onscreen"}
+            variants={heroImages(0.6)}
+            className="w-[60%]  aspect-square "
+          >
             <img
               src="/images/person4.jpg"
               alt="person1"
               className="w-full h-full rounded-3xl object-cover"
             />
-          </div>
+          </AnimatedComponent>
         </div>
       </div>
       {/* center side  */}
-      <div className="flex w-full  flex-col  relative items-center lg:mt-4  lg:max-w-[60%]">
+      <div className="flex w-full flex-col   relative items-center lg:mt-4  lg:max-w-[60%]">
         {/* Placing  */}
         <div
           className={`
@@ -135,27 +157,42 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
       {/* right side  */}
       <div className="w-full hidden lg:flex flex-col gap-4 lg:max-w-[20%]">
         <div className=" w-full relative">
-          <div className="w-[60%] aspect-square ">
+          <AnimatedComponent
+            initial="offscreen"
+            whileInView={"onscreen"}
+            variants={heroImages()}
+            className="w-[60%] aspect-square "
+          >
             <img
               src="/images/person6.jpg"
               alt="person1"
               className="w-full h-full rounded-3xl object-cover"
             />
-          </div>
+          </AnimatedComponent>
         </div>
         <div className=" w-full relative -right-8 flex items-center justify-end">
-          <div className="w-[70%] aspect-square ">
+          <AnimatedComponent
+            initial="offscreen"
+            whileInView={"onscreen"}
+            variants={heroImages(0.3)}
+            className="w-[70%] aspect-square "
+          >
             <img
               src="/images/person1.jpg"
               alt="person1"
               className="w-full h-full rounded-3xl object-cover"
             />
-          </div>
+          </AnimatedComponent>
         </div>
         <div className="-left-20 w-full z-30 relative">
           {user ? (
             profileInfo?.role === "candidate" ? (
-              <div className="rounded-3xl  bg-white dark:bg-gray-50   shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+              <AnimatedComponent
+                initial="offscreen"
+                whileInView={"onscreen"}
+                variants={heroImages(0.6)}
+                className="rounded-3xl  bg-white dark:bg-gray-50   shadow-lg  w-fit flex flex-col border border-gray-200 p-4"
+              >
                 <div className="w-fit border border-gray-100 dark:bg-primary-foreground p-2 rounded-md ">
                   <Flag />
                 </div>
@@ -179,9 +216,14 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                     Full time
                   </div>
                 </div>
-              </div>
+              </AnimatedComponent>
             ) : (
-              <div className="rounded-3xl  bg-white dark:bg-gray-50  shadow-lg  w-fit flex flex-col border border-gray-200 p-4">
+              <AnimatedComponent
+                initial="offscreen"
+                whileInView={"onscreen"}
+                variants={heroImages(0.6)}
+                className="rounded-3xl  bg-white dark:bg-gray-50  shadow-lg  w-fit flex flex-col border border-gray-200 p-4"
+              >
                 <div className="w-fit border border-gray-100 dark:bg-primary-foreground p-2 rounded-md ">
                   <Flag />
                 </div>
@@ -205,10 +247,15 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                     Full time
                   </div>
                 </div>
-              </div>
+              </AnimatedComponent>
             )
           ) : (
-            <div className="rounded-3xl  shadow-lg dark:bg-gray-50 w-fit flex flex-col border border-gray-200 p-4">
+            <AnimatedComponent
+              initial="offscreen"
+              whileInView={"onscreen"}
+              variants={heroImages(0.6)}
+              className="rounded-3xl  shadow-lg dark:bg-gray-50 w-fit flex flex-col border border-gray-200 p-4"
+            >
               <div className="w-fit border dark:bg-primary-foreground border-gray-100 p-2 rounded-md ">
                 <Flag />
               </div>
@@ -232,7 +279,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
                   Full time
                 </div>
               </div>
-            </div>
+            </AnimatedComponent>
           )}
         </div>
       </div>
