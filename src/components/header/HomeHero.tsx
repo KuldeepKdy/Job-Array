@@ -63,7 +63,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
             <AnimatedComponent
               initial="offscreen"
               whileInView={"onscreen"}
-              variants={heroImages(0.3)}
+              variants={heroImages(0.2)}
               className="rounded-3xl z-30 bg-white dark:bg-gray-50  shadow-lg w-[70%]  gap-2  flex flex-col  border border-gray-200 p-4"
             >
               <h2 className="text-gray-900 text-sm font-medium">
@@ -86,7 +86,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
             <AnimatedComponent
               initial="offscreen"
               whileInView={"onscreen"}
-              variants={heroImages(0.3)}
+              variants={heroImages(0.2)}
               className="rounded-3xl z-30 bg-white dark:bg-gray-50   shadow-lg w-[70%]  gap-2  flex flex-col border border-gray-200 p-4"
             >
               <h2 className="text-gray-900 text-sm font-medium">
@@ -109,7 +109,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           <AnimatedComponent
             initial="offscreen"
             whileInView={"onscreen"}
-            variants={heroImages(0.6)}
+            variants={heroImages(0.4)}
             className="w-[60%]  aspect-square "
           >
             <img
@@ -174,7 +174,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
           <AnimatedComponent
             initial="offscreen"
             whileInView={"onscreen"}
-            variants={heroImages(0.3)}
+            variants={heroImages(0.2)}
             className="w-[70%] aspect-square "
           >
             <img
@@ -190,7 +190,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
               <AnimatedComponent
                 initial="offscreen"
                 whileInView={"onscreen"}
-                variants={heroImages(0.6)}
+                variants={heroImages(0.4)}
                 className="rounded-3xl  bg-white dark:bg-gray-50   shadow-lg  w-fit flex flex-col border border-gray-200 p-4"
               >
                 <div className="w-fit border border-gray-100 dark:bg-primary-foreground p-2 rounded-md ">
@@ -221,7 +221,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
               <AnimatedComponent
                 initial="offscreen"
                 whileInView={"onscreen"}
-                variants={heroImages(0.6)}
+                variants={heroImages(0.4)}
                 className="rounded-3xl  bg-white dark:bg-gray-50  shadow-lg  w-fit flex flex-col border border-gray-200 p-4"
               >
                 <div className="w-fit border border-gray-100 dark:bg-primary-foreground p-2 rounded-md ">
@@ -253,7 +253,7 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
             <AnimatedComponent
               initial="offscreen"
               whileInView={"onscreen"}
-              variants={heroImages(0.6)}
+              variants={heroImages(0.4)}
               className="rounded-3xl  shadow-lg dark:bg-gray-50 w-fit flex flex-col border border-gray-200 p-4"
             >
               <div className="w-fit border dark:bg-primary-foreground border-gray-100 p-2 rounded-md ">

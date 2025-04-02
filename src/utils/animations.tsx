@@ -16,7 +16,7 @@ export const containerVariants = (delay = 0) => ({
 export const heroImages = (delay?: number) => ({
   offscreen: {
     opacity: 0,
-    scale: 0,
+    scale: 0.2,
   },
   onscreen: {
     opacity: 1,
