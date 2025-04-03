@@ -117,6 +117,29 @@ const CandidateJobCard = ({
       });
     }
   };
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: jobItem?.title,
+          // text: "Here is something amazing I found.",
+          url: window.location.href, // Use the current page's URL
+        });
+        console.log("Content shared successfully!");
+      } catch (error) {
+        console.error("Error sharing content:", error);
+      }
+    } else {
+      // Fallback: Copy the URL to clipboard
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Link copied to clipboard!");
+      } catch (error) {
+        console.error("Failed to copy the link:", error);
+      }
+    }
+  };
   return (
     <>
       <Drawer
@@ -276,7 +299,10 @@ const CandidateJobCard = ({
             >
               Cancel
             </button>
-            <button className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 p-3 rounded-lg transition">
+            <button
+              onClick={() => handleShare()}
+              className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 p-3 rounded-lg transition"
+            >
               <Share2 size={20} />
             </button>
           </div>

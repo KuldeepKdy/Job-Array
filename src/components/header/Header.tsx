@@ -70,7 +70,7 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
               })}
               <div
                 onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                className="flex items-center cursor-pointer gap-2 pb-6 border-b border-primary dark:border-primary-foreground"
+                className="flex items-center cursor-pointer gap-2 pt-2 pb-4 border-b border-primary dark:border-primary-foreground"
               >
                 <Moon
                   className="cursor-pointer  z-50 size-6"
@@ -82,7 +82,7 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
               </div>
               <div className="flex items-center cursor-pointer gap-2 py-4">
                 <UserButton afterSignOutUrl="/" />
-                <p className="text-lg font-semibold">
+                <p className="text-base md:text-lg  font-medium md:font-semibold">
                   {user?.emailAddresses[0]?.emailAddress}
                 </p>
               </div>
