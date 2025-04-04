@@ -1,4 +1,6 @@
 import { CheckCircle, MenuSquare } from "lucide-react";
+import AnimatedComponent from "./ui/AnimatedComponent";
+import { desVariants, tagVariants, titleVariants } from "@/utils/animations";
 
 interface featureInterface {
   jobList: {
@@ -56,7 +58,12 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
   return (
     <div className="w-full h-fit grid  grid-cols-1 lg:grid-cols-8 gap-6 md:gap-8">
       <div className="bg-white lg:max-h-[80vh] order-3 lg:order-1  shadow-lg lg:col-span-2 sticky top-20 border dark:border-gray-200 rounded-xl py-6 px-4 flex flex-col h-full justify-between  ">
-        <div className="p-3 bg-white border dark:border-gray-200  lg:-rotate-2 flex flex-col lg:sticky lg:top-24  rounded-2xl">
+        <AnimatedComponent
+          initial="offscreen"
+          whileInView={"onscreen"}
+          variants={titleVariants}
+          className="p-3 bg-white border dark:border-gray-200  lg:-rotate-2 flex flex-col lg:sticky lg:top-24  rounded-2xl"
+        >
           <div className="w-full flex items-center gap-2">
             <div className="size-12 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
               <img
@@ -84,8 +91,13 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
               </div>
             ))}
           </div>
-        </div>
-        <div className="p-3 px-3 bg-white border dark:border-gray-200 lg:rotate-2 flex flex-col mt-4 lg:sticky lg:top-24 rounded-2xl">
+        </AnimatedComponent>
+        <AnimatedComponent
+          initial="offscreen"
+          whileInView={"onscreen"}
+          variants={desVariants}
+          className="p-3 px-3 bg-white border dark:border-gray-200 lg:rotate-2 flex flex-col mt-4 lg:sticky lg:top-24 rounded-2xl"
+        >
           <div className="w-full flex items-center gap-2">
             <div className="size-12 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
               <img
@@ -114,8 +126,13 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
               </div>
             ))}
           </div>
-        </div>
-        <div className="p-3 bg-white border dark:border-gray-200 lg:-rotate-2 flex flex-col mt-4 lg:sticky lg:top-24  rounded-2xl">
+        </AnimatedComponent>
+        <AnimatedComponent
+          initial="offscreen"
+          whileInView={"onscreen"}
+          variants={tagVariants}
+          className="p-3 bg-white border dark:border-gray-200 lg:-rotate-2 flex flex-col mt-4 lg:sticky lg:top-24  rounded-2xl"
+        >
           <div className="w-full flex items-center gap-2">
             <div className="size-12 py-0.5 overflow-hidden border border-gray-100 bg-gray-100  rounded-md">
               <img
@@ -144,7 +161,7 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
               </div>
             ))}
           </div>
-        </div>
+        </AnimatedComponent>
 
         <div className="flex flex-col gap-1 sticky top-20 bg-white z-10 pt-4">
           <h2 className="font-bold text-gray-900 leading-tight text-xl md:text-2xl md:leading-[1.23] ">
@@ -165,13 +182,18 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
             to propel your career forward.
           </p>
         </div>
-        <div className="w-full h-fit overflow-hidden">
+        <AnimatedComponent
+          initial="offscreen"
+          whileInView={"onscreen"}
+          variants={desVariants}
+          className="w-full h-fit overflow-hidden"
+        >
           <img
             src="/images/jobsPageMocup.png"
             alt="jobsPageMocup"
             className="w-full h-full scale-125 lg:scale-[1.4] lg:-translate-y-2 "
           />
-        </div>
+        </AnimatedComponent>
       </div>
       <div className="bg-white lg:max-h-[80vh] order-1 lg:order-3  shadow-lg lg:col-span-2 border dark:border-gray-200 sticky top-20 rounded-xl py-6 px-4 flex flex-col gap-4">
         <div className="border dark:border-gray-200 w-full h-full rounded-2xl flex flex-col overflow-hidden">

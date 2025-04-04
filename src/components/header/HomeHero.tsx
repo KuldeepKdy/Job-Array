@@ -1,7 +1,12 @@
 import { CheckCircle, Flag, ThumbsUpIcon, Users } from "lucide-react";
 import HomePageButtons from "../HomePageButtons";
 import AnimatedComponent from "../ui/AnimatedComponent";
-import { heroImages } from "@/utils/animations";
+import {
+  desVariants,
+  heroImages,
+  tagVariants,
+  titleVariants,
+} from "@/utils/animations";
 
 interface PostNewJobProps {
   user: {
@@ -123,36 +128,48 @@ const HomeHero = ({ user, profileInfo }: PostNewJobProps) => {
       {/* center side  */}
       <div className="flex w-full flex-col   relative items-center lg:mt-4  lg:max-w-[60%]">
         {/* Placing  */}
-        <div
-          className={`
-        inline-flex items-center  px-4 py-1.5 rounded-full cursor-pointer blue
-        bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-200
-        transition-all duration-300 ease-in-out
-       hover:shadow-md hover:transform hover:scale-105 shadow-sm
-        hover:ring-2 hover:ring-amber-200/50
-      `}
+        <AnimatedComponent
+          initial="offscreen"
+          whileInView={"onscreen"}
+          variants={titleVariants}
+          className="inline-flex items-center px-4 py-1.5 rounded-full cursor-pointer blue bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-200  shadow-sm "
         >
           <ThumbsUpIcon className="w-4 h-4 mr-2 text-amber-500" />
           <p className="text-sm font-medium text-amber-800">
             #1 Greatest on Product Hunt
           </p>
-        </div>
+        </AnimatedComponent>
         {/* Headline  */}
-        <h1 className="text-gray-900 font-[600] dark:text-white text-4xl leading-snug lg:text-6xl mt-8 lg:leading-[1.3]    text-center  ">
+        <AnimatedComponent
+          initial="offscreen"
+          whileInView={"onscreen"}
+          variants={desVariants}
+          className="text-gray-900 font-[600] dark:text-white text-4xl leading-snug lg:text-6xl mt-8 lg:leading-[1.3]    text-center  "
+        >
           Supporting Job Seekers Every Step of the Way
-        </h1>
+        </AnimatedComponent>
         {/* Headline para  */}
-        <p className=" md:font-medium leading-relaxed  text-base dark:text-gray-50  text-gray-600 text-center mt-4 max-w-[80%]">
+        <AnimatedComponent
+          initial="offscreen"
+          whileInView={"onscreen"}
+          variants={desVariants}
+          className=" md:font-medium leading-relaxed  text-base dark:text-gray-50  text-gray-600 text-center mt-4 max-w-[80%]"
+        >
           Unlock your true potential and discover a world of opportunities that
           align with your skills, interests, and aspirations
-        </p>
+        </AnimatedComponent>
         {/* Redired Button  */}
-        <div className="mt-10">
+        <AnimatedComponent
+          initial="offscreen"
+          whileInView={"onscreen"}
+          variants={tagVariants}
+          className="mt-10"
+        >
           <HomePageButtons
             user={JSON.parse(JSON.stringify(user))}
             profileInfo={profileInfo}
           />
-        </div>
+        </AnimatedComponent>
       </div>
       {/* right side  */}
       <div className="w-full hidden lg:flex flex-col gap-4 lg:max-w-[20%]">

@@ -1,7 +1,12 @@
 "use client";
 import { Check, CheckCheck, MessageSquare } from "lucide-react";
 import React from "react";
-import { heroImages, titleVariants } from "@/utils/animations";
+import {
+  desVariants,
+  heroImages,
+  tagVariants,
+  titleVariants,
+} from "@/utils/animations";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
@@ -17,7 +22,7 @@ const AboutSectionSecond = () => {
             <AnimatedComponent
               initial="offscreen"
               whileInView={"onscreen"}
-              variants={heroImages()}
+              variants={titleVariants}
               className=" px-4 py-2 w-fit rounded-lg font-medium leading-relaxed border border-gray-200 text-xs text-gray-600"
             >
               Good Morning
@@ -30,7 +35,7 @@ const AboutSectionSecond = () => {
             <AnimatedComponent
               initial="offscreen"
               whileInView={"onscreen"}
-              variants={heroImages(0.1)}
+              variants={desVariants}
               className=" px-4 py-2 w-fit rounded-lg font-medium leading-relaxed border border-gray-200 text-xs text-gray-600"
             >
               Hii Kuldeep, <br />I am Anjali. I,m a UI/UX Designer at Exact
@@ -46,7 +51,7 @@ const AboutSectionSecond = () => {
               <AnimatedComponent
                 initial="offscreen"
                 whileInView={"onscreen"}
-                variants={heroImages(0.2)}
+                variants={tagVariants}
                 className=" px-4 py-2 w-fit font-medium rounded-lg border leading-relaxed bg-primary text-white dark:text-gray-600  border-gray-200 text-xs "
               >
                 Hii Anjali, Thank you for offering me the position. I appreciate
@@ -63,7 +68,7 @@ const AboutSectionSecond = () => {
             <AnimatedComponent
               initial="offscreen"
               whileInView={"onscreen"}
-              variants={heroImages(0.3)}
+              variants={tagVariants}
               className=" px-4 py-2 font-medium w-fit rounded-lg leading-relaxed border border-gray-200 text-xs text-gray-600"
             >
               Your Welcome 👌. So what&apos;s you answer for my offer ?
@@ -77,7 +82,7 @@ const AboutSectionSecond = () => {
           <AnimatedComponent
             initial="offscreen"
             whileInView={"onscreen"}
-            variants={heroImages(0.3)}
+            variants={desVariants}
             className=" p-3 md:p-4 h-fit w-full flex items-center  gap-4 bg-white rounded-xl sticky top-20 sm:top-24"
           >
             <div className="flex items-center gap-4 sticky top-20">
