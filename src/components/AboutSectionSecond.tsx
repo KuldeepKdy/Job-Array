@@ -1,12 +1,7 @@
 "use client";
 import { Check, CheckCheck, MessageSquare } from "lucide-react";
 import React from "react";
-import {
-  desVariants,
-  heroImages,
-  tagVariants,
-  titleVariants,
-} from "@/utils/animations";
+import { desVariants, tagVariants, titleVariants } from "@/utils/animations";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
