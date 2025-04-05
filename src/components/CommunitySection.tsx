@@ -1,4 +1,6 @@
+import { desVariants, tagVariants, titleVariants } from "@/utils/animations";
 import JobMiniCard from "./jobs-listing/JobMiniCard";
+import AnimatedComponent from "./ui/AnimatedComponent";
 import { Button } from "./ui/button";
 
 const CommunitySection = () => {
@@ -19,13 +21,32 @@ const CommunitySection = () => {
       </div>
       <div className="  flex-col hidden md:flex absolute right-16   col-span-2 items-center gap-6">
         <div className="translate-x-10 -rotate-3">
-          <JobMiniCard />
+          <AnimatedComponent
+            initial="offscreen"
+            whileInView={"onscreen"}
+            variants={titleVariants}
+          >
+            <JobMiniCard />
+          </AnimatedComponent>
         </div>
         <div className="-translate-x-32 rotate-3">
-          <JobMiniCard />
+          <AnimatedComponent
+            initial="offscreen"
+            whileInView={"onscreen"}
+            variants={desVariants}
+            className=""
+          >
+            <JobMiniCard />
+          </AnimatedComponent>
         </div>
         <div className="-rotate-3">
-          <JobMiniCard />
+          <AnimatedComponent
+            initial="offscreen"
+            whileInView={"onscreen"}
+            variants={tagVariants}
+          >
+            <JobMiniCard />
+          </AnimatedComponent>
         </div>
       </div>
     </div>

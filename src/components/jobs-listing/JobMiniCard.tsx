@@ -1,6 +1,3 @@
-"use client";
-import { titleVariants } from "@/utils/animations";
-import { motion } from "framer-motion";
 import { CheckCircle, Flag } from "lucide-react";
 
 const JobMiniCard = () => {
@@ -10,15 +7,10 @@ const JobMiniCard = () => {
         <Flag className="dark:stroke-primary-foreground" />
         <div>
           <h3 className="text-gray-900 font-medium text-sm">UI/UX Designer</h3>
-          <motion.div
-            initial="offscreen"
-            whileInView={"onscreen"}
-            variants={titleVariants}
-            className=" flex gap-1 items-center mt-1  text-gray-400 text-xs "
-          >
+          <div className=" flex gap-1 items-center mt-1  text-gray-400 text-xs ">
             <CheckCircle className="size-3 fill-primary" />
             Pintrest
-          </motion.div>
+          </div>
         </div>
       </div>
       <div className="flex w-full gap-2">
