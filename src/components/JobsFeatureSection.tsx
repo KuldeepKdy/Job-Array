@@ -1,6 +1,7 @@
 import { CheckCircle, MenuSquare } from "lucide-react";
 import AnimatedComponent from "./ui/AnimatedComponent";
 import { desVariants, tagVariants, titleVariants } from "@/utils/animations";
+import { Menubar, MenubarMenu, MenubarTrigger } from "./ui/menubar";
 
 interface featureInterface {
   jobList: {
@@ -54,6 +55,12 @@ interface featureInterface {
     };
   };
 }
+const options = [
+  { id: "cartoq", label: "Cartoq" },
+  { id: "apple", label: "Apple" },
+  { id: "amberWhite", label: "Amber white" },
+  { id: "instagram", label: "Instagram" },
+];
 const JobsFeatureSection = ({ jobList }: featureInterface) => {
   return (
     <div className="w-full h-fit grid  grid-cols-1 lg:grid-cols-8 gap-6 md:gap-8">
@@ -200,22 +207,37 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
           <div className="p-4 border-b dark:border-gray-200 font-semibold text-lg text-gray-900">
             Filters
           </div>
-          <div className="p-4 ">Adding Data Soon...</div>
-          {/* <div className="p-4 border-b w-full h-fit overflow-hidden ">
-            <img
-              src="/images/jobFilters.png"
-              alt="jobFilters"
-              className="lg:scale-x-[1.4] w-full h-full lg:scale-y-150 lg:-translate-x-1 scale-125 "
-            />
+          <div className="p-4 gap-4 ">
+            <Menubar className="w-full h-fit p-2 no-scrollbar overflow-x-scroll ">
+              <MenubarMenu>
+                <MenubarTrigger className="cursor-pointer text-nowrap">
+                  Company Name
+                </MenubarTrigger>
+                <MenubarTrigger className="cursor-pointer">
+                  Title
+                </MenubarTrigger>
+                <MenubarTrigger className="cursor-pointer">Type</MenubarTrigger>
+                <MenubarTrigger className="cursor-pointer">
+                  Location
+                </MenubarTrigger>
+              </MenubarMenu>
+            </Menubar>
+            <div className="flex flex-col h-fit  p-4  bg-white rounded-lg border">
+              {options.map((option) => (
+                <div
+                  key={option.id}
+                  className=" group hover:cursor-pointer flex items-center mb-3"
+                >
+                  <div className="w-4 h-4 border-2 group-hover:bg-black transition-all duration-150 ease-linear border-gray-400 rounded-sm text-blue-600  accent-black focus:ring-0 focus:ring-offset-0" />
+                  <p className="ml-2 text-gray-600 text-sm font-medium">
+                    {option.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="p-4 border-b overflow-hidden">
-            <img
-              src="/images/filtersBar.png"
-              alt="jobFilters"
-              className="scale-x-110 scale-y-125"
-            />
-          </div> */}
-          <div className=" p-4 w-fit h-fit mt-auto flex overflow-x-scroll gap-2 no-scrollbar ">
+
+          <div className=" flex gap-2 px-4 mb-4 overflow-x-scroll no-scrollbar ">
             {[
               "Software Tester",
               "Frontend Developer",
@@ -228,7 +250,7 @@ const JobsFeatureSection = ({ jobList }: featureInterface) => {
                   title == "Software Tester"
                     ? "text-white bg-primary dark:bg-primary-foreground"
                     : "text-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary-foreground dark:hover:text-white"
-                } px-3  py-2 flex hover:bg-primary   whitespace-nowrap items-center rounded-full gap-2 transition-all duration-200 ease-linear  border border-gray-200 `}
+                } px-3  py-2 flex hover:bg-primary h-fit  whitespace-nowrap items-center rounded-full gap-2 transition-all duration-200 ease-linear  border border-gray-200 `}
               >
                 <MenuSquare className="size-4" />
                 <p className=" text-sm font-medium">{title}</p>
