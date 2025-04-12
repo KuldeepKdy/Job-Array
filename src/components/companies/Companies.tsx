@@ -25,7 +25,17 @@ interface CompaniesInterface {
 }
 const Companies = ({ jobsList }: CompaniesInterface) => {
   const router = useRouter();
-  // console.log(jobsList);
+
+  function handelFilterJobsByCompanyName(getCompanyName: string) {
+    sessionStorage.setItem(
+      "filterParams",
+      JSON.stringify({
+        companyName: [getCompanyName],
+      })
+    );
+    router.push(`/jobs?companyName=${getCompanyName}`);
+  }
+
   const createUniqueSetOfCompanies = [
     ...new Set(
       jobsList
@@ -37,16 +47,6 @@ const Companies = ({ jobsList }: CompaniesInterface) => {
     ),
   ];
 
-  function handelFilterJobsByCompanyName(getCompanyName: string) {
-    sessionStorage.setItem(
-      "filterParams",
-      JSON.stringify({
-        companyName: [getCompanyName],
-      })
-    );
-    router.push(`/jobs?companyName=${getCompanyName}`);
-  }
-  // console.log(createUniqueSetOfCompanies);
   return (
     <div className="mx-auto max-w-7xl">
       <div className="flex items-baseline justify-between border-b dark:border-white pb-6 pt-24">
