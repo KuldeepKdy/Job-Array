@@ -50,6 +50,18 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
               <span className="sr-only">Toggle Navigation Menu</span>
             </Button>
           </SheetTrigger>
+          <div
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            className="flex items-center ml-auto cursor-pointer gap-2 "
+          >
+            <Moon
+              className="cursor-pointer  z-50 size-6"
+              fill={theme === "dark" ? "light" : "dark"}
+            />
+            {/* <p className="text-lg font-semibold">
+              {theme === "light" ? "Dark" : "Light"}
+            </p> */}
+          </div>
           <SheetContent side="left">
             <Link className="mr-6 hidden lg:flex" href={"#"}>
               <h3 className="z-50">JOB ARRAY</h3>
@@ -68,7 +80,7 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
                   </SheetClose>
                 ) : null;
               })}
-              <div
+              {/* <div
                 onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                 className="flex items-center cursor-pointer gap-2 pt-2 pb-4 border-b border-primary dark:border-primary-foreground"
               >
@@ -79,8 +91,8 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
                 <p className="text-lg font-semibold">
                   {theme === "light" ? "Dark" : "Light"}
                 </p>
-              </div>
-              <div className="flex items-center cursor-pointer gap-2 py-4">
+              </div> */}
+              <div className="flex items-center cursor-pointer gap-2 py-4 mt-2 border-t border-primary dark:border-primary-foreground">
                 <UserButton afterSignOutUrl="/" />
                 <p className="text-base md:text-lg  font-medium md:font-semibold">
                   {user?.emailAddresses[0]?.emailAddress}
