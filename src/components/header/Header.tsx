@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
-import { AlignJustify, Moon } from "lucide-react";
+import { AlignJustify, Moon, Sun } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 
@@ -52,12 +52,16 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
           </SheetTrigger>
           <div
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            className="flex items-center ml-auto cursor-pointer gap-2 "
+            className="flex items-center ml-auto cursor-pointer gap-2 md:hidden "
           >
-            <Moon
-              className="cursor-pointer  z-50 size-6"
-              fill={theme === "dark" ? "light" : "dark"}
-            />
+            {theme === "light" ? (
+              <Moon className="cursor-pointer  z-50 size-6" fill={"dark"} />
+            ) : (
+              <Sun
+                className="cursor-pointer  z-50 size-6"
+                fill={theme === "dark" ? "light" : "dark"}
+              />
+            )}
             {/* <p className="text-lg font-semibold">
               {theme === "light" ? "Dark" : "Light"}
             </p> */}
@@ -117,11 +121,19 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
               </Link>
             ) : null
           )}
-          <Moon
-            className="cursor-pointer z-50"
-            fill={theme === "dark" ? "light" : "dark"}
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          />
+          {theme == "dark" ? (
+            <Moon
+              className="cursor-pointer z-50"
+              fill={theme === "dark" ? "light" : "dark"}
+              onClick={() => setTheme("light")}
+            />
+          ) : (
+            <Sun
+              className="cursor-pointer z-50"
+              fill={theme === "dark" ? "light" : "dark"}
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            />
+          )}
           <div className="z-50">
             <UserButton afterSignOutUrl="/" />
           </div>
