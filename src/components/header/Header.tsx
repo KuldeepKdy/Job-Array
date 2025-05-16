@@ -121,17 +121,17 @@ const Header = ({ user, profileInfo }: HeaderProps) => {
               </Link>
             ) : null
           )}
-          {theme == "dark" ? (
+          {theme == "light" ? (
+            <Sun
+              className="cursor-pointer z-50"
+              fill={"dark"}
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            />
+          ) : (
             <Moon
               className="cursor-pointer z-50"
               fill={theme === "dark" ? "light" : "dark"}
               onClick={() => setTheme("light")}
-            />
-          ) : (
-            <Sun
-              className="cursor-pointer z-50"
-              fill={theme === "dark" ? "light" : "dark"}
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             />
           )}
           <div className="z-50">
